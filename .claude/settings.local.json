@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "WebFetch(domain:hub.docker.com)",
+      "Bash(python -m pip install -e \".[dev]\")"
+    ]
+  }
+}

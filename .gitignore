@@ -1,0 +1,38 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Airflow
+infra/airflow/logs/
+infra/airflow/plugins/
+airflow.db
+standalone_admin_password.txt
+
+# dbt
+pipeline/dbt/target/
+pipeline/dbt/dbt_packages/
+pipeline/dbt/logs/
+
+# Data archive (raw description text lives on the server, never in git)
+data/
+*.jsonl.gz
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# OS / editor
+.DS_Store
+Thumbs.db

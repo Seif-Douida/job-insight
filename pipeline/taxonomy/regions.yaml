@@ -1,0 +1,60 @@
+# Region definitions. Each posting keeps its ISO country code, so the dashboard can show
+# "EU" or drill into "Germany". Countries not listed here are stored with region `other`
+# and excluded from regional aggregates.
+#
+# `adzuna` marks countries Adzuna serves (its API is per-country); the Gulf has none,
+# which is why JSearch covers that region instead.
+
+regions:
+  us:
+    label: United States
+    countries:
+      - { code: US, name: United States, adzuna: us }
+
+  uk:
+    label: United Kingdom
+    countries:
+      - { code: GB, name: United Kingdom, adzuna: gb }
+
+  eu:
+    label: European Union
+    countries:
+      - { code: DE, name: Germany,     adzuna: de }
+      - { code: FR, name: France,      adzuna: fr }
+      - { code: NL, name: Netherlands, adzuna: nl }
+      - { code: ES, name: Spain,       adzuna: es }
+      - { code: IT, name: Italy,       adzuna: it }
+      - { code: PL, name: Poland,      adzuna: pl }
+      - { code: AT, name: Austria,     adzuna: at }
+      - { code: BE, name: Belgium,     adzuna: be }
+      - { code: IE, name: Ireland,     adzuna: null }
+      - { code: PT, name: Portugal,    adzuna: null }
+      - { code: SE, name: Sweden,      adzuna: null }
+      - { code: DK, name: Denmark,     adzuna: null }
+      - { code: FI, name: Finland,     adzuna: null }
+      - { code: CZ, name: Czechia,     adzuna: null }
+      - { code: RO, name: Romania,     adzuna: null }
+
+  gulf:
+    label: Gulf
+    countries:
+      - { code: AE, name: United Arab Emirates, adzuna: null }
+      - { code: SA, name: Saudi Arabia,         adzuna: null }
+      - { code: QA, name: Qatar,                adzuna: null }
+      - { code: KW, name: Kuwait,               adzuna: null }
+      - { code: BH, name: Bahrain,              adzuna: null }
+      - { code: OM, name: Oman,                 adzuna: null }
+
+# Monthly Adzuna call budget (free tier is 1,000/month total), split across countries.
+# Each call returns up to 50 postings.
+adzuna_monthly_call_budget:
+  us: 250
+  gb: 200
+  de: 120
+  fr: 100
+  nl: 80
+  es: 60
+  it: 60
+  pl: 40
+  at: 30
+  be: 30

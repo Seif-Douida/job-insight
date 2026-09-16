@@ -1,0 +1,57 @@
+# Curated roles. A posting is assigned the first role whose `match` patterns hit its title
+# and whose `exclude` patterns do not. Titles that match nothing go to the LLM classifier;
+# anything still unmatched is stored as `other` and left out of the aggregates.
+#
+# Patterns are lowercase substrings matched against a normalized title
+# (lowercased, punctuation stripped). Order matters: more specific roles come first.
+
+roles:
+  - slug: analytics-engineer
+    label: Analytics Engineer
+    match: ["analytics engineer", "analytics developer", "bi engineer", "dbt engineer"]
+
+  - slug: mlops-engineer
+    label: MLOps Engineer
+    match: ["mlops", "ml ops", "ml platform engineer", "ml infrastructure", "model ops", "llmops"]
+
+  - slug: ai-engineer
+    label: AI Engineer
+    match: ["ai engineer", "genai engineer", "generative ai engineer", "llm engineer",
+            "ai software engineer", "applied ai", "prompt engineer", "ai developer"]
+
+  - slug: ml-engineer
+    label: ML Engineer
+    match: ["machine learning engineer", "ml engineer", "deep learning engineer",
+            "computer vision engineer", "nlp engineer", "machine learning scientist"]
+    exclude: ["manager", "director"]
+
+  - slug: data-engineer
+    label: Data Engineer
+    match: ["data engineer", "data platform engineer", "data infrastructure engineer",
+            "big data engineer", "etl developer", "etl engineer", "data warehouse engineer",
+            "data pipeline engineer", "streaming engineer"]
+    exclude: ["data entry", "manager", "director"]
+
+  - slug: data-scientist
+    label: Data Scientist
+    match: ["data scientist", "research scientist machine learning", "decision scientist",
+            "applied scientist", "quantitative researcher"]
+    exclude: ["manager", "director"]
+
+  - slug: data-analyst
+    label: Data Analyst
+    match: ["data analyst", "business intelligence analyst", "bi analyst",
+            "reporting analyst", "insights analyst", "product analyst"]
+    exclude: ["data entry"]
+
+# Titles matching these are never assigned a curated role, whatever else they contain.
+# Keeps people-management and sales roles out of individual-contributor skill profiles.
+global_exclude:
+  - "head of"
+  - "vp of"
+  - "vice president"
+  - "chief "
+  - "recruiter"
+  - "sales engineer"
+  - "account executive"
+  - "internship coordinator"

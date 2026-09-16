@@ -1,0 +1,49 @@
+name: job-insight
+
+# Local development stack: Airflow in standalone mode (api-server, scheduler and triggerer
+# in one container) plus its own metadata Postgres. Project data lives in Neon, not here.
+# Phase 6 replaces this with a built image on the server.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+    restart: unless-stopped
+
+  airflow:
+    image: apache/airflow:3.3.1
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - path: ../.env
+        required: false
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/repo/pipeline/dags
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      PYTHONPATH: /opt/airflow/repo
+      # Dev convenience only; phase 6 bakes these into an image.
+      _PIP_ADDITIONAL_REQUIREMENTS: "psycopg[binary]>=3.2 pyyaml>=6.0 python-dotenv>=1.0"
+    volumes:
+      - ..:/opt/airflow/repo
+      - airflow-logs:/opt/airflow/logs
+    ports:
+      - "8080:8080"
+    user: "${AIRFLOW_UID:-50000}:0"
+    command: standalone
+    restart: unless-stopped
+
+volumes:
+  airflow-db:
+  airflow-logs:
