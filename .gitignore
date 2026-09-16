@@ -33,6 +33,7 @@ node_modules/
 out/
 .vercel/
 
-# OS / editor
+# OS / editor / local tooling
 .DS_Store
 Thumbs.db
+.claude/settings.local.json
