@@ -14,7 +14,7 @@ answers: *"78% of Data Engineer postings in the EU ask for Python, 41% ask for d
 ## Stack
 
 | Layer | Tool |
-|-------|------|
+| ----- | ---- |
 | Ingestion | Public ATS boards (Greenhouse/Lever/Ashby), Adzuna, JSearch |
 | Orchestration | Apache Airflow |
 | Extraction | Gemma 4 via Gemini API (Ollama as local backend) |
@@ -27,7 +27,7 @@ low-confidence. See [docs/methodology.md](docs/methodology.md) for sources and k
 
 ## Status
 
-Phase 1 of 6 (foundation). See [docs/PROGRESS.md](docs/PROGRESS.md) for the running log and
+Phase 1 of 6 (foundation) complete; phase 2 (ingestion) next. See [docs/PROGRESS.md](docs/PROGRESS.md) for the running log and
 [docs/design.md](docs/design.md) for the full design.
 
 ## Getting started

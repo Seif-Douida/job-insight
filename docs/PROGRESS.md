@@ -6,9 +6,9 @@ Newest entry first. Update before every phase-closing commit.
 ## Phases
 
 | # | Phase | Status |
-|---|-------|--------|
-| 1 | Foundation — repo, config, schema, Airflow up | in progress |
-| 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | not started |
+| --- | ----- | ------ |
+| 1 | Foundation — repo, config, schema, Airflow up | done 2026-09-17 |
+| 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | next |
 | 3 | Extraction — LLM backends, quota governor, eval | not started |
 | 4 | Modeling — dbt staging → marts, taxonomy | not started |
 | 5 | Dashboard — Next.js pages and API routes | not started |
@@ -16,19 +16,41 @@ Newest entry first. Update before every phase-closing commit.
 
 ---
 
-## 2026-09-16 — Phase 1: Foundation (in progress)
+## 2026-09-17 — Phase 1: Foundation (done)
 
 ### Built
 
-- Repo initialized, remote `origin` → https://github.com/Seif-Douida/job-insight.git
+- Repo initialized, remote `origin` → <https://github.com/Seif-Douida/job-insight.git>
 - `docs/design.md` — approved design; `CLAUDE.md` — setup, commands, conventions
 - `infra/sql/001_raw_schema.sql` — `raw.postings`, `raw.extractions`, `raw.quota_usage`
-- `pipeline/taxonomy/roles.yaml` — 7 curated roles with title-matching patterns
-- `pipeline/taxonomy/regions.yaml` — US / UK / EU / Gulf → country codes
+- `pipeline/taxonomy/` — 7 curated roles with title matcher; US / UK / EU / Gulf → 23 countries
+- `pipeline/db/` — connection helper and idempotent `migrate` command
+- `infra/docker-compose.yml` — Airflow 3.3.1 standalone + metadata Postgres 16
+- `pipeline/dags/db_healthcheck.py` — smoke-test DAG for taxonomy and database access
+- All credentials in `.env` (Neon, Gemini, Adzuna, RapidAPI)
 
 ### Verified
 
-_Pending: `docker compose up`, `airflow dags list`, schema applied to Neon._
+```text
+$ pytest -q
+22 passed in 0.13s
+
+$ ruff check pipeline && black --check pipeline
+All checks passed!
+7 files would be left unchanged.
+
+$ python -m pipeline.db.migrate        # run twice: idempotent
+applied 001_raw_schema.sql
+raw tables: ['extractions', 'postings', 'quota_usage']   # Neon, PostgreSQL 18.6
+
+$ airflow dags list
+db_healthcheck | /opt/airflow/repo/pipeline/dags/db_healthcheck.py | airflow | True
+
+$ airflow dags test db_healthcheck     # inside the container, against Neon
+check_taxonomy  → {'roles': 7, 'countries': 23}          state=success
+check_database  → {'postings': 0, 'extractions': 0}      state=success
+DagRun Finished: state=success, run_duration=6.25s
+```
 
 ### Deferred (deliberately)
 
@@ -37,18 +59,15 @@ _Pending: `docker compose up`, `airflow dags list`, schema applied to Neon._
 - dbt and Cosmos arrive in phase 4, not now.
 - `companies.yaml` (the ATS coverage list) is phase 2 work.
 
-### Blocked on credentials
+### Notes
 
-Needed in `.env` before the pipeline can touch real data:
-
-| Variable | Where to get it |
-|----------|-----------------|
-| `DATABASE_URL` | Neon project connection string (free tier) |
-| `GEMINI_API_KEY` | Google AI Studio |
-| `ADZUNA_APP_ID`, `ADZUNA_APP_KEY` | developer.adzuna.com (free, 1,000 calls/month) |
-| `RAPIDAPI_KEY` | RapidAPI, for JSearch (Gulf coverage, phase 2) |
+- The Airflow `admin` password is regenerated whenever the container is recreated. Read it
+  with `docker compose -f infra/docker-compose.yml logs airflow | grep "Password for user"`.
+- Editing `.env` requires `docker compose -f infra/docker-compose.yml up -d --force-recreate airflow`
+  for the container to see the change.
 
 ### Next
 
-Finish phase 1 verification, then phase 2 ingestion starting with the ATS clients
-(they need no credentials, so work can proceed while the keys are gathered).
+Phase 2 — ingestion. Order: shared `RawPosting` model + normalization and dedupe →
+Greenhouse / Lever / Ashby clients with a first `companies.yaml` → Adzuna → JSearch (Gulf).
+Each client tested against recorded API fixtures before touching live endpoints.

@@ -4,7 +4,9 @@
       "Bash(git ls-remote *)",
       "Bash(echo \"exit: $?\")",
       "Bash(git rm *)",
-      "Bash(git commit -q -m ' *)"
+      "Bash(git commit -q -m ' *)",
+      "PowerShell($p = \"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\"; if \\(Test-Path $p\\) { Start-Process $p; \"started Docker Desktop\" } else { \"NOT FOUND at $p\" })",
+      "Bash(git push *)"
     ]
   }
 }
