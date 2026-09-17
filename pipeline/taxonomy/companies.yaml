@@ -1,0 +1,144 @@
+# Companies whose public job boards are read directly. These give full-text postings,
+# so this list is the main lever on coverage and on sample bias: it leans toward
+# companies using modern ATS platforms. Grow it deliberately, especially for the Gulf.
+#
+# Find a company's board with:
+#     python -m pipeline.ingest.probe_boards <slug> [<slug> ...]
+#
+#   name   display name, used as the posting's company
+#   ats    greenhouse | lever | ashby
+#   board  the board token in that platform's public API URL
+#
+# Seeded 2026-09-17 from a probe of ~260 candidates: every board with at least one
+# in-scope posting that day. Companies found on two platforms (mid-migration) are listed
+# once, on Ashby. Careem and Ziina had no in-scope postings but are kept for the Gulf,
+# where job-board coverage is scarce.
+
+companies:
+  - { name: Adyen, ats: greenhouse, board: adyen }
+  - { name: Affirm, ats: greenhouse, board: affirm }
+  - { name: Airbnb, ats: greenhouse, board: airbnb }
+  - { name: Airbyte, ats: ashby, board: airbyte }
+  - { name: Airtable, ats: greenhouse, board: airtable }
+  - { name: Alan, ats: ashby, board: alan }
+  - { name: Algolia, ats: greenhouse, board: algolia }
+  - { name: Anthropic, ats: greenhouse, board: anthropic }
+  - { name: Anyscale, ats: ashby, board: anyscale }
+  - { name: Asana, ats: greenhouse, board: asana }
+  - { name: Astronomer, ats: ashby, board: astronomer }
+  - { name: Babbel, ats: ashby, board: babbel }
+  - { name: Back Market, ats: ashby, board: backmarket }
+  - { name: Benchling, ats: ashby, board: benchling }
+  - { name: BlaBlaCar, ats: lever, board: blablacar }
+  - { name: Block, ats: greenhouse, board: block }
+  - { name: Brex, ats: greenhouse, board: brex }
+  - { name: Cabify, ats: greenhouse, board: cabify }
+  - { name: Careem, ats: greenhouse, board: careem }
+  - { name: Celonis, ats: greenhouse, board: celonis }
+  - { name: Chime, ats: greenhouse, board: chime }
+  - { name: ClickHouse, ats: ashby, board: clickhouse }
+  - { name: Cloudflare, ats: greenhouse, board: cloudflare }
+  - { name: Cockroach Labs, ats: greenhouse, board: cockroachlabs }
+  - { name: Cohere, ats: ashby, board: cohere }
+  - { name: Coinbase, ats: greenhouse, board: coinbase }
+  - { name: Confluent, ats: ashby, board: confluent }
+  - { name: Contentsquare, ats: lever, board: contentsquare }
+  - { name: Databricks, ats: greenhouse, board: databricks }
+  - { name: Datadog, ats: greenhouse, board: datadog }
+  - { name: Dataiku, ats: greenhouse, board: dataiku }
+  - { name: Decagon, ats: ashby, board: decagon }
+  - { name: DeepL, ats: ashby, board: deepl }
+  - { name: Deliveroo, ats: ashby, board: deliveroo }
+  - { name: Discord, ats: greenhouse, board: discord }
+  - { name: Docplanner, ats: ashby, board: docplanner }
+  - { name: Doctolib, ats: ashby, board: doctolib }
+  - { name: DoorDash, ats: greenhouse, board: doordashusa }
+  - { name: Dropbox, ats: greenhouse, board: dropbox }
+  - { name: Duolingo, ats: greenhouse, board: duolingo }
+  - { name: Elastic, ats: greenhouse, board: elastic }
+  - { name: ElevenLabs, ats: ashby, board: elevenlabs }
+  - { name: Enpal, ats: ashby, board: enpal }
+  - { name: Faculty, ats: ashby, board: faculty }
+  - { name: Faire, ats: greenhouse, board: faire }
+  - { name: Figma, ats: greenhouse, board: figma }
+  - { name: Fivetran, ats: greenhouse, board: fivetran }
+  - { name: Flatiron Health, ats: greenhouse, board: flatironhealth }
+  - { name: Flix, ats: greenhouse, board: flix }
+  - { name: Forto, ats: ashby, board: forto }
+  - { name: GetYourGuide, ats: greenhouse, board: getyourguide }
+  - { name: GitLab, ats: greenhouse, board: gitlab }
+  - { name: GoCardless, ats: greenhouse, board: gocardless }
+  - { name: GoStudent, ats: greenhouse, board: gostudent }
+  - { name: Gusto, ats: greenhouse, board: gusto }
+  - { name: Hala, ats: greenhouse, board: hala }
+  - { name: Harvey, ats: ashby, board: harvey }
+  - { name: HelloFresh, ats: greenhouse, board: hellofresh }
+  - { name: Helsing, ats: greenhouse, board: helsing }
+  - { name: Instacart, ats: greenhouse, board: instacart }
+  - { name: Jobandtalent, ats: lever, board: jobandtalent }
+  - { name: Labelbox, ats: greenhouse, board: labelbox }
+  - { name: Lendable, ats: ashby, board: lendable }
+  - { name: Linear, ats: ashby, board: linear }
+  - { name: Lyft, ats: greenhouse, board: lyft }
+  - { name: Marshmallow, ats: ashby, board: marshmallow }
+  - { name: Mercury, ats: greenhouse, board: mercury }
+  - { name: Miro, ats: ashby, board: miro }
+  - { name: Modal, ats: ashby, board: modal }
+  - { name: Mollie, ats: ashby, board: mollie }
+  - { name: MongoDB, ats: greenhouse, board: mongodb }
+  - { name: Monte Carlo, ats: ashby, board: montecarlodata }
+  - { name: Monzo, ats: greenhouse, board: monzo }
+  - { name: Multiverse, ats: ashby, board: multiverse }
+  - { name: N26, ats: greenhouse, board: n26 }
+  - { name: n8n, ats: ashby, board: n8n }
+  - { name: NerdWallet, ats: ashby, board: nerdwallet }
+  - { name: Notion, ats: ashby, board: notion }
+  - { name: Nubank, ats: ashby, board: nubank }
+  - { name: Okta, ats: greenhouse, board: okta }
+  - { name: OpenAI, ats: ashby, board: openai }
+  - { name: Paddle, ats: ashby, board: paddle }
+  - { name: Palantir, ats: lever, board: palantir }
+  - { name: Perplexity, ats: ashby, board: perplexity }
+  - { name: Photoroom, ats: ashby, board: photoroom }
+  - { name: Pigment, ats: lever, board: pigment }
+  - { name: Pinterest, ats: greenhouse, board: pinterest }
+  - { name: Plaid, ats: ashby, board: plaid }
+  - { name: Pleo, ats: ashby, board: pleo }
+  - { name: PostHog, ats: ashby, board: posthog }
+  - { name: Prefect, ats: ashby, board: prefect }
+  - { name: Qonto, ats: ashby, board: qonto }
+  - { name: Raisin, ats: greenhouse, board: raisin }
+  - { name: Ramp, ats: ashby, board: ramp }
+  - { name: Reddit, ats: greenhouse, board: reddit }
+  - { name: Replit, ats: ashby, board: replit }
+  - { name: Robinhood, ats: greenhouse, board: robinhood }
+  - { name: Samsara, ats: greenhouse, board: samsara }
+  - { name: Satispay, ats: ashby, board: satispay }
+  - { name: Scale AI, ats: greenhouse, board: scaleai }
+  - { name: Sierra, ats: ashby, board: sierra }
+  - { name: Sigma Computing, ats: greenhouse, board: sigmacomputing }
+  - { name: Snorkel AI, ats: greenhouse, board: snorkelai }
+  - { name: Snowflake, ats: ashby, board: snowflake }
+  - { name: Sorare, ats: ashby, board: sorare }
+  - { name: Spotify, ats: lever, board: spotify }
+  - { name: Squarespace, ats: greenhouse, board: squarespace }
+  - { name: Staffbase, ats: greenhouse, board: staffbase }
+  - { name: Starburst, ats: greenhouse, board: starburst }
+  - { name: Stripe, ats: greenhouse, board: stripe }
+  - { name: SumUp, ats: greenhouse, board: sumup }
+  - { name: Synthesia, ats: ashby, board: synthesia }
+  - { name: Tamara, ats: greenhouse, board: tamara }
+  - { name: Temporal, ats: ashby, board: temporal }
+  - { name: Thumbtack, ats: ashby, board: thumbtack }
+  - { name: Toast, ats: greenhouse, board: toast }
+  - { name: Together AI, ats: greenhouse, board: togetherai }
+  - { name: Trainline, ats: ashby, board: trainline }
+  - { name: Twilio, ats: greenhouse, board: twilio }
+  - { name: Typeform, ats: greenhouse, board: typeform }
+  - { name: Vercel, ats: greenhouse, board: vercel }
+  - { name: Wallapop, ats: greenhouse, board: wallapop }
+  - { name: Wayve, ats: ashby, board: wayve }
+  - { name: Wolt, ats: greenhouse, board: wolt }
+  - { name: Writer, ats: ashby, board: writer }
+  - { name: Ziina, ats: ashby, board: ziina }
+  - { name: Zopa, ats: lever, board: zopa }

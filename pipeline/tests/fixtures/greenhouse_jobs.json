@@ -1,0 +1,487 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=5416444",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "internal_job_id": 2692714,
+   "location": {
+    "name": "Canada"
+   },
+   "metadata": null,
+   "id": 5416444,
+   "updated_at": "2026-09-10T13:11:58-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Data Analyst",
+   "company_name": "Stripe",
+   "first_published": "2023-11-01T13:50:50-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;Who we are&lt;/h2&gt;\n&lt;h3&gt;About Stripe&lt;/h3&gt;\n&lt;p&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world&#39;s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/p&gt;\n&lt;h3&gt;About the team&lt;/h3&gt;\n&lt;p&gt;Data Science at Stripe is a vibrant community where data analysts and data scientists learn and grow together. You&#39;ll work with some of the most fundamental data at Stripe, and use that data to help drive company-wide initiatives. We have a variety of Data Analytics roles and teams across Stripe and will seek to align you to the most relevant team based on your background.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What you&#39;ll do&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;In this role, you&#39;ll partner deeply with teams across Stripe to ensure that our users, our products, and our business have the models, data products, and insights needed to make decisions and grow responsibly. You&#39;ll work closely with partners to extract insights from the rich and complex data at Stripe. You&#39;ll also work with leaders to translate business needs into data problems. You&#39;ll build metrics, scalable data pipelines, dashboards, and reports to inform and run the business. You&#39;ll deliver actionable business recommendations through analyses and data storytelling.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/p&gt;\n&lt;h3&gt;Minimum requirements&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;MS/MA + 2 years or BS/BA + 3 years of full-time experience exclusive of internships in Business Intelligence Engineering, Data Analyst, and Business Analyst roles&lt;/li&gt;\n&lt;li&gt;Proficiency in SQL&lt;/li&gt;\n&lt;li&gt;Proven ability to manage and deliver on multiple projects with great attention to detail&lt;/li&gt;\n&lt;li&gt;Ability to clearly communicate results and drive impact&lt;/li&gt;\n&lt;li&gt;Ability to design, implement, and maintain data pipelines and dashboards to generate actionable insights based on stakeholder requirements&lt;/li&gt;\n&lt;li&gt;Experience collaborating with cross-functional teams to deliver strategic insights, benchmarks, and analyses that provide recommendations&lt;/li&gt;\n&lt;li&gt;Ability to enable stakeholders and partners by building self-service tooling and providing training to empower stakeholder teams to be data literate and self-sufficient in autonomous reporting capabilities&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;Preferred qualifications&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Prior experience at a growth-stage internet or software company&lt;/li&gt;\n&lt;li&gt;Experience with distributed data frameworks like Spark to write and debug data pipelines&lt;/li&gt;\n&lt;li&gt;Good understanding of development processes and best practices like engineering standards, code reviews, and testing&lt;/li&gt;\n&lt;li&gt;Strong statistical knowledge&lt;/li&gt;\n&lt;li&gt;Working knowledge of Python&lt;/li&gt;\n&lt;li&gt;Experience creating leadership-level reporting, such as QBRs, MBRs&lt;/li&gt;\n&lt;li&gt;Proficiency with AI tools to accelerate model development, analysis, and coding&lt;/li&gt;\n&lt;/ul&gt;",
+   "departments": [
+    {
+     "id": 84354,
+     "name": "7112 Data Science",
+     "child_ids": [],
+     "parent_id": 78812
+    }
+   ],
+   "offices": [
+    {
+     "id": 87006,
+     "name": "Canada Locations",
+     "location": null,
+     "child_ids": [
+      93355,
+      212396,
+      243441,
+      264677,
+      83765,
+      83863,
+      80164,
+      80439,
+      83762,
+      83763,
+      83766,
+      83764
+     ],
+     "parent_id": 673
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/5416444/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8189909",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "education": "education_required",
+   "internal_job_id": 3544022,
+   "location": {
+    "name": "New York"
+   },
+   "metadata": null,
+   "id": 8189909,
+   "updated_at": "2026-09-10T17:39:22-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Data Analyst, NYC ",
+   "company_name": "Stripe",
+   "first_published": "2026-09-10T17:39:22-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;div class=&quot;ace-line gutter-author-p-118095 emptyGutter&quot;&gt;\n&lt;h2&gt;Who we are&lt;/h2&gt;\n&lt;h3&gt;About Stripe&lt;/h3&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing the most important work of your career.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;About the team&lt;/h3&gt;\n&lt;p&gt;Data Science at Stripe is a vibrant community where data analysts and data scientists learn and grow together. You&#39;ll work with some of the most fundamental data at Stripe, and use that data to help drive company-wide initiatives. We have a variety of Data Analytics roles and teams across Stripe and Data Analysts are hired in line with the business needs and domain of the organization they will support.&lt;/p&gt;\n&lt;h2&gt;What you’ll do&lt;/h2&gt;\n&lt;p&gt;We’re looking for a Data Analyst to partner with Stripe’s Global organization, helping millions of users sell around the world. You’ll help build analytics and data products for solutions such as Adaptive Pricing and Stripe Managed Payments, as well as Stripe’s expansion into new markets across LATAM and EMEA.&lt;/p&gt;\n&lt;h3&gt;Responsibilities&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Design and build scalable data models and infrastructure to power product analytics and metrics reporting as we launch and grow new products&lt;/li&gt;\n&lt;li&gt;Own business-critical data products, including Tier-1 datasets and production pipelines, ensuring reliability through rigorous testing, monitoring, and documentation&lt;/li&gt;\n&lt;li&gt;Build and maintain the metric definitions, metadata, and business context that enable AI agents to help stakeholders explore trusted data and answer business questions independently&lt;/li&gt;\n&lt;li&gt;Develop dashboards, automated reporting, and thoughtful analyses to surface actionable insights and proactively identify business opportunities&lt;/li&gt;\n&lt;li&gt;Partner closely with senior business leaders to translate business needs into analytical questions and deliver clear recommendations through deep-dive analyses&lt;/li&gt;\n&lt;li&gt;Shape product and business strategy across global markets by distilling complex findings into compelling data narratives for senior stakeholders&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;Minimum requirements&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;6+ years of full-time experience in Data Engineering, Analytics Engineering, Business Intelligence Engineering, or a related analytical role&lt;/li&gt;\n&lt;li&gt;Proficiency in SQL, including complex query optimization and data modeling&lt;/li&gt;\n&lt;li&gt;Proficiency in Scala or Python for data pipeline development, not just scripting and SQL&lt;/li&gt;\n&lt;li&gt;Experience with distributed data frameworks like Spark to write and debug data pipelines&lt;/li&gt;\n&lt;li&gt;Experience with workflow orchestration tools (e.g. Airflow, Flyte, or equivalent)&lt;/li&gt;\n&lt;li&gt;Proven ability to design, implement, and maintain production-grade data pipelines and dashboards&lt;/li&gt;\n&lt;li&gt;Good understanding of development processes and best practices like engineering standards, code reviews, and testing&lt;/li&gt;\n&lt;li&gt;Ability to clearly communicate results and drive impact with cross-functional partners&lt;/li&gt;\n&lt;li&gt;Experience owning production data products with defined quality standards, testing, and documentation&lt;/li&gt;\n&lt;li&gt;Proficiency with AI tools to accelerate model development, analysis, and coding&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&amp;nbsp;&lt;/h3&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\n&lt;/div&gt;",
+   "departments": [
+    {
+     "id": 84354,
+     "name": "7112 Data Science",
+     "child_ids": [],
+     "parent_id": 78812
+    }
+   ],
+   "offices": [
+    {
+     "id": 65234,
+     "name": "US",
+     "location": null,
+     "child_ids": [
+      89623,
+      249942,
+      249943,
+      230657,
+      61413,
+      80440,
+      344486,
+      83778,
+      61414,
+      83767,
+      83768,
+      83776,
+      83769,
+      83770,
+      83771,
+      83772,
+      83773,
+      83774,
+      89624,
+      83789,
+      83775,
+      83777,
+      83779,
+      83780,
+      83820,
+      83781,
+      83782,
+      83783,
+      83784,
+      83785,
+      83786,
+      83787,
+      83821,
+      83788,
+      83790,
+      83791,
+      83792,
+      83793,
+      83794,
+      83854,
+      83861,
+      83795,
+      83796,
+      83797,
+      83831,
+      83798,
+      83799,
+      83856,
+      83800,
+      83801,
+      83819,
+      83802,
+      83850,
+      83803,
+      83804,
+      83805,
+      83806,
+      83807,
+      83808,
+      83809,
+      83810,
+      83811,
+      83812,
+      83813,
+      83815,
+      83817,
+      83822,
+      83824,
+      83846,
+      83825,
+      83829,
+      83830,
+      65238,
+      83834,
+      83849,
+      83859,
+      83835,
+      83836,
+      83837,
+      83839,
+      83840,
+      83841,
+      83842,
+      83843,
+      83844,
+      83847,
+      83848,
+      83851,
+      83852,
+      83853,
+      83855,
+      83857,
+      83858,
+      83860,
+      83862,
+      83814,
+      83818,
+      83823,
+      83826,
+      83827,
+      83828,
+      83832,
+      83833,
+      83816,
+      85342,
+      83838,
+      83845,
+      223073,
+      265365,
+      16654
+     ],
+     "parent_id": 673
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8189909/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8114738",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "education": "education_required",
+   "internal_job_id": 3514920,
+   "location": {
+    "name": "US-SF-HQ, US-NYC, US-CHI, US-SEA"
+   },
+   "metadata": null,
+   "id": 8114738,
+   "updated_at": "2026-09-10T13:11:58-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Account Executive, Product Sales (Data) ",
+   "company_name": "Stripe",
+   "first_published": "2026-08-10T17:05:26-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;&lt;strong&gt;Who we are &lt;/strong&gt;&lt;/h2&gt;\n&lt;h3&gt;&lt;strong&gt;About Stripe&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;About the team&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Product Sales is a team of deep functional and technical specialists who both lead and advise on deals for the most strategically&lt;br&gt;important products in Stripe’s portfolio. Revenue and Finance Automation (RFA) Product Sales is tasked with attacking a $100B&lt;br&gt;market opportunity for back office finance automation across billing, tax, revenue reporting, and data.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What you’ll do&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;As a Data Account Executive at Stripe, you will use your sales and product expertise to help drive growth for the Data Products. You will collaborate with the core sales, marketing, product marketing, and product teams to develop deep product and industry knowledge and drive strategic deals. You will be instrumental in leading in depth product discussions with existing and prospective customers – and building and executing against our go to market strategy.&amp;nbsp;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Responsibilities&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Build deep, resilient, and multi-threaded relationships across the client organization and ability to articulate value across different functions and business stakeholders in the organization.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;The capability to develop and execute formal Strategic Account Plans that map out the client organization, identify short-term and long-term growth opportunities, and forecast renewal/expansion cycles.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Proactive communication &amp;amp; transparency with consistent value adding engagements, updates, and ability to manage expectations effectively. Acting as a trusted advisor rather than merely a vendor.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Drive revenue to achieve and over perform on target and KPIs&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Lead upsell conversations of Stripe Data products for existing and prospective customers.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Drive strategic thought leadership within assigned territory to ensure user success and revenue growth&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Deeply understand the sales process and competitors for Stripe, including software, hardware and payments.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Serve as both an internal and customer-facing expert on Stripe, especially for your specialized products.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Synthesize and relay customer feedback and our findings to inform Stripe’s product roadmap.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Engage with Product, Marketing and User Operations teams to help amplify our growth trajectory.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/span&gt;&lt;/p&gt;\n&lt;p&gt;You are an adept salesperson, capable of engaging in business-level and technical conversations at multiple levels of the organization, including CEO, CFO, and CTO. You are used to building value in competitive situations and enjoy working on products that require deep product understanding, combined with technical knowledge. You’re as comfortable working with clients as with internal stakeholders (including executives). You’re excited to become an expert and to share your knowledge. You’re an organized self-starter, an excellent communicator who is highly analytical and has a track record for improving the processes and organizations around you.&amp;nbsp;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Minimum requirements&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;7+ years of sales or prospecting experience at a technology company and a track record of top performance.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Owning a direct sales quota, with direct sales experience closing new business and/or expansion of existing users.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;A proven ability to build strong collaborative working relationships with business partners.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;The ability to deal effectively with ambiguity and thrive in an unstructured, fast-moving environment.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;A proven ability to be a self-starter capable of driving business results without significant supervision.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;An enthusiastic “roll up your sleeves” mentality.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Excellent verbal and written communication skills.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Strong presentation skills, particularly for in-person meetings with multiple stakeholders.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Proven ability to lead complex negotiations involving bespoke commercial agreements.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Ability to understand complex technical requirements and craft solutions across multiple stakeholders.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Proven ability to sell in a fast paced environment.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Preferred qualifications&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;3+ years of experience specifically selling financial services or similar software.&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Experience in selling data solutions.&lt;/li&gt;\n&lt;/ul&gt;",
+   "departments": [
+    {
+     "id": 86074,
+     "name": "1641 Product Sales - RFA ex Billing",
+     "child_ids": [],
+     "parent_id": 85336
+    }
+   ],
+   "offices": [
+    {
+     "id": 65234,
+     "name": "US",
+     "location": null,
+     "child_ids": [
+      89623,
+      249942,
+      249943,
+      230657,
+      61413,
+      80440,
+      344486,
+      83778,
+      61414,
+      83767,
+      83768,
+      83776,
+      83769,
+      83770,
+      83771,
+      83772,
+      83773,
+      83774,
+      89624,
+      83789,
+      83775,
+      83777,
+      83779,
+      83780,
+      83820,
+      83781,
+      83782,
+      83783,
+      83784,
+      83785,
+      83786,
+      83787,
+      83821,
+      83788,
+      83790,
+      83791,
+      83792,
+      83793,
+      83794,
+      83854,
+      83861,
+      83795,
+      83796,
+      83797,
+      83831,
+      83798,
+      83799,
+      83856,
+      83800,
+      83801,
+      83819,
+      83802,
+      83850,
+      83803,
+      83804,
+      83805,
+      83806,
+      83807,
+      83808,
+      83809,
+      83810,
+      83811,
+      83812,
+      83813,
+      83815,
+      83817,
+      83822,
+      83824,
+      83846,
+      83825,
+      83829,
+      83830,
+      65238,
+      83834,
+      83849,
+      83859,
+      83835,
+      83836,
+      83837,
+      83839,
+      83840,
+      83841,
+      83842,
+      83843,
+      83844,
+      83847,
+      83848,
+      83851,
+      83852,
+      83853,
+      83855,
+      83857,
+      83858,
+      83860,
+      83862,
+      83814,
+      83818,
+      83823,
+      83826,
+      83827,
+      83828,
+      83832,
+      83833,
+      83816,
+      85342,
+      83838,
+      83845,
+      223073,
+      265365,
+      16654
+     ],
+     "parent_id": 673
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8114738/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8172508",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "education": "education_required",
+   "internal_job_id": 3537062,
+   "location": {
+    "name": "Dublin"
+   },
+   "metadata": null,
+   "id": 8172508,
+   "updated_at": "2026-09-10T13:11:58-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Abuse Investigator",
+   "company_name": "Stripe",
+   "first_published": "2026-09-03T13:32:53-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;&lt;strong&gt;Who we are &lt;/strong&gt;&lt;/h2&gt;\n&lt;h3&gt;&lt;strong&gt;About Stripe&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;About the team&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Abuse Operations is the front-line incident response and remediation function handling active product abuse and fraud impacting Stripe and its merchants. This multi-disciplinary group, spanning Incident Managers, Investigators, Forward Deployed Security Engineers, and Data Scientists, neutralizes active attacks, gathers requirements for operational tooling, and leads incidents. The team&amp;nbsp; works directly with impacted merchants to resolve technical incidents and policy abuse rapidly. Operating primarily across Eastern, Pacific and Western European time zones, these team members regularly coordinate with global stakeholders across the world.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What you’ll do&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;You&#39;ll play a critical role in safeguarding our financial ecosystem by investigating high-risk accounts and identifying complex patterns of fraud during incidents. You will lead incident response for product abuse and fraud events, conducting deep-dive analyses to identify root causes. By collaborating cross-functionally, you will drive improvements that enhance our fraud detection and prevention strategies at scale. Your expertise will be essential in automating response processes through agentic approaches, allowing us to safeguard merchants and neutralize threats with speed and precision.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Responsibilities&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Investigate, mitigate, and remediate urgent fraud incidents (e.g., ATO, card testing), utilizing FT3-mapped detection and signals enrichment to reduce uncertainty and accelerate response.&lt;/li&gt;\n&lt;li&gt;As part of incidents, analyze high-risk accounts to identify fraudulent merchants, card testing, account takeovers, and other fraud vectors, classifying them using FT3 (Fraud Taxonomy 3.0) to standardize threat intelligence.&lt;/li&gt;\n&lt;li&gt;Lead incident root cause analyses to identify gaps in current systems and strategies, leveraging the FT3 framework, data-driven model to drive enhancements and process improvements for emerging fraud risks.&lt;/li&gt;\n&lt;li&gt;Streamline incident response capabilities, ensuring the tooling and processes are clear, accurate and efficient&lt;/li&gt;\n&lt;li&gt;Work cross-functionally with security, fraud and data science teams to build agentic solutions for responding to abuse incidents at scale&lt;/li&gt;\n&lt;li&gt;Effectively communicate cross-functionally with legal and policy teams to assess and mitigate risks, while demonstrating strong problem-solving under pressure.&lt;/li&gt;\n&lt;li&gt;Collaborate effectively with teammates, leading projects, mentoring others, and developing and championing quality standards within the team&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Minimum requirements&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;3+ years of experience conducting incident response in security, product abuse or trust domains&lt;/li&gt;\n&lt;li&gt;3+ years experience analyzing large data sets to solve problems and/or building models with a behavioral approach to fraud detection&lt;/li&gt;\n&lt;li&gt;B.S. or M.S. Computer Science or related field, or equivalent experience&lt;/li&gt;\n&lt;li&gt;Expert knowledge of Python and SQL, and familiarity with other programming languages&lt;/li&gt;\n&lt;li&gt;Existing experience with log analysis (e.g. first or third party applications, system / data access, event logs), network security, digital forensics, and incident response investigations&lt;/li&gt;\n&lt;li&gt;Ability to communicate results clearly and focus on impact&lt;/li&gt;\n&lt;li&gt;Ability to think creatively and holistically about reducing risk in a complex environment&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Preferred qualifications&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;An adversarial mindset, understanding the goals, behaviors, and TTPs of threat actors.&lt;/li&gt;\n&lt;li&gt;Experience with engineering, data processing and analysis tools (e.g. Databricks, Trino, etc.)&lt;/li&gt;\n&lt;li&gt;Familiarity with common open-source frameworks for big data processing and/or data science (PySpark, Pandas, Sci-kit Learn, etc.)&lt;/li&gt;\n&lt;li&gt;Experience with tactical threat intelligence and/or hunting for sophisticated threat actors in an enterprise environment&lt;/li&gt;\n&lt;li&gt;Ability to proactively challenge the status quo by leveraging data and taking a user-centric approach to address complex product integrity challenges&lt;/li&gt;\n&lt;/ul&gt;",
+   "departments": [
+    {
+     "id": 81946,
+     "name": "8611 Security Analytics",
+     "child_ids": [],
+     "parent_id": 78876
+    }
+   ],
+   "offices": [
+    {
+     "id": 87011,
+     "name": "Ireland Locations",
+     "location": null,
+     "child_ids": [
+      80459,
+      80460
+     ],
+     "parent_id": 17446
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8172508/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8044924",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": false
+    }
+   ],
+   "education": "education_required",
+   "internal_job_id": 3486871,
+   "location": {
+    "name": "Singapore"
+   },
+   "metadata": null,
+   "id": 8044924,
+   "updated_at": "2026-09-10T13:11:58-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Data Analyst, Payments",
+   "company_name": "Stripe",
+   "first_published": "2026-07-13T04:02:10-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;Who &lt;strong&gt;we are&lt;/strong&gt;&lt;/h2&gt;\n&lt;h3&gt;About &lt;strong&gt;Stripe&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world&#39;s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/p&gt;\n&lt;h3&gt;About &lt;strong&gt;the team&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;The Payments organization owns some of Stripe&#39;s most critical payment flows and a platform that processes hundreds of billions of dollars in payments a year. Our team is responsible for translating complex partner specifications related to network costs (interchange and scheme fees) into simplified logic for internal and external consumption. This also drives decisions and product recommendations to manage the underlying network costs paid by Stripe and our users. The team partners closely with the engineering, product, finance, and partnership groups to manage and understand Stripe&#39;s network costs.&lt;/p&gt;\n&lt;p&gt;Our work is core to Stripe&#39;s business, as Technical Operations roles in Payments are a dynamic and key component of Stripe&#39;s success. We sit at the intersection of product and platform engineers and financial partners, connecting them to ensure that everyone thrives and nothing is lost in translation.&lt;/p&gt;\n&lt;h3&gt;What &lt;strong&gt;you&#39;ll do&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;We&#39;re looking to add payment enthusiasts who enjoy interpreting complex cost structures and ever-changing payment network systems to optimize on behalf of Stripe and our users. You&#39;ll be instrumental in building Stripe&#39;s approach to managing our global network cost base.&lt;/p&gt;\n&lt;h3&gt;Responsibilities&lt;/h3&gt;\n&lt;p&gt;• Collaborate across the company, including engineering, accounting, financial partnerships, and product teams, to analyze billions of dollars moving through the Stripe platform&lt;/p&gt;\n&lt;p&gt;• Translate network specifications into implementation instructions to create billing models for new and revised fees (both scheme and interchange)&lt;/p&gt;\n&lt;p&gt;• Influence product strategy to minimize network costs&lt;/p&gt;\n&lt;p&gt;• Collaborate with Product, Engineering, and Finance to implement cost-saving opportunities, prioritize investment, and explain cost and margin trends&lt;/p&gt;\n&lt;p&gt;• Monitor and maintain the accuracy of the fees through validation and alerting&lt;/p&gt;\n&lt;p&gt;• Create fee explainability to internal and external stakeholders and host education sessions for internal teams to scale knowledge&lt;/p&gt;\n&lt;p&gt;• Introduce data and process efficiencies to meet the scale and speed of Stripe. Identify and automate inefficient operational processes to reduce manual workloads, and scale our network cost operation by driving the design, documentation, and training of operational processes to leverage partner relationships&lt;/p&gt;\n&lt;h3&gt;Who &lt;strong&gt;you are&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/p&gt;\n&lt;h3&gt;Minimum &lt;strong&gt;requirements&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;• Have 4+ years of experience in Payments at a leading technology or payments company, with the ability to write SQL to query relational databases&lt;/p&gt;\n&lt;p&gt;• Have experience managing communications and workflows with technical and non-technical teams across internal and external stakeholders&lt;/p&gt;\n&lt;p&gt;• Have experience navigating the nuanced complexity of financial systems and solving large-scale, technical challenges&lt;/p&gt;\n&lt;p&gt;• Have strong financial modeling and diagnostic skills to investigate, prioritize, and identify the root cause of issues&lt;/p&gt;\n&lt;p&gt;• Have experience managing multiple, concurrent work streams, identifying and triaging technical issues, and driving solutions with clear metrics to show impact&lt;/p&gt;\n&lt;h3&gt;Preferred &lt;strong&gt;qualifications&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;• Experience working in fast-paced environments (e.g., high-growth fintech or tech company, management consulting)&lt;/p&gt;\n&lt;p&gt;• Experience mentoring junior team members in technical skill development, operational strategy, and problem solving&lt;/p&gt;\n&lt;p&gt;• Experience working with PM, Engineers, finance team, or accounting team&lt;/p&gt;\n&lt;p&gt;• Experience handling tickets and adhering to operational targets and metrics • Experience with visualization tools&lt;/p&gt;\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;",
+   "departments": [
+    {
+     "id": 61598,
+     "name": "8548 Payins - Eng",
+     "child_ids": [],
+     "parent_id": 340725
+    }
+   ],
+   "offices": [
+    {
+     "id": 86997,
+     "name": "Singapore Locations",
+     "location": null,
+     "child_ids": [
+      81542,
+      106345
+     ],
+     "parent_id": 4260
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8044924/ai_opt_out"
+  }
+ ],
+ "meta": {
+  "total": 5
+ }
+}

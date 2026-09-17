@@ -7,14 +7,44 @@ to trust a percentage.
 ## Where postings come from
 
 | Source | Role in the mix | Text available |
-|--------|-----------------|----------------|
+| ------ | --------------- | -------------- |
 | Public ATS boards (Greenhouse, Lever, Ashby) | Primary source for skill extraction | Full description |
 | Adzuna | Breadth across the US/UK/EU, plus salary data | Excerpt only |
-| JSearch (Google for Jobs) | Fills Gulf coverage, where no free official API exists | Full description |
+| JSearch (Google for Jobs) | Fills Gulf coverage, where no free official API exists | Full or snippet, by publisher |
 
 Postings are collected by company (for ATS boards) or by role keyword and country
-(for Adzuna and JSearch), then deduplicated across sources: the same job advertised in
-two places is counted once, keeping the record with the richest text.
+(for Adzuna and JSearch).
+
+### What gets stored
+
+A posting is kept only when both hold:
+
+- **Its title is plausibly one of the curated roles.** Either it matches a role pattern
+  ("Senior Data Engineer"), or it contains a relevant keyword ("Software Engineer, Data
+  Infrastructure") and is left for the classifier to decide. Leadership, recruiting and
+  sales titles are excluded outright.
+- **Its location resolves to a curated country.** Free-text locations are matched against
+  country names, cities and codes; when a posting lists several places, the first one
+  named wins. A posting that says only "Remote", or names a place outside the four
+  regions, is not stored rather than guessed.
+
+### Full text or excerpt
+
+Each posting is marked `full` or `excerpt`. Adzuna postings are always excerpts (the API
+returns 500 characters). For every other source, a description under 1,000 characters is
+an excerpt too: aggregators often return a short snippet of a longer posting.
+
+### Duplicates
+
+The same company, title and country is treated as the same job, with company names
+compared without case, punctuation or legal suffixes ("Acme Ltd" = "ACME"). Duplicates
+are linked rather than deleted, and only the canonical copy is counted. The canonical copy
+is the company's own job board posting if one exists, otherwise a full-text copy, otherwise
+the first one seen.
+
+Two postings with the same title on one company's own board are counted separately —
+companies often hire for several identical openings. Repeats of one job within an
+aggregator are collapsed, since aggregators republish the same listing from several sites.
 
 ## How skills are counted
 

@@ -1,19 +1,27 @@
-"""The taxonomy decides which postings count toward which role and region,
-so its loading and matching rules are tested before anything depends on them."""
+"""The taxonomy decides which postings are stored and where they count,
+so its loading and matching rules are pinned down before anything relies on them."""
 
 from __future__ import annotations
 
 import pytest
 
 from pipeline.taxonomy import (
+    BOARD_TYPES,
     OTHER_REGION,
+    get_country,
+    get_role,
+    is_relevant_title,
+    load_companies,
     load_countries,
     load_regions,
     load_roles,
     match_role,
     normalize_title,
     region_for_country,
+    resolve_country,
 )
+
+# --- roles -----------------------------------------------------------------------------
 
 
 def test_role_slugs_are_unique() -> None:
@@ -21,8 +29,14 @@ def test_role_slugs_are_unique() -> None:
     assert len(slugs) == len(set(slugs))
 
 
-def test_every_role_has_patterns() -> None:
-    assert all(role.match for role in load_roles())
+def test_every_role_has_a_search_phrase_and_patterns() -> None:
+    assert all(role.search and role.match for role in load_roles())
+
+
+def test_get_role_by_slug() -> None:
+    assert get_role("data-engineer").label == "Data Engineer"
+    with pytest.raises(KeyError):
+        get_role("astronaut")
 
 
 def test_normalize_title_strips_punctuation_and_pads() -> None:
@@ -54,6 +68,7 @@ def test_match_role_assigns_expected_slug(title: str, expected: str) -> None:
         "Technical Recruiter, Data",
         "Data Engineering Manager",  # role-level exclude: manager
         "Data Entry Clerk",  # role-level exclude: not a data role
+        "HTML Engineer",  # " ml engineer" must start at a word
         "Frontend Engineer",  # no curated role matches
     ],
 )
@@ -64,6 +79,24 @@ def test_match_role_rejects_out_of_scope_titles(title: str) -> None:
 def test_specific_roles_match_before_general_ones() -> None:
     """`ml platform engineer` is MLOps, not ML Engineer, so ordering must hold."""
     assert match_role("ML Platform Engineer") == "mlops-engineer"
+
+
+@pytest.mark.parametrize(
+    ("title", "relevant"),
+    [
+        ("Data Engineer", True),
+        ("Software Engineer, Data Infrastructure", True),  # no role pattern, but plausible
+        ("Research Engineer, LLM Evaluation", True),
+        ("Account Executive, AI Sales", False),  # globally excluded
+        ("Abuse Investigator", False),
+        ("Database Administrator", False),  # " data " is a whole word
+    ],
+)
+def test_is_relevant_title(title: str, relevant: bool) -> None:
+    assert is_relevant_title(title) is relevant
+
+
+# --- regions ---------------------------------------------------------------------------
 
 
 def test_countries_roll_up_into_declared_regions() -> None:
@@ -79,11 +112,48 @@ def test_unknown_or_missing_country_is_other() -> None:
 
 
 def test_every_country_belongs_to_a_declared_region() -> None:
-    regions = load_regions()
-    assert {country.region for country in load_countries().values()} <= set(regions)
+    assert {country.region for country in load_countries().values()} <= set(load_regions())
 
 
-def test_country_codes_are_unique_across_regions() -> None:
-    countries = load_countries()
-    assert len(countries) == sum(1 for _ in countries.values())
-    assert all(code == country.code for code, country in countries.items())
+def test_get_country_by_code() -> None:
+    assert get_country("ae").name == "United Arab Emirates"
+
+
+@pytest.mark.parametrize(
+    ("location", "expected"),
+    [
+        ("San Francisco, CA", "US"),
+        ("US-Remote", "US"),
+        ("Remote - US", "US"),
+        ("NYC", "US"),
+        ("Cambridge, MA", "US"),  # state code after a comma
+        ("United States", "US"),
+        ("London, UK", "GB"),
+        ("Belfast, Northern Ireland", "GB"),  # not Ireland: the earlier place wins
+        ("Dublin, Ireland", "IE"),
+        ("Dublin, London", "IE"),
+        ("München", "DE"),
+        ("Dubai, United Arab Emirates", "AE"),
+        ("Riyadh, KSA", "SA"),
+        ("Toronto, Canada", None),
+        ("Singapore", None),
+        ("Latin America", None),
+        ("Pune, IN", None),  # India, not Indiana
+        ("Tel Aviv, IL", None),  # Israel, not Illinois
+        ("N/A", None),
+        ("Remote", None),
+        ("", None),
+        (None, None),
+    ],
+)
+def test_resolve_country(location: str | None, expected: str | None) -> None:
+    assert resolve_country(location) == expected
+
+
+# --- companies -------------------------------------------------------------------------
+
+
+def test_companies_use_supported_board_types() -> None:
+    companies = load_companies()
+    assert companies
+    assert all(company.ats in BOARD_TYPES for company in companies)

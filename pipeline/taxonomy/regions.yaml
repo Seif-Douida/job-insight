@@ -1,60 +1,139 @@
-# Region definitions. Each posting keeps its ISO country code, so the dashboard can show
-# "EU" or drill into "Germany". Countries not listed here are stored with region `other`
-# and excluded from regional aggregates.
+# Regions, the countries they contain, and how to recognize each country in the free-text
+# locations job boards return ("San Francisco, CA", "Dublin, London", "US-Remote").
 #
-# `adzuna` marks countries Adzuna serves (its API is per-country); the Gulf has none,
-# which is why JSearch covers that region instead.
+# Countries not listed here resolve to no country and their postings are not stored.
+#
+# Per country:
+#   aliases      case-insensitive names and cities, matched as whole words
+#   codes        case-sensitive abbreviations, matched as whole words ("US", "UAE")
+#   state_codes  case-sensitive, matched only after a comma ("Austin, TX")
+#   adzuna       Adzuna market for this country; `pages` is pages fetched per role per run
+#                (50 postings each). Free tier is 1,000 calls/month: keep
+#                sum(pages) x roles x runs per month under that.
+#   jsearch      true to query JSearch for this country (free tier ~200 calls/month)
+#
+# Leave out ambiguous places: Cambridge (UK or Massachusetts), Georgia (US state or
+# country), Birmingham (UK or Alabama). When a location string names several places,
+# the one that appears first wins.
 
 regions:
   us:
     label: United States
     countries:
-      - { code: US, name: United States, adzuna: us }
+      - code: US
+        name: United States
+        codes: [US, USA, NYC, SF]
+        # IN, IL and DE are left out: "Pune, IN" and "Tel Aviv, IL" are India and Israel
+        # far more often than Indiana and Illinois.
+        state_codes: [AL, AK, AZ, AR, CA, CO, CT, DC, FL, GA, HI, ID, IA, KS, KY, LA, ME,
+                      MD, MA, MI, MN, MS, MO, MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK,
+                      OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY]
+        aliases: [united states, united states of america, indiana, indianapolis, delaware,
+                  new york, new york city, san francisco, south san francisco, bay area,
+                  seattle, austin, boston, chicago, los angeles, denver, atlanta,
+                  washington dc, miami, dallas, houston, san jose, palo alto, mountain view,
+                  menlo park, sunnyvale, redwood city, san mateo, pittsburgh, philadelphia,
+                  salt lake city, raleigh, minneapolis, phoenix, san diego, detroit,
+                  nashville, california, texas, massachusetts, illinois, colorado, florida,
+                  virginia, north carolina, oregon, pennsylvania, utah, arizona, michigan,
+                  minnesota, ohio, new jersey, maryland, tennessee, washington state]
+        adzuna: { market: us, currency: USD, pages: 3 }
 
   uk:
     label: United Kingdom
     countries:
-      - { code: GB, name: United Kingdom, adzuna: gb }
+      - code: GB
+        name: United Kingdom
+        codes: [UK, GB]
+        aliases: [united kingdom, great britain, britain, england, scotland, wales,
+                  northern ireland, london, manchester, edinburgh, glasgow, bristol, leeds,
+                  belfast, oxford, cardiff, brighton, sheffield, nottingham, liverpool]
+        adzuna: { market: gb, currency: GBP, pages: 3 }
 
   eu:
     label: European Union
     countries:
-      - { code: DE, name: Germany,     adzuna: de }
-      - { code: FR, name: France,      adzuna: fr }
-      - { code: NL, name: Netherlands, adzuna: nl }
-      - { code: ES, name: Spain,       adzuna: es }
-      - { code: IT, name: Italy,       adzuna: it }
-      - { code: PL, name: Poland,      adzuna: pl }
-      - { code: AT, name: Austria,     adzuna: at }
-      - { code: BE, name: Belgium,     adzuna: be }
-      - { code: IE, name: Ireland,     adzuna: null }
-      - { code: PT, name: Portugal,    adzuna: null }
-      - { code: SE, name: Sweden,      adzuna: null }
-      - { code: DK, name: Denmark,     adzuna: null }
-      - { code: FI, name: Finland,     adzuna: null }
-      - { code: CZ, name: Czechia,     adzuna: null }
-      - { code: RO, name: Romania,     adzuna: null }
+      - code: DE
+        name: Germany
+        aliases: [germany, deutschland, berlin, munich, münchen, hamburg, frankfurt,
+                  cologne, köln, stuttgart, düsseldorf, dusseldorf, leipzig]
+        adzuna: { market: de, currency: EUR, pages: 2 }
+      - code: FR
+        name: France
+        aliases: [france, paris, lyon, toulouse, marseille, bordeaux, lille, nantes]
+        adzuna: { market: fr, currency: EUR, pages: 2 }
+      - code: NL
+        name: Netherlands
+        aliases: [netherlands, the netherlands, holland, amsterdam, rotterdam, utrecht,
+                  eindhoven, the hague, den haag]
+        adzuna: { market: nl, currency: EUR, pages: 1 }
+      - code: ES
+        name: Spain
+        aliases: [spain, españa, madrid, barcelona, valencia, seville, sevilla, malaga,
+                  málaga]
+        adzuna: { market: es, currency: EUR, pages: 1 }
+      - code: IT
+        name: Italy
+        aliases: [italy, italia, milan, milano, rome, roma, turin, torino, bologna]
+        adzuna: { market: it, currency: EUR, pages: 1 }
+      - code: PL
+        name: Poland
+        aliases: [poland, polska, warsaw, warszawa, krakow, kraków, wroclaw, wrocław,
+                  gdansk, gdańsk, poznan, poznań]
+        adzuna: { market: pl, currency: PLN, pages: 1 }
+      - code: AT
+        name: Austria
+        aliases: [austria, österreich, vienna, wien, graz, linz]
+        adzuna: { market: at, currency: EUR, pages: 1 }
+      - code: BE
+        name: Belgium
+        aliases: [belgium, belgique, belgië, brussels, bruxelles, antwerp, ghent]
+        adzuna: { market: be, currency: EUR, pages: 1 }
+      - code: IE
+        name: Ireland
+        aliases: [ireland, dublin, cork, galway, limerick]
+      - code: PT
+        name: Portugal
+        aliases: [portugal, lisbon, lisboa, porto]
+      - code: SE
+        name: Sweden
+        aliases: [sweden, sverige, stockholm, gothenburg, göteborg, malmö, malmo]
+      - code: DK
+        name: Denmark
+        aliases: [denmark, danmark, copenhagen, københavn, aarhus]
+      - code: FI
+        name: Finland
+        aliases: [finland, suomi, helsinki, espoo, tampere]
+      - code: CZ
+        name: Czechia
+        aliases: [czechia, czech republic, prague, praha, brno]
+      - code: RO
+        name: Romania
+        aliases: [romania, bucharest, bucurești, cluj, cluj-napoca, iasi]
 
   gulf:
     label: Gulf
     countries:
-      - { code: AE, name: United Arab Emirates, adzuna: null }
-      - { code: SA, name: Saudi Arabia,         adzuna: null }
-      - { code: QA, name: Qatar,                adzuna: null }
-      - { code: KW, name: Kuwait,               adzuna: null }
-      - { code: BH, name: Bahrain,              adzuna: null }
-      - { code: OM, name: Oman,                 adzuna: null }
-
-# Monthly Adzuna call budget (free tier is 1,000/month total), split across countries.
-# Each call returns up to 50 postings.
-adzuna_monthly_call_budget:
-  us: 250
-  gb: 200
-  de: 120
-  fr: 100
-  nl: 80
-  es: 60
-  it: 60
-  pl: 40
-  at: 30
-  be: 30
+      - code: AE
+        name: United Arab Emirates
+        codes: [UAE]
+        aliases: [united arab emirates, emirates, dubai, abu dhabi, sharjah]
+        jsearch: true
+      - code: SA
+        name: Saudi Arabia
+        codes: [KSA]
+        aliases: [saudi arabia, saudi, riyadh, jeddah, dammam, khobar, al khobar, neom]
+        jsearch: true
+      - code: QA
+        name: Qatar
+        aliases: [qatar, doha]
+        jsearch: true
+      - code: KW
+        name: Kuwait
+        aliases: [kuwait]
+      - code: BH
+        name: Bahrain
+        aliases: [bahrain, manama]
+      - code: OM
+        name: Oman
+        aliases: [oman, muscat]

@@ -1,57 +1,87 @@
-# Curated roles. A posting is assigned the first role whose `match` patterns hit its title
-# and whose `exclude` patterns do not. Titles that match nothing go to the LLM classifier;
-# anything still unmatched is stored as `other` and left out of the aggregates.
+# Curated roles. A posting gets the first role whose `match` patterns hit its title and
+# whose `exclude` patterns do not. Titles that match no role but contain one of the
+# `relevance_keywords` are still stored, for the LLM classifier to decide; anything else
+# is not stored at all.
 #
-# Patterns are lowercase substrings matched against a normalized title
-# (lowercased, punctuation stripped). Order matters: more specific roles come first.
+# Patterns are lowercase substrings of a normalized title: lowercased, punctuation turned
+# into spaces, padded with one space at each end. A leading space makes a pattern start
+# at a word: " ml engineer" matches "ML Engineer" but not "HTML Engineer".
+# Order matters: more specific roles come first.
+#
+# `search` is the phrase used to query Adzuna and JSearch for the role.
 
 roles:
   - slug: analytics-engineer
     label: Analytics Engineer
-    match: ["analytics engineer", "analytics developer", "bi engineer", "dbt engineer"]
+    search: analytics engineer
+    match: ["analytics engineer", "analytics developer", " bi engineer", "dbt engineer"]
 
   - slug: mlops-engineer
     label: MLOps Engineer
-    match: ["mlops", "ml ops", "ml platform engineer", "ml infrastructure", "model ops", "llmops"]
+    search: mlops engineer
+    match: ["mlops", " ml ops", " ml platform engineer", " ml infrastructure", "model ops",
+            "llmops"]
 
   - slug: ai-engineer
     label: AI Engineer
-    match: ["ai engineer", "genai engineer", "generative ai engineer", "llm engineer",
-            "ai software engineer", "applied ai", "prompt engineer", "ai developer"]
+    search: ai engineer
+    match: [" ai engineer", "genai engineer", "generative ai engineer", " llm engineer",
+            " ai software engineer", "applied ai", "prompt engineer", " ai developer"]
 
   - slug: ml-engineer
     label: ML Engineer
-    match: ["machine learning engineer", "ml engineer", "deep learning engineer",
-            "computer vision engineer", "nlp engineer", "machine learning scientist"]
+    search: machine learning engineer
+    match: ["machine learning engineer", " ml engineer", "deep learning engineer",
+            "computer vision engineer", " nlp engineer", "machine learning scientist"]
     exclude: ["manager", "director"]
 
   - slug: data-engineer
     label: Data Engineer
+    search: data engineer
     match: ["data engineer", "data platform engineer", "data infrastructure engineer",
-            "big data engineer", "etl developer", "etl engineer", "data warehouse engineer",
+            "big data engineer", " etl developer", " etl engineer", "data warehouse engineer",
             "data pipeline engineer", "streaming engineer"]
     exclude: ["data entry", "manager", "director"]
 
   - slug: data-scientist
     label: Data Scientist
+    search: data scientist
     match: ["data scientist", "research scientist machine learning", "decision scientist",
             "applied scientist", "quantitative researcher"]
     exclude: ["manager", "director"]
 
   - slug: data-analyst
     label: Data Analyst
-    match: ["data analyst", "business intelligence analyst", "bi analyst",
+    search: data analyst
+    match: ["data analyst", "business intelligence analyst", " bi analyst",
             "reporting analyst", "insights analyst", "product analyst"]
     exclude: ["data entry"]
 
-# Titles matching these are never assigned a curated role, whatever else they contain.
-# Keeps people-management and sales roles out of individual-contributor skill profiles.
+# Titles containing any of these never count, whatever else they contain. Keeps
+# leadership and sales roles out of individual-contributor skill profiles.
 global_exclude:
   - "head of"
   - "vp of"
   - "vice president"
-  - "chief "
+  - " chief "
   - "recruiter"
   - "sales engineer"
   - "account executive"
   - "internship coordinator"
+
+# A title matching no role is still stored if it contains one of these, because it may
+# be a curated role under another name ("Software Engineer, Data Infrastructure").
+relevance_keywords:
+  - " data "
+  - " ml "
+  - " ai "
+  - " llm"
+  - " nlp "
+  - "machine learning"
+  - "deep learning"
+  - "mlops"
+  - "computer vision"
+  - "genai"
+  - "analytics"
+  - "scientist"
+  - "business intelligence"

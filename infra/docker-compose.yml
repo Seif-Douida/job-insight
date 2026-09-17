@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: airflow
     volumes:
       - airflow-db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # host access for the local test database (jobinsight_test)
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "airflow"]
       interval: 10s

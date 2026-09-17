@@ -1,0 +1,170 @@
+{
+ "count": 257,
+ "mean": 82358.84,
+ "results": [
+  {
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "description": "Data Engineer AWS, Python, TypeScript, ETL | Hybrid, Belfast At a Glance Mid-level Data Engineer role within a growing enterprise data lake platform team Core stack: AWS, TypeScript, Python, with ETL/ELT and API design Hybrid working, Belfast Salary up to £45,000 Genuine end-to-end scope: ingestion, egress, API design and React frontend contributions About the Company Our client is a major global insurance and financial services organisation building out a centralised, secure data lake platform…",
+   "salary_max": 45000,
+   "id": "5878827773",
+   "title": "Data Engineer",
+   "salary_min": 45000,
+   "location": {
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "UK",
+     "Northern Ireland",
+     "Belfast"
+    ],
+    "display_name": "Belfast, Northern Ireland"
+   },
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiU2pGM0VLeXk4Ukc1MWRyODlMOGluUSIsImkiOiI1ODc4ODI3NzczIn0.mCJeOjjCTit30rKjYOvS53vcDBpFx98eE6n4BwKpP8I",
+   "salary_is_predicted": "0",
+   "created": "2026-09-10T20:32:30Z",
+   "company": {
+    "display_name": "Ocho",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "redirect_url": "https://www.adzuna.co.uk/jobs/land/ad/5878827773?se=SjF3EKyy8RG51dr89L8inQ&utm_medium=api&utm_source=00d812ef&v=379062BB7F9F7A5AA1844A4DF45CAD471E6A9FA3",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "tag": "it-jobs",
+    "label": "IT Jobs"
+   }
+  },
+  {
+   "contract_type": "permanent",
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTg4MDUxOTA5OSIsInMiOiJTakYzRUt5eThSRzUxZHI4OUw4aW5RIn0.Npbx2KkcT1npdhtxeUctKWFOxMIlcqsKQn1UwhVvFS4",
+   "latitude": 51.209301,
+   "title": "Data Engineering Lead",
+   "id": "5880519099",
+   "company": {
+    "__CLASS__": "Adzuna::API::Response::Company",
+    "display_name": "Eutopia Solutions Limited"
+   },
+   "redirect_url": "https://www.adzuna.co.uk/jobs/land/ad/5880519099?se=SjF3EKyy8RG51dr89L8inQ&utm_medium=api&utm_source=00d812ef&v=CFB8A773E349C4AA4E2FD94C20A14FCAE43A7B5F",
+   "salary_is_predicted": "0",
+   "description": "Data Engineering Manager | Azure | SQL | Python | Team Leadership Hybrid Working 3 Days Office / 2 Days Remote Competitive Salary  Benefits We're partnering with a market-leading, highly regulated organisation to recruit a newly created Data Engineering Manager position. This is a fantastic opportunity for a hands-on data engineering leader to take ownership of a growing data function, leading a team while remaining actively involved in technical delivery. Acting as the bridge between senior le…",
+   "longitude": -1.47835,
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "location": {
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "UK",
+     "South East England",
+     "Hampshire",
+     "Andover"
+    ],
+    "display_name": "Andover, Hampshire"
+   },
+   "salary_min": 85000,
+   "salary_max": 85000,
+   "created": "2026-09-12T03:49:04Z",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "tag": "it-jobs",
+    "label": "IT Jobs"
+   }
+  },
+  {
+   "company": {
+    "display_name": "Ocho",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "created": "2026-09-10T15:20:07Z",
+   "redirect_url": "https://www.adzuna.co.uk/jobs/land/ad/5878504722?se=SjF3EKyy8RG51dr89L8inQ&utm_medium=api&utm_source=00d812ef&v=EDD5FBC33BEE7767FA4D49F2EB44B0FB05A4D1DC",
+   "salary_is_predicted": "0",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "label": "IT Jobs",
+    "tag": "it-jobs"
+   },
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "description": "Lead Data Engineer At a Glance Senior hands-on lead role within a growing Belfast data practice genuine influence over how it is built Databricks on Azure at the core Delta Lake, Spark, and MLflow across complex financial data programmes Financial Services domain: risk, trading, compliance, and regulatory data Hybrid working from Belfast city centre About the Company Our client is a global professional services firm with a dedicated AI and Data practice specialising in Financial Services. They …",
+   "location": {
+    "area": [
+     "UK",
+     "Northern Ireland",
+     "Belfast"
+    ],
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "display_name": "Belfast, Northern Ireland"
+   },
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiU2pGM0VLeXk4Ukc1MWRyODlMOGluUSIsImkiOiI1ODc4NTA0NzIyIn0.qApRKem6zglCZzvKxM7An60V0i1y-n1xgNIQ5LgMrZ0",
+   "salary_max": 90000,
+   "id": "5878504722",
+   "salary_min": 90000,
+   "title": "Lead Data Engineer"
+  },
+  {
+   "created": "2026-09-16T07:58:39Z",
+   "category": {
+    "label": "IT Jobs",
+    "tag": "it-jobs",
+    "__CLASS__": "Adzuna::API::Response::Category"
+   },
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "longitude": -0.081381,
+   "description": "Lead Data Engineer Hybrid Working 24 days per month in the office (East London / Essex) Salary to £75k  Bonus A Lead Data Engineer is required to take technical ownership of an evolving Microsoft Fabric data platform. Fabric has already been implemented and a number of key data sources are being ingested into the Bronze layer. The next phase is about maturing the platform through Silver and Gold, improving data quality and introducing consistent engineering standards and best practice across th…",
+   "salary_max": 75000,
+   "salary_min": 75000,
+   "location": {
+    "display_name": "Bishopsgate, Central London",
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "area": [
+     "UK",
+     "London",
+     "Central London",
+     "Bishopsgate"
+    ]
+   },
+   "salary_is_predicted": "0",
+   "redirect_url": "https://www.adzuna.co.uk/jobs/land/ad/5885764683?se=SjF3EKyy8RG51dr89L8inQ&utm_medium=api&utm_source=00d812ef&v=BCCD87A6587E848C2DDB6EFB6196406A6C6D3F6B",
+   "company": {
+    "display_name": "Kinetech Recruitment",
+    "__CLASS__": "Adzuna::API::Response::Company"
+   },
+   "contract_type": "permanent",
+   "id": "5885764683",
+   "title": "Lead Data Engineer",
+   "latitude": 51.519059,
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJzIjoiU2pGM0VLeXk4Ukc1MWRyODlMOGluUSIsImkiOiI1ODg1NzY0NjgzIn0.SykCHbTmZQzUDlgAZA90Xcb-6La5o1iPmP23b-wntVc"
+  },
+  {
+   "company": {
+    "__CLASS__": "Adzuna::API::Response::Company",
+    "display_name": "Saga Travel"
+   },
+   "redirect_url": "https://www.adzuna.co.uk/jobs/land/ad/5879197779?se=SjF3EKyy8RG51dr89L8inQ&utm_medium=api&utm_source=00d812ef&v=B899406FCCBABDDA1044B85001A1FD0305F6F8C3",
+   "salary_is_predicted": "0",
+   "contract_type": "contract",
+   "adref": "eyJhbGciOiJIUzI1NiJ9.eyJpIjoiNTg3OTE5Nzc3OSIsInMiOiJTakYzRUt5eThSRzUxZHI4OUw4aW5RIn0.doffY-Pmns4DoPCByYTebDm3_5yqc1J0RGK7QePuXM8",
+   "latitude": 51.075699,
+   "title": "Lead Data Engineer - Snowflake",
+   "id": "5879197779",
+   "created": "2026-09-11T03:45:20Z",
+   "category": {
+    "__CLASS__": "Adzuna::API::Response::Category",
+    "tag": "it-jobs",
+    "label": "IT Jobs"
+   },
+   "description": "Lead Data Engineer £73,000 - £83,000 per annum Folkestone Hybrid Initial 8-month FTC (potential to go perm) As Lead Data Engineer, youll play a pivotal role in shaping how Saga Travel uses data to make better decisions, understand our customers and deliver exceptional experiences across our Holidays and Cruise businesses. Youll join our Data & Analytics team at an exciting point in our data journey, helping to build a new, integrated data platform that brings together two legacy estates on a si…",
+   "longitude": 1.149115,
+   "__CLASS__": "Adzuna::API::Response::Job",
+   "location": {
+    "area": [
+     "UK",
+     "South East England",
+     "Kent",
+     "Folkestone",
+     "Sandgate"
+    ],
+    "__CLASS__": "Adzuna::API::Response::Location",
+    "display_name": "Sandgate, Folkestone"
+   },
+   "salary_min": 80000,
+   "salary_max": 80000
+  }
+ ],
+ "__CLASS__": "Adzuna::API::Response::JobSearchResults"
+}

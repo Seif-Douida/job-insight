@@ -26,7 +26,13 @@ cp infra/.env.example .env          # then fill in the credentials
 python -m pip install -e ".[dev]"
 python -m pipeline.db.migrate       # applies infra/sql/*.sql to $DATABASE_URL (idempotent)
 docker compose -f infra/docker-compose.yml up -d
+docker compose -f infra/docker-compose.yml exec postgres createdb -U airflow jobinsight_test  # once
 ```
+
+Storage tests run against `TEST_DATABASE_URL` (the compose Postgres on port 5433) and
+are skipped when it is unset. They truncate tables, so it must never point at Neon.
+After editing `.env`, recreate Airflow so it sees the change:
+`docker compose -f infra/docker-compose.yml up -d --force-recreate airflow`.
 
 Airflow UI: <http://localhost:8080>. The admin password is printed in the container logs
 (`docker compose -f infra/docker-compose.yml logs airflow | grep -i password`).
@@ -36,6 +42,7 @@ Airflow UI: <http://localhost:8080>. The admin password is printed in the contai
 ```bash
 pytest pipeline/tests                # unit tests
 ruff check pipeline && black --check pipeline
+python -m pipeline.ingest.probe_boards <slug>...   # find a company's job board for companies.yaml
 python -m pipeline.eval.run_eval     # LLM extraction accuracy on the golden set
 cd pipeline/dbt && dbt build         # models + data tests
 cd web && npm run dev                # dashboard
