@@ -17,8 +17,10 @@ log = logging.getLogger(__name__)
 
 USER_AGENT = "job-insight/0.1 (+https://github.com/Seif-Douida/job-insight)"
 
-RETRY_DELAYS_SECONDS = (2.0, 5.0)
-"""Wait before each retry. Sources occasionally reset connections mid-request."""
+RETRY_DELAYS_SECONDS = (2.0, 5.0, 10.0, 20.0, 30.0)
+"""Wait before each retry. Adzuna's API resets roughly half of new connections at times
+(measured 2026-09-17; other hosts on the same network were unaffected), and a connection
+that never opens costs no quota, so several patient retries are cheap and effective."""
 
 RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
 

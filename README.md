@@ -27,7 +27,8 @@ low-confidence. See [docs/methodology.md](docs/methodology.md) for sources and k
 
 ## Status
 
-Phase 1 of 6 (foundation) complete; phase 2 (ingestion) next. See [docs/PROGRESS.md](docs/PROGRESS.md) for the running log and
+Phases 1-2 of 6 complete: the pipeline collects postings from 127 company job boards,
+Adzuna and JSearch into Neon. Phase 3 (LLM extraction) is next. See [docs/PROGRESS.md](docs/PROGRESS.md) for the running log and
 [docs/design.md](docs/design.md) for the full design.
 
 ## Getting started

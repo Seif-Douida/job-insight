@@ -53,7 +53,14 @@ def ingest_jsearch() -> None:
         with connect() as conn:
             return link(conn)
 
-    ingest_query.expand(query=list_queries()) >> link_duplicates()
+    @task(trigger_rule="one_failed", retries=0)
+    def fail_run_if_a_query_failed() -> None:
+        """link_duplicates runs whatever happens, so on its own it would mark the run green."""
+        raise RuntimeError("At least one JSearch query failed; see its task log.")
+
+    results = ingest_query.expand(query=list_queries())
+    results >> link_duplicates()
+    results >> fail_run_if_a_query_failed()
 
 
 ingest_jsearch()

@@ -48,7 +48,14 @@ def ingest_ats() -> None:
         with connect() as conn:
             return link(conn)
 
-    ingest_company.expand(company=list_companies()) >> link_duplicates()
+    @task(trigger_rule="one_failed", retries=0)
+    def fail_run_if_a_board_failed() -> None:
+        """link_duplicates runs whatever happens, so on its own it would mark the run green."""
+        raise RuntimeError("At least one company board failed; see its task log.")
+
+    results = ingest_company.expand(company=list_companies())
+    results >> link_duplicates()
+    results >> fail_run_if_a_board_failed()
 
 
 ingest_ats()
