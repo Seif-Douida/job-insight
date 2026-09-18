@@ -14,6 +14,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
+    "dbt-postgres>=1.8",
     "ruff>=0.6",
     "black>=24.8",
 ]

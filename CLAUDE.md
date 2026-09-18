@@ -15,7 +15,7 @@ pipeline/      Python: ingestion, extraction, dbt models, Airflow DAGs
   extract/     LLM backends, extraction schema, quota governor
   taxonomy/    roles.yaml, regions.yaml, companies.yaml, skill aliases
   eval/        golden set + evaluation harness
-  dbt/         staging → intermediate → marts
+  dbt/         staging → intermediate → marts; seeds/skill_aliases.csv
   tests/       pytest suite
 web/           Next.js dashboard (Vercel)
 infra/         docker-compose, SQL schema, .env.example
@@ -48,7 +48,9 @@ ruff check pipeline && black --check pipeline
 python -m pipeline.ingest.probe_boards <slug>...   # find a company's job board for companies.yaml
 python -m pipeline.eval.run_eval [model] [--verbose]  # extraction accuracy on the golden set
 python -m pipeline.eval.build_golden_set           # after adding labels to eval/labels.json
-cd pipeline/dbt && dbt build         # models + data tests
+python -m pipeline.db.dbt_profile    # writes pipeline/dbt/profiles.yml from DATABASE_URL
+dbt build --project-dir pipeline/dbt --profiles-dir pipeline/dbt   # models + data tests
+python -m pipeline.taxonomy.build_skill_aliases    # after ingesting, to extend the seed
 cd web && npm run dev                # dashboard
 ```
 

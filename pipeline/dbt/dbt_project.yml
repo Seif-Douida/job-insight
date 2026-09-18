@@ -1,0 +1,32 @@
+name: job_insight
+version: "1.0"
+profile: job_insight
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  job_insight:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      # Marts are read by the dashboard on every page load, so they are stored, not
+      # recomputed. They are small: a few thousand rows each.
+      +materialized: table
+
+vars:
+  # Published counts use postings from this window. 65% of the corpus is under 90 days
+  # old and only 126 postings are over a year, so 180 keeps nearly everything current
+  # without letting 2019 openings shape a 2026 percentage.
+  recent_days: 180
+  # A cohort below this is marked low-confidence and hidden by default.
+  min_cohort: 25
+
+seeds:
+  job_insight:
+    +quote_columns: false

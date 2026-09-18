@@ -11,7 +11,7 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 | 1 | Foundation — repo, config, schema, Airflow up | done 2026-09-17 |
 | 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | done 2026-09-17 |
 | 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
-| 4 | Modeling — dbt staging → marts, taxonomy | not started |
+| 4 | Modeling — dbt staging → marts, taxonomy | in progress |
 | 5 | Dashboard — Next.js pages and API routes | not started |
 | 6 | Ops — Oracle VM deploy, schedules, Vercel | not started |
 
@@ -127,17 +127,19 @@ Archive and trim:
 - **The retries made it worse.** A 429 was retried five times inside the request, and those
   retries never passed through the pacer, so each incident fired six unpaced calls and the
   error rate climbed from 11% to 18% as the run went on.
-- **Measured trade after the fix**, on the same backlog and model:
+- **Measured after the fix**, same model, on a fresh 370-posting run:
 
   | | before | after |
   | --- | ------ | ----- |
-  | Successful extractions | ~7.0/min | ~6.4/min |
-  | Requests rejected (429) | ~14% | 0% |
+  | Successful extractions | ~7.0/min | **8.7/min** |
+  | Requests refused (429) | ~14% | 5.4% |
   | Postings charged an attempt for a rate limit | 259 | 0 |
 
-  Roughly 9% less throughput, no rejected requests, and no posting penalised for the
-  minute it happened to be sent in. The remaining gap to the observed ceiling is the
-  1,000-token headroom under the 16,000 limit.
+  Faster *and* cleaner, once the budget was tuned to 15,000 estimated tokens per minute.
+  Rate limits did not disappear — the budget deliberately sits close enough to the 16,000
+  ceiling that a dense minute still overshoots — but they are now harmless: the run waits
+  exactly as long as the server asks and the posting stays pending, unpenalised.
+  Those 20 postings were collected by the next run.
 - **Excerpts are not sent to the model.** The first live run averaged 1.8 skills per
   posting; the inputs turned out to be 500-character "About us" blurbs. Extraction now
   requires `text_quality = 'full'`, and excerpts take their role from `role_hint`

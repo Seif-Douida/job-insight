@@ -40,3 +40,9 @@ Thumbs.db
 
 # Personal learning notes, not part of the project documentation
 LEARNING.md
+
+# dbt
+pipeline/dbt/profiles.yml
+pipeline/dbt/target/
+pipeline/dbt/dbt_packages/
+pipeline/dbt/logs/

@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: mart_role_region_summary
+    description: One row per role and region; the denominator behind every percentage.
+    columns:
+      - name: role
+        tests: [not_null]
+      - name: region
+        tests: [not_null]
+      - name: n_postings
+        description: Sample size. Never null, never zero - a cohort with no postings has no row.
+        tests: [not_null]
+      - name: low_confidence
+        tests: [not_null]
+
+  - name: mart_skill_demand
+    description: Share of postings in a cohort naming each skill.
+    columns:
+      - name: skill
+        tests: [not_null]
+      - name: n_with_skill
+        tests: [not_null]
+      - name: n_total
+        tests: [not_null]
+      - name: pct
+        tests: [not_null]

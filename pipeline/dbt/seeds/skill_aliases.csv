@@ -1,0 +1,401 @@
+alias,canonical_skill,kind
+a/b testing,A/B testing,concept
+agent frameworks,agent frameworks,concept
+agent orchestration,agent orchestration,concept
+agentic ai,AI agents,concept
+agentic applications,agentic applications,concept
+agentic systems,AI agents,concept
+agentic workflows,AI agents,concept
+agents,AI agents,concept
+agile,Agile,concept
+ai,AI,concept
+ai agents,AI agents,concept
+ai coding assistants,AI coding assistants,concept
+ai coding tools,AI coding tools,tool
+ai governance,AI governance,concept
+ai infrastructure,AI infrastructure,concept
+ai safety,AI safety,concept
+airflow,Airflow,tool
+algorithms,algorithms,concept
+alignment,alignment,concept
+amplitude,Amplitude,tool
+analytics,analytics,concept
+anomaly detection,anomaly detection,concept
+ansible,Ansible,tool
+anthropic,Anthropic,platform
+apache iceberg,Iceberg,tool
+apache spark,Spark,tool
+api,APIs,concept
+api design,API design,concept
+apis,APIs,concept
+artificial intelligence,AI,concept
+attribution,attribution,concept
+authentication,authentication,concept
+automated testing,automated testing,concept
+automation,automation,concept
+aws,AWS,cloud
+azure,Azure,cloud
+backend,backend,concept
+backend systems,backend systems,concept
+batch processing,batch processing,concept
+bi,Business intelligence,concept
+bi tools,BI tools,tool
+big data,big data,concept
+bigquery,BigQuery,platform
+business intelligence,Business intelligence,concept
+c,C,language
+c++,C++,language
+caching,caching,concept
+causal inference,causal inference,concept
+cdc,CDC,concept
+chatgpt,ChatGPT,tool
+chatgpt enterprise,ChatGPT Enterprise,tool
+ci,CI,concept
+ci/cd,CI/CD,concept
+classification,classification,concept
+claude,Claude,tool
+claude code,Claude Code,tool
+clickhouse,ClickHouse,tool
+cloud,cloud,concept
+cloud architecture,cloud architecture,concept
+cloud architectures,cloud architectures,concept
+cloud computing,cloud computing,concept
+cloud infrastructure,cloud infrastructure,concept
+clustering,clustering,concept
+codex,Codex,tool
+coding agents,coding agents,concept
+cohort analysis,cohort analysis,concept
+computer vision,Computer vision,concept
+context engineering,context engineering,concept
+copilot,Copilot,tool
+crewai,CrewAI,framework
+crm,CRM,tool
+css,CSS,language
+cuda,CUDA,language
+cursor,Cursor,tool
+dagster,Dagster,tool
+dashboards,dashboards,concept
+data analysis,data analysis,concept
+data analytics,data analytics,concept
+data architecture,data architecture,concept
+data contracts,data contracts,concept
+data curation,data curation,concept
+data engineering,data engineering,concept
+data governance,Data governance,concept
+data infrastructure,data infrastructure,concept
+data integration,data integration,concept
+data lake,data lake,concept
+data lakes,data lakes,concept
+data lineage,data lineage,concept
+data mesh,data mesh,concept
+data mining,data mining,concept
+data modeling,Data modeling,concept
+data modelling,Data modeling,concept
+data pipelines,Data pipelines,concept
+data privacy,data privacy,concept
+data processing,data processing,concept
+data processing pipelines,data processing pipelines,concept
+data quality,Data quality,concept
+data science,data science,concept
+data structures,data structures,concept
+data transformation,data transformation,concept
+data visualization,data visualization,concept
+data warehouse,Data warehouse,concept
+data warehousing,Data warehouse,concept
+databases,databases,concept
+databricks,Databricks,platform
+datadog,Datadog,tool
+dbt,dbt,tool
+deep learning,Deep learning,concept
+deepspeed,DeepSpeed,framework
+delta lake,Delta Lake,tool
+deployment,deployment,concept
+developer tools,developer tools,concept
+devops,DevOps,concept
+difference-in-differences,difference-in-differences,concept
+diffusion models,diffusion models,concept
+distillation,distillation,concept
+distributed computing,Distributed systems,concept
+distributed systems,Distributed systems,concept
+distributed training,distributed training,concept
+docker,Docker,tool
+dpo,DPO,concept
+dynamodb,DynamoDB,tool
+econometrics,econometrics,concept
+elasticsearch,Elasticsearch,tool
+elt,ELT,concept
+embeddings,embeddings,concept
+erp,ERP,tool
+etl,ETL,concept
+eu ai act,EU AI Act,concept
+evals,Model evaluation,concept
+evaluation,evaluation,concept
+evaluation frameworks,evaluation frameworks,concept
+evaluation pipelines,evaluation pipelines,concept
+evaluations,evaluations,concept
+excel,Excel,tool
+experiment design,Experimentation,concept
+experimental design,Experimentation,concept
+experimentation,Experimentation,concept
+fastapi,FastAPI,framework
+feature engineering,Feature engineering,concept
+feature stores,feature stores,concept
+few shot learning,few shot learning,concept
+figma,Figma,tool
+financial modeling,financial modeling,concept
+fine-tuning,Fine-tuning,concept
+fivetran,Fivetran,tool
+flink,Flink,tool
+flyte,Flyte,tool
+forecasting,forecasting,concept
+foundation models,foundation models,concept
+fraud detection,fraud detection,concept
+fsdp,FSDP,framework
+function calling,function calling,concept
+gcp,GCP,cloud
+gdpr,GDPR,concept
+gemini,Gemini,tool
+genai,Generative AI,concept
+generative ai,Generative AI,concept
+generative models,generative models,concept
+git,Git,tool
+github,GitHub,tool
+github actions,GitHub Actions,tool
+github copilot,GitHub Copilot,tool
+go,Go,language
+golang,Go,language
+google cloud,GCP,cloud
+google cloud platform,GCP,cloud
+google sheets,Google Sheets,tool
+governance,Data governance,concept
+gpu,GPU,concept
+gpus,GPUs,tool
+grafana,Grafana,tool
+graph neural networks,graph neural networks,concept
+graphql,GraphQL,tool
+grpo,GRPO,concept
+guardrails,guardrails,concept
+hadoop,Hadoop,tool
+hex,Hex,tool
+high-performance computing,High-performance computing,concept
+hive,Hive,tool
+hpc,High-performance computing,concept
+hubspot,HubSpot,tool
+huggingface,HuggingFace,tool
+hypothesis testing,hypothesis testing,concept
+iam,IAM,concept
+iceberg,Iceberg,tool
+identity,identity,concept
+incident response,incident response,concept
+inference,inference,concept
+infiniband,InfiniBand,tool
+information retrieval,information retrieval,concept
+infrastructure,infrastructure,concept
+infrastructure as code,Infrastructure as code,concept
+infrastructure-as-code,infrastructure-as-code,concept
+interpretability,interpretability,concept
+java,Java,language
+javascript,JavaScript,language
+jax,JAX,framework
+jira,Jira,tool
+json,JSON,concept
+jvm,JVM,platform
+kafka,Kafka,tool
+kinesis,Kinesis,tool
+knowledge graphs,knowledge graphs,concept
+kotlin,Kotlin,language
+kubernetes,Kubernetes,tool
+lakehouse,Data lakehouse,concept
+langchain,LangChain,framework
+langgraph,LangGraph,framework
+large language models,LLM,concept
+linux,Linux,platform
+llamaindex,LlamaIndex,framework
+llm,LLM,concept
+llm apis,LLM APIs,tool
+llm evaluation,LLM evaluation,concept
+llm fine-tuning,LLM fine-tuning,concept
+llm orchestration,LLM orchestration,concept
+llmops,LLMOps,concept
+llms,LLM,concept
+looker,Looker,tool
+lookml,LookML,tool
+machine learning,Machine learning,concept
+machine learning infrastructure,machine learning infrastructure,concept
+marketing mix modeling,marketing mix modeling,concept
+marketo,Marketo,tool
+mcp,MCP,concept
+mcp servers,MCP servers,concept
+measurement,measurement,concept
+metabase,Metabase,tool
+microservices,microservices,concept
+microsoft azure,Azure,cloud
+mixpanel,Mixpanel,tool
+ml infrastructure,ML infrastructure,concept
+ml pipelines,ML pipelines,concept
+mlflow,MLflow,tool
+mlops,MLOps,concept
+mode,Mode,tool
+model context protocol,Model Context Protocol,concept
+model deployment,Model serving,concept
+model evaluation,Model evaluation,concept
+model monitoring,model monitoring,concept
+model optimization,model optimization,concept
+model serving,Model serving,concept
+model training,model training,concept
+mongodb,MongoDB,tool
+monitoring,monitoring,concept
+multi-agent orchestration,Multi-agent systems,concept
+multi-agent systems,Multi-agent systems,concept
+multimodal models,multimodal models,concept
+multimodal understanding,multimodal understanding,concept
+mysql,MySQL,tool
+n8n,n8n,tool
+natural language processing,NLP,concept
+nccl,NCCL,tool
+netsuite,NetSuite,tool
+networking,networking,concept
+neural networks,neural networks,concept
+nlp,NLP,concept
+node.js,Node.js,language
+nosql,NoSQL,concept
+numpy,NumPy,framework
+nvlink,NVLink,tool
+oauth,OAuth,concept
+observability,observability,concept
+oidc,OIDC,concept
+olap,OLAP,concept
+omni,Omni,tool
+openai,OpenAI,platform
+openai api,OpenAI API,tool
+opentelemetry,OpenTelemetry,tool
+optimization,optimization,concept
+oracle,Oracle,tool
+orchestration,orchestration,concept
+pandas,pandas,framework
+personalization,personalization,concept
+post-training,post-training,concept
+postgresql,PostgreSQL,tool
+power bi,Power BI,tool
+powerbi,Power BI,tool
+ppo,PPO,concept
+pql,PQL,language
+predictive modeling,predictive modeling,concept
+prefect,Prefect,tool
+presto,Presto,tool
+privacy,privacy,concept
+product analytics,product analytics,concept
+prometheus,Prometheus,tool
+prompt design,prompt design,concept
+prompt engineering,Prompt engineering,concept
+prompting,Prompt engineering,concept
+pydantic,pydantic,framework
+pyspark,PySpark,framework
+python,Python,language
+pytorch,PyTorch,framework
+quantization,quantization,concept
+r,R,language
+rag,RAG,concept
+rails,Rails,framework
+ranking,ranking,concept
+ray,Ray,tool
+rbac,RBAC,concept
+react,React,framework
+react native,React Native,framework
+reasoning,reasoning,concept
+recommendation,recommendation,concept
+recommendation systems,Recommender systems,concept
+recommender systems,Recommender systems,concept
+red-teaming,red-teaming,concept
+redis,Redis,tool
+redshift,Redshift,platform
+regression,regression,concept
+reinforcement learning,Reinforcement learning,concept
+relational databases,relational databases,concept
+reliability,reliability,concept
+representation learning,representation learning,concept
+responsible ai,responsible AI,concept
+rest,REST,concept
+rest apis,APIs,concept
+retrieval,retrieval,concept
+retrieval systems,retrieval systems,concept
+retrieval-augmented generation,RAG,concept
+rlhf,RLHF,concept
+robotics,robotics,concept
+ruby,Ruby,language
+rust,Rust,language
+s3,S3,cloud
+saas,SaaS,concept
+sagemaker,SageMaker,tool
+salesforce,Salesforce,tool
+sap,SAP,tool
+scala,Scala,language
+schema design,schema design,concept
+scikit-learn,scikit-learn,framework
+scipy,scipy,framework
+sdks,SDKs,tool
+search,search,concept
+security,security,concept
+segment,Segment,tool
+segmentation,segmentation,concept
+semantic layer,Semantic layer,concept
+semantic layers,Semantic layer,concept
+semantic search,semantic search,concept
+sft,SFT,concept
+sglang,SGLang,framework
+sigma,Sigma,tool
+signal processing,signal processing,concept
+simulation,simulation,concept
+sklearn,scikit-learn,framework
+snowflake,Snowflake,platform
+software architecture,software architecture,concept
+software development,software development,concept
+software engineering,software engineering,concept
+spark,Spark,tool
+sql,SQL,language
+statistical analysis,statistical analysis,concept
+statistical methods,statistical methods,concept
+statistical modeling,Statistical modeling,concept
+statistics,statistics,concept
+statsmodels,statsmodels,framework
+storage,storage,concept
+streaming,streaming,concept
+streamlit,Streamlit,framework
+superset,Superset,tool
+supervised fine-tuning,supervised fine-tuning,concept
+supervised learning,supervised learning,concept
+swift,Swift,language
+synthetic data generation,synthetic data generation,concept
+system design,system design,concept
+tableau,Tableau,tool
+telemetry,telemetry,concept
+temporal,Temporal,tool
+tensorflow,TensorFlow,framework
+tensorrt,TensorRT,tool
+tensorrt-llm,TensorRT-LLM,framework
+terraform,Terraform,tool
+testing,testing,concept
+time-series forecasting,Time series forecasting,concept
+tool calling,tool calling,concept
+tool use,tool use,concept
+training,training,concept
+transformer,transformer,concept
+transformer architectures,Transformers,concept
+transformers,Transformers,concept
+trino,Trino,tool
+triton,Triton,language
+typescript,TypeScript,language
+unity catalog,Unity Catalog,tool
+unsupervised learning,unsupervised learning,concept
+vector databases,Vector databases,concept
+vector search,vector search,concept
+version control,Version control,concept
+vertex ai,Vertex AI,platform
+vllm,vLLM,tool
+webhooks,webhooks,concept
+workday,Workday,tool
+workflow automation,workflow automation,concept
+workflow orchestration,workflow orchestration,concept
+world models,world models,concept
+xgboost,XGBoost,framework
+zendesk,Zendesk,tool

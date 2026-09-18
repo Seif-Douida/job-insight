@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: Written by the ingestion and extraction pipelines; never by dbt.
+    tables:
+      - name: postings
+      - name: extractions

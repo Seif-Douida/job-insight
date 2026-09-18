@@ -43,6 +43,21 @@ the job title instead.
 **Rule:** when a metric looks wrong, look at the rows behind it before touching the thing
 that produced it. The bug is often in what was selected, not in what was done to it.
 
+### The fix made the problem invisible, and I read that as the problem being solved (phase 3)
+
+After the pacer was corrected, rate-limited postings stopped being written to
+`raw.extractions` — that was the point, so a 429 would not spend a posting's retry budget.
+The monitoring query still counted rows with `status = 'error'`, so it reported zero
+failures, and it was reported as "zero rejections across the whole run".
+
+The run's own return value said `rate_limited: 20` — 5.4% of requests. The true result was
+still good (throughput up from 7.0 to 8.7 per minute, and the refusals now harmless) but
+it was not what was claimed.
+
+**Rule:** when a change alters *what gets recorded*, every metric built on those records
+changes meaning at the same moment. Check what the new code reports about itself, rather
+than watching the old signal go quiet and calling it success.
+
 ### A counter can measure intent rather than fact (phase 3)
 
 `raw.quota_usage` read 1,779 while only 320 extractions existed, which looked like a
