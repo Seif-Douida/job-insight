@@ -83,6 +83,38 @@ from a 2,000-job board, then 0 from 1,198.
 believing the shape of the first. And treat an implausible-but-successful result as a
 failure — it is the kind that tests built from one sample cannot see.
 
+### "Running" is not the same as working (phase 4)
+
+The `transform` DAG was reported as still running, twice, when it had already failed. Two
+different states look identical from the outside:
+
+- **A paused DAG accepts a trigger and queues forever.** Airflow pauses new DAGs by
+  default, so the first run sat in `queued` indefinitely. That reads as "busy", not as
+  "will never start".
+- **A run stays `running` while a failed task waits out its retry delay.** `dbt_build`
+  failed after 90 seconds and then sat in a ten-minute backoff. The run-level state said
+  `running` the whole time.
+
+The task-level states said `up_for_retry` immediately, which is the thing to look at.
+
+**Rule:** a run's state answers "is anything still pending", not "is anything going well".
+When something takes longer than it should, read the task states and the task log before
+reporting progress, rather than taking the optimistic reading of an ambiguous signal.
+
+### Two environments are not one environment (phase 4)
+
+`dbt build` worked on the host and failed inside the Airflow container with
+`KeyError: 'dbt_postgres://macros/catalog.sql'`, thrown from deep inside dbt's parser
+rather than anywhere that named the cause.
+
+The repo is mounted into the container, so `pipeline/dbt/target/` is shared. Running dbt on
+the host wrote `partial_parse.msgpack` there, under Python 3.14 and a separate dbt install,
+and the container's dbt tried to reuse it. The DAG now passes `--no-partial-parse`.
+
+**Rule:** a mounted directory is shared mutable state between two machines. Caches and
+build artifacts written by one are not safe input for the other, however identical the
+tool version looks.
+
 ### A counter can measure intent rather than fact (phase 3)
 
 `raw.quota_usage` read 1,779 while only 320 extractions existed, which looked like a

@@ -46,6 +46,8 @@ Airflow UI: <http://localhost:8080>. The admin password is printed in the contai
 pytest pipeline/tests                # unit tests
 ruff check pipeline && black --check pipeline
 python -m pipeline.ingest.probe_boards <slug>...   # find a company's job board for companies.yaml
+                                     # Workday boards are probed as tenant/cluster/site,
+                                     # read off the company's careers URL
 python -m pipeline.eval.run_eval [model] [--verbose]  # extraction accuracy on the golden set
 python -m pipeline.eval.build_golden_set           # after adding labels to eval/labels.json
 python -m pipeline.db.dbt_profile    # writes pipeline/dbt/profiles.yml from DATABASE_URL
@@ -53,6 +55,10 @@ dbt build --project-dir pipeline/dbt --profiles-dir pipeline/dbt   # models + da
 python -m pipeline.taxonomy.build_skill_aliases    # after ingesting, to extend the seed
 cd web && npm run dev                # dashboard
 ```
+
+`pip install` puts `dbt` in Python's Scripts directory, which may not be on PATH
+(`C:\Users\<you>\AppData\Roaming\Python\Python314\Scripts\dbt.exe` here). Inside the
+Airflow container it is on PATH, which is how the `transform` DAG calls it.
 
 ## Conventions
 

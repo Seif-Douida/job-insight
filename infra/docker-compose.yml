@@ -36,7 +36,7 @@ services:
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
       PYTHONPATH: /opt/airflow/repo
       # Dev convenience only; phase 6 bakes these into an image.
-      _PIP_ADDITIONAL_REQUIREMENTS: "psycopg[binary]>=3.2 pyyaml>=6.0 python-dotenv>=1.0"
+      _PIP_ADDITIONAL_REQUIREMENTS: "psycopg[binary]>=3.2 pyyaml>=6.0 python-dotenv>=1.0 dbt-postgres>=1.8"
     volumes:
       - ..:/opt/airflow/repo
       - airflow-logs:/opt/airflow/logs

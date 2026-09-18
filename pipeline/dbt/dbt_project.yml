@@ -26,6 +26,13 @@ vars:
   recent_days: 180
   # A cohort below this is marked low-confidence and hidden by default.
   min_cohort: 25
+  # Salary percentiles need fewer postings to be meaningful than a skill share,
+  # but not many fewer.
+  min_salaries: 10
+  # A salary outside this band is not an annual figure in USD/EUR/GBP: below it is an
+  # hourly or monthly rate the source did not label, above it is a data error.
+  min_annual_salary: 10000
+  max_annual_salary: 1000000
 
 seeds:
   job_insight:

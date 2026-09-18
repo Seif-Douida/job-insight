@@ -7,6 +7,8 @@ select
     url,
     title,
     company,
+    -- the title matcher's guess; used where no extraction exists, as in mart_salary
+    role_hint,
     country,
     region,
     text_quality,

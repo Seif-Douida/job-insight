@@ -31,19 +31,23 @@ apis,APIs,concept
 artificial intelligence,AI,concept
 attribution,attribution,concept
 authentication,authentication,concept
+autogen,AutoGen,framework
 automated testing,automated testing,concept
 automation,automation,concept
 aws,AWS,cloud
 azure,Azure,cloud
 backend,backend,concept
 backend systems,backend systems,concept
+bash,Bash,language
 batch processing,batch processing,concept
+benchmarking,benchmarking,concept
 bi,Business intelligence,concept
 bi tools,BI tools,tool
 big data,big data,concept
 bigquery,BigQuery,platform
 business intelligence,Business intelligence,concept
 c,C,language
+c#,C#,language
 c++,C++,language
 caching,caching,concept
 causal inference,causal inference,concept
@@ -65,14 +69,22 @@ clustering,clustering,concept
 codex,Codex,tool
 coding agents,coding agents,concept
 cohort analysis,cohort analysis,concept
+computer architecture,computer architecture,concept
 computer vision,Computer vision,concept
+concurrency,concurrency,concept
+containerization,containerization,concept
+containers,containers,concept
 context engineering,context engineering,concept
 copilot,Copilot,tool
+cpu,CPU,concept
+cpu architecture,CPU architecture,concept
 crewai,CrewAI,framework
 crm,CRM,tool
 css,CSS,language
 cuda,CUDA,language
+cudnn,cuDNN,tool
 cursor,Cursor,tool
+cutlass,CUTLASS,tool
 dagster,Dagster,tool
 dashboards,dashboards,concept
 data analysis,data analysis,concept
@@ -92,6 +104,7 @@ data mining,data mining,concept
 data modeling,Data modeling,concept
 data modelling,Data modeling,concept
 data pipelines,Data pipelines,concept
+data platforms,data platforms,concept
 data privacy,data privacy,concept
 data processing,data processing,concept
 data processing pipelines,data processing pipelines,concept
@@ -106,6 +119,7 @@ databases,databases,concept
 databricks,Databricks,platform
 datadog,Datadog,tool
 dbt,dbt,tool
+debugging,debugging,concept
 deep learning,Deep learning,concept
 deepspeed,DeepSpeed,framework
 delta lake,Delta Lake,tool
@@ -120,12 +134,15 @@ distributed systems,Distributed systems,concept
 distributed training,distributed training,concept
 docker,Docker,tool
 dpo,DPO,concept
+dynamo,Dynamo,tool
 dynamodb,DynamoDB,tool
 econometrics,econometrics,concept
 elasticsearch,Elasticsearch,tool
 elt,ELT,concept
 embeddings,embeddings,concept
+embodied ai,embodied AI,concept
 erp,ERP,tool
+ethernet,Ethernet,concept
 etl,ETL,concept
 eu ai act,EU AI Act,concept
 evals,Model evaluation,concept
@@ -162,6 +179,7 @@ git,Git,tool
 github,GitHub,tool
 github actions,GitHub Actions,tool
 github copilot,GitHub Copilot,tool
+gitlab,GitLab,tool
 go,Go,language
 golang,Go,language
 google cloud,GCP,cloud
@@ -169,6 +187,7 @@ google cloud platform,GCP,cloud
 google sheets,Google Sheets,tool
 governance,Data governance,concept
 gpu,GPU,concept
+gpu architecture,GPU architecture,concept
 gpus,GPUs,tool
 grafana,Grafana,tool
 graph neural networks,graph neural networks,concept
@@ -181,13 +200,16 @@ high-performance computing,High-performance computing,concept
 hive,Hive,tool
 hpc,High-performance computing,concept
 hubspot,HubSpot,tool
+hugging face,Hugging Face,platform
 huggingface,HuggingFace,tool
 hypothesis testing,hypothesis testing,concept
 iam,IAM,concept
 iceberg,Iceberg,tool
 identity,identity,concept
+imitation learning,imitation learning,concept
 incident response,incident response,concept
 inference,inference,concept
+inference optimization,inference optimization,concept
 infiniband,InfiniBand,tool
 information retrieval,information retrieval,concept
 infrastructure,infrastructure,concept
@@ -197,6 +219,7 @@ interpretability,interpretability,concept
 java,Java,language
 javascript,JavaScript,language
 jax,JAX,framework
+jenkins,Jenkins,tool
 jira,Jira,tool
 json,JSON,concept
 jvm,JVM,platform
@@ -204,11 +227,14 @@ kafka,Kafka,tool
 kinesis,Kinesis,tool
 knowledge graphs,knowledge graphs,concept
 kotlin,Kotlin,language
+kubeflow,Kubeflow,tool
 kubernetes,Kubernetes,tool
 lakehouse,Data lakehouse,concept
+lambda,Lambda,cloud
 langchain,LangChain,framework
 langgraph,LangGraph,framework
 large language models,LLM,concept
+linear algebra,linear algebra,concept
 linux,Linux,platform
 llamaindex,LlamaIndex,framework
 llm,LLM,concept
@@ -218,6 +244,7 @@ llm fine-tuning,LLM fine-tuning,concept
 llm orchestration,LLM orchestration,concept
 llmops,LLMOps,concept
 llms,LLM,concept
+llvm,LLVM,tool
 looker,Looker,tool
 lookml,LookML,tool
 machine learning,Machine learning,concept
@@ -234,6 +261,7 @@ mixpanel,Mixpanel,tool
 ml infrastructure,ML infrastructure,concept
 ml pipelines,ML pipelines,concept
 mlflow,MLflow,tool
+mlir,MLIR,tool
 mlops,MLOps,concept
 mode,Mode,tool
 model context protocol,Model Context Protocol,concept
@@ -245,6 +273,7 @@ model serving,Model serving,concept
 model training,model training,concept
 mongodb,MongoDB,tool
 monitoring,monitoring,concept
+mpi,MPI,tool
 multi-agent orchestration,Multi-agent systems,concept
 multi-agent systems,Multi-agent systems,concept
 multimodal models,multimodal models,concept
@@ -253,9 +282,11 @@ mysql,MySQL,tool
 n8n,n8n,tool
 natural language processing,NLP,concept
 nccl,NCCL,tool
+nemo,NeMo,tool
 netsuite,NetSuite,tool
 networking,networking,concept
 neural networks,neural networks,concept
+nim,NIM,tool
 nlp,NLP,concept
 node.js,Node.js,language
 nosql,NoSQL,concept
@@ -268,12 +299,20 @@ olap,OLAP,concept
 omni,Omni,tool
 openai,OpenAI,platform
 openai api,OpenAI API,tool
+opencl,OpenCL,tool
 opentelemetry,OpenTelemetry,tool
+operating systems,operating systems,concept
 optimization,optimization,concept
 oracle,Oracle,tool
 orchestration,orchestration,concept
 pandas,pandas,framework
+parallel programming,parallel programming,concept
+performance analysis,performance analysis,concept
+performance modeling,performance modeling,concept
+performance optimization,performance optimization,concept
 personalization,personalization,concept
+pipeline parallelism,pipeline parallelism,concept
+planning,planning,concept
 post-training,post-training,concept
 postgresql,PostgreSQL,tool
 power bi,Power BI,tool
@@ -281,10 +320,12 @@ powerbi,Power BI,tool
 ppo,PPO,concept
 pql,PQL,language
 predictive modeling,predictive modeling,concept
+predictive models,predictive models,concept
 prefect,Prefect,tool
 presto,Presto,tool
 privacy,privacy,concept
 product analytics,product analytics,concept
+profiling,profiling,concept
 prometheus,Prometheus,tool
 prompt design,prompt design,concept
 prompt engineering,Prompt engineering,concept
@@ -300,6 +341,7 @@ rails,Rails,framework
 ranking,ranking,concept
 ray,Ray,tool
 rbac,RBAC,concept
+rdma,RDMA,concept
 react,React,framework
 react native,React Native,framework
 reasoning,reasoning,concept
@@ -322,6 +364,7 @@ retrieval systems,retrieval systems,concept
 retrieval-augmented generation,RAG,concept
 rlhf,RLHF,concept
 robotics,robotics,concept
+roce,RoCE,concept
 ruby,Ruby,language
 rust,Rust,language
 s3,S3,cloud
@@ -347,8 +390,10 @@ sigma,Sigma,tool
 signal processing,signal processing,concept
 simulation,simulation,concept
 sklearn,scikit-learn,framework
+slurm,Slurm,tool
 snowflake,Snowflake,platform
 software architecture,software architecture,concept
+software design,software design,concept
 software development,software development,concept
 software engineering,software engineering,concept
 spark,Spark,tool
@@ -370,6 +415,7 @@ system design,system design,concept
 tableau,Tableau,tool
 telemetry,telemetry,concept
 temporal,Temporal,tool
+tensor parallelism,tensor parallelism,concept
 tensorflow,TensorFlow,framework
 tensorrt,TensorRT,tool
 tensorrt-llm,TensorRT-LLM,framework
@@ -391,11 +437,14 @@ vector databases,Vector databases,concept
 vector search,vector search,concept
 version control,Version control,concept
 vertex ai,Vertex AI,platform
+vision-language models,vision-language models,concept
 vllm,vLLM,tool
+vlm,VLM,concept
 webhooks,webhooks,concept
 workday,Workday,tool
 workflow automation,workflow automation,concept
 workflow orchestration,workflow orchestration,concept
 world models,world models,concept
 xgboost,XGBoost,framework
+xla,XLA,tool
 zendesk,Zendesk,tool
