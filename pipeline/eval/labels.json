@@ -1,0 +1,389 @@
+{
+  "_about": {
+    "purpose": "Reference labels for measuring extraction accuracy. Built by reading each posting's stored text (first 3500 characters, the same text the evaluation sends to the model) and recording what it actually states.",
+    "labelled_by": "Claude Opus 5, 2026-09-17. Labels are a careful reading, not ground truth from the employer: spot-check them before trusting a score.",
+    "corrections": "2026-09-17: postings 5057 and 5534 were first labelled seniority 'unclear'; on review both describe leadership ('manage the team, take responsibility for team decisions', 'General Manager'), so both became 'lead'. Corrections are made only when re-reading the posting shows the first label was wrong, never to agree with a model.",
+    "conventions": {
+      "role": "Judged by responsibilities, not title. A posting outside the seven curated roles (software engineering, consulting, management) is 'other'.",
+      "seniority": "'staff' maps to principal; a posting that never signals a level is 'unclear'.",
+      "years_experience_min": "The smallest number of years demanded; null when the posting gives none.",
+      "skills": "Every technology, tool, platform and named technical practice, whether required or preferred. Generic words ('communication', 'teamwork') are left out."
+    }
+  },
+  "labels": {
+    "672": {
+      "role": "ai-engineer",
+      "seniority": "senior",
+      "years_experience_min": 5,
+      "work_mode": "remote",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "TypeScript",
+        "Python",
+        "Go",
+        "APIs",
+        "SDKs",
+        "AWS",
+        "Azure",
+        "GCP",
+        "vector databases",
+        "ClickHouse",
+        "machine learning",
+        "observability"
+      ]
+    },
+    "943": {
+      "role": "other",
+      "seniority": "senior",
+      "years_experience_min": 8,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "Databricks",
+        "Teradata",
+        "Netezza",
+        "Snowflake",
+        "Synapse",
+        "Redshift",
+        "Exadata",
+        "ETL",
+        "SQL",
+        "streaming",
+        "machine learning",
+        "data warehouse"
+      ]
+    },
+    "1238": {
+      "role": "ml-engineer",
+      "seniority": "senior",
+      "years_experience_min": 7,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "LLM",
+        "VLM",
+        "RAG",
+        "vector databases",
+        "embeddings",
+        "MCP",
+        "Weights & Biases",
+        "MLflow",
+        "Braintrust",
+        "LiteLLM",
+        "Model Garden",
+        "ADK",
+        "knowledge distillation",
+        "Mixture-of-Experts",
+        "prompt engineering",
+        "information retrieval",
+        "recommendation systems",
+        "causal inference",
+        "deep learning",
+        "machine learning"
+      ]
+    },
+    "2649": {
+      "role": "data-analyst",
+      "seniority": "senior",
+      "years_experience_min": 5,
+      "work_mode": "hybrid",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "SQL",
+        "Python",
+        "A/B testing",
+        "Mixpanel",
+        "Amplitude",
+        "cohort analysis",
+        "causal inference",
+        "regression modeling",
+        "propensity score matching",
+        "behavioral clustering",
+        "experiment design",
+        "MCP",
+        "data visualization"
+      ]
+    },
+    "3618": {
+      "role": "data-engineer",
+      "seniority": "principal",
+      "years_experience_min": 8,
+      "work_mode": "hybrid",
+      "visa_sponsorship": "offered",
+      "skills": [
+        "Spark",
+        "Iceberg",
+        "Kafka",
+        "Pulsar",
+        "AWS",
+        "Databricks",
+        "streaming",
+        "data lakehouse",
+        "feature store",
+        "APIs",
+        "distributed systems"
+      ]
+    },
+    "4188": {
+      "role": "data-scientist",
+      "seniority": "unclear",
+      "years_experience_min": null,
+      "work_mode": "remote",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "Python",
+        "R",
+        "SQL",
+        "Git",
+        "data visualization",
+        "statistics",
+        "machine learning",
+        "exploratory data analysis"
+      ]
+    },
+    "4228": {
+      "role": "ml-engineer",
+      "seniority": "mid",
+      "years_experience_min": 3,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "Python",
+        "pandas",
+        "NumPy",
+        "scikit-learn",
+        "TensorFlow",
+        "PyTorch",
+        "Airflow",
+        "Prefect",
+        "SQL",
+        "NoSQL",
+        "PostgreSQL",
+        "BigQuery",
+        "MongoDB",
+        "S3",
+        "GCS",
+        "Docker",
+        "Kubernetes",
+        "FastAPI",
+        "Flask",
+        "MLflow",
+        "Kubeflow",
+        "Vertex AI",
+        "AWS",
+        "GCP",
+        "Azure ML",
+        "Git",
+        "ETL",
+        "MLOps",
+        "CI/CD",
+        "deep learning",
+        "reinforcement learning",
+        "LLM",
+        "machine learning"
+      ]
+    },
+    "5057": {
+      "role": "ai-engineer",
+      "seniority": "lead",
+      "years_experience_min": null,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "machine learning",
+        "deep learning",
+        "neural networks",
+        "generative AI",
+        "foundation models",
+        "fine-tuning",
+        "database architecture",
+        "chatbots",
+        "image processing",
+        "cloud"
+      ]
+    },
+    "5524": {
+      "role": "ai-engineer",
+      "seniority": "unclear",
+      "years_experience_min": null,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "Azure",
+        "Azure Machine Learning",
+        "Azure Cognitive Services",
+        "machine learning",
+        "feature engineering",
+        "data preprocessing",
+        "model evaluation",
+        "cloud"
+      ]
+    },
+    "5534": {
+      "role": "other",
+      "seniority": "lead",
+      "years_experience_min": 10,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "AI",
+        "digital transformation",
+        "automation",
+        "Microsoft",
+        "English",
+        "Arabic"
+      ]
+    },
+    "2033": {
+      "role": "ai-engineer",
+      "seniority": "senior",
+      "years_experience_min": null,
+      "work_mode": "remote",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "Python",
+        "LangGraph",
+        "Rails",
+        "GraphQL",
+        "REST",
+        "pytest",
+        "RSpec",
+        "LLM",
+        "generative AI",
+        "observability"
+      ]
+    },
+    "2331": {
+      "role": "other",
+      "seniority": "lead",
+      "years_experience_min": null,
+      "work_mode": "remote",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "analytics",
+        "machine learning",
+        "data strategy"
+      ]
+    },
+    "2945": {
+      "role": "ai-engineer",
+      "seniority": "mid",
+      "years_experience_min": 2,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "AI agents",
+        "data modeling",
+        "analytics",
+        "machine learning"
+      ]
+    },
+    "3113": {
+      "role": "other",
+      "seniority": "senior",
+      "years_experience_min": null,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "AI",
+        "machine learning",
+        "backend systems",
+        "IoT"
+      ]
+    },
+    "3279": {
+      "role": "ml-engineer",
+      "seniority": "unclear",
+      "years_experience_min": null,
+      "work_mode": "remote",
+      "visa_sponsorship": "explicitly_not",
+      "skills": [
+        "Python",
+        "PyTorch",
+        "TensorFlow",
+        "AWS",
+        "Docker",
+        "LangChain",
+        "machine learning",
+        "deep learning",
+        "MLOps",
+        "LLM",
+        "reinforcement learning"
+      ]
+    },
+    "822": {
+      "role": "data-scientist",
+      "seniority": "intern",
+      "years_experience_min": null,
+      "work_mode": "hybrid",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "SQL",
+        "Python",
+        "A/B testing",
+        "causal inference",
+        "machine learning",
+        "statistical modeling",
+        "generative AI",
+        "data pipelines"
+      ]
+    },
+    "846": {
+      "role": "data-scientist",
+      "seniority": "principal",
+      "years_experience_min": 8,
+      "work_mode": "remote",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "SQL",
+        "Python",
+        "R",
+        "causal inference",
+        "A/B testing",
+        "statistical modeling",
+        "data pipelines",
+        "generative AI",
+        "predictive models"
+      ]
+    },
+    "2250": {
+      "role": "data-analyst",
+      "seniority": "mid",
+      "years_experience_min": 3,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "SQL",
+        "Airflow",
+        "dbt",
+        "Tableau",
+        "Hex",
+        "Mode",
+        "Python",
+        "data pipelines",
+        "data visualization",
+        "business intelligence",
+        "semantic layer"
+      ]
+    },
+    "2744": {
+      "role": "ml-engineer",
+      "seniority": "senior",
+      "years_experience_min": 2,
+      "work_mode": "unclear",
+      "visa_sponsorship": "not_mentioned",
+      "skills": [
+        "machine learning",
+        "Graph Neural Networks",
+        "Transformers",
+        "foundation models",
+        "multimodal learning",
+        "sequential modeling",
+        "feature pipelines",
+        "model serving",
+        "monitoring",
+        "deep learning"
+      ]
+    }
+  }
+}
