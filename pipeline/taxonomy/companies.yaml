@@ -6,8 +6,9 @@
 #     python -m pipeline.ingest.probe_boards <slug> [<slug> ...]
 #
 #   name   display name, used as the posting's company
-#   ats    greenhouse | lever | ashby | smartrecruiters
-#   board  the board token in that platform's public API URL
+#   ats    greenhouse | lever | ashby | smartrecruiters | workday
+#   board  the board token in that platform's public API URL; for Workday it is
+#          tenant/cluster/site, all three read off the company's careers URL
 #
 # Seeded 2026-09-17 from a probe of ~260 candidates: every board with at least one
 # in-scope posting that day. Companies found on two platforms (mid-migration) are listed
@@ -29,9 +30,15 @@ companies:
   - { name: Anthropic, ats: greenhouse, board: anthropic }
   - { name: Anyscale, ats: ashby, board: anyscale }
   - { name: Asana, ats: greenhouse, board: asana }
+  - { name: ASOS, ats: smartrecruiters, board: asos }
+  - { name: AstraZeneca, ats: workday, board: astrazeneca/wd3/Careers }
   - { name: Astronomer, ats: ashby, board: astronomer }
+  - { name: Auto Trader, ats: greenhouse, board: autotrader }
+  - { name: Aviva, ats: workday, board: aviva/wd1/External }
   - { name: Babbel, ats: ashby, board: babbel }
   - { name: Back Market, ats: ashby, board: backmarket }
+  - { name: Barclays, ats: workday, board: barclays/wd3/External_Career_Site_Barclays }
+  - { name: Beamery, ats: ashby, board: beamery }
   - { name: Benchling, ats: ashby, board: benchling }
   - { name: BlaBlaCar, ats: lever, board: blablacar }
   - { name: Block, ats: greenhouse, board: block }
@@ -39,6 +46,7 @@ companies:
   - { name: Brex, ats: greenhouse, board: brex }
   - { name: Cabify, ats: greenhouse, board: cabify }
   - { name: Careem, ats: greenhouse, board: careem }
+  - { name: Carwow, ats: ashby, board: carwow }
   - { name: Celonis, ats: greenhouse, board: celonis }
   - { name: Cerebras, ats: ashby, board: cerebras }
   - { name: Chime, ats: greenhouse, board: chime }
@@ -63,10 +71,12 @@ companies:
   - { name: Discord, ats: greenhouse, board: discord }
   - { name: Docplanner, ats: ashby, board: docplanner }
   - { name: Doctolib, ats: ashby, board: doctolib }
+  - { name: Dojo, ats: greenhouse, board: dojo }
   - { name: DoorDash, ats: greenhouse, board: doordashusa }
   - { name: Dropbox, ats: greenhouse, board: dropbox }
   - { name: dunnhumby, ats: greenhouse, board: dunnhumby }
   - { name: Duolingo, ats: greenhouse, board: duolingo }
+  - { name: Dyson, ats: workday, board: dyson/wd3/dyson_careers }
   - { name: Elastic, ats: greenhouse, board: elastic }
   - { name: ElevenLabs, ats: ashby, board: elevenlabs }
   - { name: Enpal, ats: ashby, board: enpal }
@@ -75,6 +85,7 @@ companies:
   - { name: Faire, ats: greenhouse, board: faire }
   - { name: Farfetch, ats: lever, board: farfetch }
   - { name: Feedzai, ats: greenhouse, board: feedzai }
+  - { name: Fetch, ats: greenhouse, board: fetch }
   - { name: Figma, ats: greenhouse, board: figma }
   - { name: Fivetran, ats: greenhouse, board: fivetran }
   - { name: Flatiron Health, ats: greenhouse, board: flatironhealth }
@@ -85,6 +96,7 @@ companies:
   - { name: GoCardless, ats: greenhouse, board: gocardless }
   - { name: GoStudent, ats: greenhouse, board: gostudent }
   - { name: Graphcore, ats: greenhouse, board: graphcore }
+  - { name: GSK, ats: workday, board: gsk/wd5/GSKCareers }
   - { name: Gusto, ats: greenhouse, board: gusto }
   - { name: Hala, ats: greenhouse, board: hala }
   - { name: Harvey, ats: ashby, board: harvey }
@@ -95,8 +107,10 @@ companies:
   - { name: Isomorphic Labs, ats: greenhouse, board: isomorphiclabs }
   - { name: JetBrains, ats: greenhouse, board: jetbrains }
   - { name: Jobandtalent, ats: lever, board: jobandtalent }
+  - { name: Kaluza, ats: greenhouse, board: kaluza }
   - { name: Labelbox, ats: greenhouse, board: labelbox }
   - { name: LangChain, ats: ashby, board: langchain }
+  - { name: Legal & General, ats: smartrecruiters, board: legalandgeneral }
   - { name: Lendable, ats: ashby, board: lendable }
   - { name: Lightmatter, ats: greenhouse, board: lightmatter }
   - { name: Linear, ats: ashby, board: linear }
@@ -105,12 +119,14 @@ companies:
   - { name: Lyst, ats: smartrecruiters, board: lyst }
   - { name: Marshmallow, ats: ashby, board: marshmallow }
   - { name: Mercury, ats: greenhouse, board: mercury }
+  - { name: Mind Foundry, ats: greenhouse, board: mindfoundry }
   - { name: Miro, ats: ashby, board: miro }
   - { name: Modal, ats: ashby, board: modal }
   - { name: Mollie, ats: ashby, board: mollie }
   - { name: MongoDB, ats: greenhouse, board: mongodb }
   - { name: Monte Carlo, ats: ashby, board: montecarlodata }
   - { name: Monzo, ats: greenhouse, board: monzo }
+  - { name: Motorway, ats: ashby, board: motorway }
   - { name: Multiverse, ats: ashby, board: multiverse }
   - { name: N26, ats: greenhouse, board: n26 }
   - { name: n8n, ats: ashby, board: n8n }
@@ -119,6 +135,9 @@ companies:
   - { name: NerdWallet, ats: ashby, board: nerdwallet }
   - { name: Notion, ats: ashby, board: notion }
   - { name: Nubank, ats: ashby, board: nubank }
+  - { name: NVIDIA, ats: workday, board: nvidia/wd5/NVIDIAExternalCareerSite }
+  - { name: Ocado Group, ats: greenhouse, board: ocadogroup }
+  - { name: Ohme, ats: greenhouse, board: ohme }
   - { name: Okta, ats: greenhouse, board: okta }
   - { name: OpenAI, ats: ashby, board: openai }
   - { name: Oura, ats: greenhouse, board: oura }
@@ -126,6 +145,7 @@ companies:
   - { name: Paddle, ats: ashby, board: paddle }
   - { name: Palantir, ats: lever, board: palantir }
   - { name: Perplexity, ats: ashby, board: perplexity }
+  - { name: Philips, ats: workday, board: philips/wd3/jobs-and-careers }
   - { name: Photoroom, ats: ashby, board: photoroom }
   - { name: Pigment, ats: lever, board: pigment }
   - { name: Pinterest, ats: greenhouse, board: pinterest }
@@ -141,11 +161,14 @@ companies:
   - { name: Replit, ats: ashby, board: replit }
   - { name: Robinhood, ats: greenhouse, board: robinhood }
   - { name: Rohlik, ats: ashby, board: rohlik }
+  - { name: Rolls-Royce, ats: workday, board: rollsroyce/wd3/professional }
   - { name: Samsara, ats: greenhouse, board: samsara }
+  - { name: Sanofi, ats: workday, board: sanofi/wd3/SanofiCareers }
   - { name: Sardine, ats: ashby, board: sardine }
   - { name: Satispay, ats: ashby, board: satispay }
   - { name: Scale AI, ats: greenhouse, board: scaleai }
   - { name: Sentry, ats: ashby, board: sentry }
+  - { name: Shell, ats: workday, board: shell/wd3/ShellCareers }
   - { name: Sierra, ats: ashby, board: sierra }
   - { name: Sigma Computing, ats: greenhouse, board: sigmacomputing }
   - { name: Signal AI, ats: ashby, board: signal-ai }
@@ -160,20 +183,25 @@ companies:
   - { name: Stripe, ats: greenhouse, board: stripe }
   - { name: SumUp, ats: greenhouse, board: sumup }
   - { name: Synthesia, ats: ashby, board: synthesia }
+  - { name: Taboola, ats: greenhouse, board: taboola }
   - { name: Tamara, ats: greenhouse, board: tamara }
   - { name: Temporal, ats: ashby, board: temporal }
+  - { name: The Trade Desk, ats: greenhouse, board: thetradedesk }
   - { name: Thumbtack, ats: ashby, board: thumbtack }
   - { name: Toast, ats: greenhouse, board: toast }
   - { name: Together AI, ats: greenhouse, board: togetherai }
   - { name: Trainline, ats: ashby, board: trainline }
+  - { name: Tripadvisor, ats: greenhouse, board: tripadvisor }
   - { name: Twilio, ats: greenhouse, board: twilio }
   - { name: Typeform, ats: greenhouse, board: typeform }
+  - { name: Unilever, ats: workday, board: unilever/wd3/Unilever_Experienced_Professionals }
   - { name: Vercel, ats: greenhouse, board: vercel }
   - { name: Wallapop, ats: greenhouse, board: wallapop }
   - { name: Wayve, ats: ashby, board: wayve }
   - { name: Wise, ats: smartrecruiters, board: wise }
   - { name: Wolt, ats: greenhouse, board: wolt }
   - { name: Writer, ats: ashby, board: writer }
+  - { name: Zego, ats: ashby, board: zego }
   - { name: Ziina, ats: ashby, board: ziina }
   - { name: Zilch, ats: ashby, board: zilch }
   - { name: Zopa, ats: lever, board: zopa }

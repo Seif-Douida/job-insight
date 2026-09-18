@@ -58,6 +58,31 @@ it was not what was claimed.
 changes meaning at the same moment. Check what the new code reports about itself, rather
 than watching the old signal go quiet and calling it success.
 
+### One example of someone else's API is not the API (coverage work)
+
+The Workday client was written against NVIDIA's board and broke twice on other employers,
+both times by succeeding and returning a wrong number rather than by raising:
+
+- **`total` is reported on the first page only**; later pages return `total: 0`. The loop
+  stopped when `len(items) >= total`, so it read two pages and reported 40 postings from a
+  board holding 1,530.
+- **The country facet is named per employer.** NVIDIA nests `locationHierarchy1` inside a
+  location group, GSK exposes `Location_Country` at the top level, AstraZeneca offers no
+  country level at all. The code required the facet it knew, so nine of eleven boards
+  reported zero postings — including one with 1,198 jobs.
+
+The second fix was the more useful one, and it was a design change rather than a patch:
+filtering by country is an *economy*, not a requirement, because every posting states its
+own country anyway. A board with no usable facet is now listed in full.
+
+Neither bug raised an exception, and unit tests written from the same single example would
+have passed. What caught both was a number that could not be true: 40 in-scope postings
+from a 2,000-job board, then 0 from 1,198.
+
+**Rule:** when integrating someone else's API, check a second and third provider before
+believing the shape of the first. And treat an implausible-but-successful result as a
+failure — it is the kind that tests built from one sample cannot see.
+
 ### A counter can measure intent rather than fact (phase 3)
 
 `raw.quota_usage` read 1,779 while only 320 extractions existed, which looked like a

@@ -1,0 +1,78 @@
+{
+ "jobPostingInfo": {
+  "id": "c477a54e6b411008899dc77c3e5d0000",
+  "title": "Senior Applied Machine Learning Engineer - VLSI Design",
+  "jobDescription": "<p>NVIDIA has been transforming computer graphics, PC gaming, and accelerated computing for more than 25 years. It\u2019s a unique legacy of innovation that\u2019s fueled by great technology\u2014and amazing people.</p><p></p><p>Today, we\u2019re tapping into the unlimited potential of AI to define the next era of computing. An era in which our GPU acts as the brains of computers, robots, and self-driving cars that can understand the world. Doing what\u2019s never been done before takes vision, innovation, and the world\u2019s best talent. As an NVIDIAN, you\u2019ll be immersed in a diverse, supportive environment where everyone is inspired to do their best work. Come join the team and see how you can make a lasting impact on the world. Our team builds AI-driven software systems for circuit design, combining automation algorithms, DL models and agentic workflows to accelerate end-to-end design automation.</p><p></p><p><b>What you&#39;ll be doing:</b></p><ul><li><p>Work within a multi-functional team on projects involving pre-silicon and post-silicon hardware design data, circuit optimization, SPICE correlation, and AI systems for EDA/design automation.</p></li><li><p>Work on applications ranging from silicon data analysis, manufacturing process variation analysis, VLSI circuit design, timing, and agent-driven design exploration and agent flow optimization.</p></li><li><p>Translate requirements into data science, AI/ML, and agentic system problems; architect and build solutions.</p></li><li><p>Test and release models and AI systems that integrate with existing machine learning, design automation, and visualization tools within the organization.</p></li><li><p>Analyze datasets, raise and validate hypotheses, extract relevant features, and build models and self-improving workflows on top of them.</p></li><li><p>Optimize models, algorithms, and autonomous optimization systems until they reach the desired QOR.</p></li></ul><p></p><p><b>What we need to see:</b></p><ul><li><p>MS/PhD in Electrical/Computer Engineering, Computer Science, Applied Mathematics, or equivalent experience.</p></li><li><p>4&#43; years experience in circuit design, VLSI, ASIC, EDA, silicon analysis, or custom circuit design is required.</p></li><li><p>Prior experience in Applied Math/ML/Software programming with proven ability in writing code in Python and C&#43;&#43;.</p></li><li><p>Experience with deep learning algorithms, AI agent frameworks, and tools such as PyTorch, LangChain, or LangGraph is a definite plus.</p></li></ul><p></p><p><b>Ways to stand out from the crowd:</b></p><ul><li><p>Experience building AI systems for EDA, design automation, or circuit design workflows.</p></li><li><p>Research or project experience in AI-driven EDA, circuit optimization, design-space exploration, or autonomous design systems.</p></li><li><p>Experience building agentic systems, autonomous optimization loops, self-improving AI systems, or production-scale AI/ML platforms.</p></li><li><p>Effective verbal/written communication and technical presentation skills.</p></li><li><p>Self-starter with passion for growth, continuous learning, and sharing findings across the team.</p></li></ul><p></p><p>NVIDIA is a pioneer in bringing groundbreaking technology to new markets. We have some of the most forward-thinking and hardworking people in the world working with us. If you&#39;re creative and autonomous, we want to hear from you!<br /><br />#LI-Hybrid</p><p style=\"text-align:inherit\"></p><p style=\"text-align:inherit\"></p>Your base salary will be determined based on your location, experience, and the pay of employees in similar positions. The base salary range is 152,000 USD - 230,000 USD for Level 3, and 168,000 USD - 264,500 USD for Level 4.<div><div><div><div><div><div><div><p></p><p><span>You will also be eligible for equity and <a href=\"https://www.nvidia.com/en-us/benefits/\" target=\"_blank\">benefits</a>.</span></p><p></p></div></div></div></div></div></div></div>Applications for this job will be accepted at least until August 16, 2026.<p></p><p>This posting is for an existing vacancy.\u00a0</p><p>NVIDIA uses AI tools in its recruiting processes.</p><p></p>NVIDIA is committed to fostering an inclusive work environment and proud to be an equal opportunity employer. As we highly value diversity in our current and future employees, we do not discriminate (including in our hiring and promotion practices) on the basis of race, religion, color, national origin, gender, gender expression, sexual orientation, age, marital status, veteran status, disability status or any other characteristic protected by law.<p style=\"text-align:inherit\"></p><p style=\"text-align:inherit\"></p>",
+  "location": "US, CA, Santa Clara",
+  "postedOn": "Posted 30+ Days Ago",
+  "startDate": "2026-08-12",
+  "timeType": "Full time",
+  "jobReqId": "JR2014328",
+  "jobPostingId": "Senior-Applied-Machine-Learning-Engineer---VLSI-Design_JR2014328",
+  "jobPostingSiteId": "NVIDIAExternalCareerSite",
+  "country": {
+   "descriptor": "United States of America",
+   "id": "bc33aa3152ec42d4995f4791a106ed09"
+  },
+  "canApply": true,
+  "posted": true,
+  "includeResumeParsing": true,
+  "jobRequisitionLocation": {
+   "descriptor": "US, CA, Santa Clara",
+   "country": {
+    "descriptor": "United States of America",
+    "id": "bc33aa3152ec42d4995f4791a106ed09",
+    "alpha2Code": "US"
+   }
+  },
+  "externalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/US-CA-Santa-Clara/Senior-Applied-Machine-Learning-Engineer---VLSI-Design_JR2014328",
+  "questionnaireId": "028095df097b1001ac9358c586600000"
+ },
+ "hiringOrganization": {
+  "name": "2100 NVIDIA USA",
+  "url": ""
+ },
+ "similarJobs": [
+  {
+   "title": "Applied Machine Learning Engineer, Circuit Design - New College Grad 2026",
+   "externalPath": "/job/US-CA-Santa-Clara/Applied-Machine-Learning-Engineer--Circuit-Design---New-College-Grad-2026_JR2011517",
+   "timeType": "Full time",
+   "locationsText": "2 Locations",
+   "postedOn": "Posted 30+ Days Ago",
+   "startDate": "2026-04-27"
+  },
+  {
+   "title": "Applied AI Engineer - VLSI Design",
+   "externalPath": "/job/US-CA-Santa-Clara/Applied-AI-Engineer---VLSI-Design_JR2019190",
+   "timeType": "Full time",
+   "locationsText": "US, CA, Santa Clara",
+   "postedOn": "Posted 30+ Days Ago",
+   "startDate": "2026-08-17"
+  },
+  {
+   "title": "Senior Machine Learning Engineer, Perception - Autonomous Driving",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-Machine-Learning-Engineer--Perception---Autonomous-Driving_JR2018915",
+   "timeType": "Full time",
+   "locationsText": "3 Locations",
+   "postedOn": "Posted 20 Days Ago",
+   "startDate": "2026-08-29"
+  },
+  {
+   "title": "Senior Machine Learning Applications and Compiler Engineer, LPX",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-Machine-Learning-Applications-and-Compiler-Engineer_JR2012559",
+   "timeType": "Full time",
+   "locationsText": "2 Locations",
+   "postedOn": "Posted 30+ Days Ago",
+   "startDate": "2026-07-13"
+  },
+  {
+   "title": "Senior ML Engineer, Metropolis",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-ML-Engineer--Metropolis_JR2023124",
+   "timeType": "Full time",
+   "locationsText": "US, CA, Santa Clara",
+   "postedOn": "Posted 30+ Days Ago",
+   "startDate": "2026-08-17"
+  }
+ ],
+ "userAuthenticated": false
+}

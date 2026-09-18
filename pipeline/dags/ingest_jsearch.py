@@ -11,7 +11,7 @@ from airflow.sdk import dag, get_current_context, task
 
 @dag(
     dag_id="ingest_jsearch",
-    schedule="0 5 * * 1",
+    schedule="0 5 1,15 * *",
     start_date=pendulum.datetime(2026, 9, 1, tz="UTC"),
     catchup=False,
     max_active_tasks=1,

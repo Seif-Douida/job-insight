@@ -1,0 +1,186 @@
+{
+ "total": 2000,
+ "jobPostings": [],
+ "facets": [
+  {
+   "facetParameter": "jobFamilyGroup",
+   "descriptor": "Job Category",
+   "values": [
+    {
+     "descriptor": "Engineering",
+     "id": "0c40f6bd1d8f10ae43ffaefd46dc7e78",
+     "count": 1757
+    },
+    {
+     "descriptor": "Sales",
+     "id": "0c40f6bd1d8f10ae43ffcac5bbec7e90",
+     "count": 332
+    },
+    {
+     "descriptor": "Operations",
+     "id": "0c40f6bd1d8f10ae43ffc3fc7d8c7e8a",
+     "count": 131
+    },
+    {
+     "descriptor": "Program Manager",
+     "id": "0c40f6bd1d8f10ae43ffc668c6847e8c",
+     "count": 101
+    },
+    {
+     "descriptor": "Univ Employment",
+     "id": "0c40f6bd1d8f10ae43ffda1e8d447e94",
+     "count": 96
+    },
+    {
+     "descriptor": "Marketing",
+     "id": "0c40f6bd1d8f10ae43ffc19725ec7e88",
+     "count": 80
+    },
+    {
+     "descriptor": "IT - Information Technology",
+     "id": "0c40f6bd1d8f10ae43ffbd1459047e84",
+     "count": 47
+    },
+    {
+     "descriptor": "Professional Services",
+     "id": "e8bdc341a93101bd5f4d2b0a1c005e36",
+     "count": 38
+    },
+    {
+     "descriptor": "Research",
+     "id": "0c40f6bd1d8f10ae43ffc8817cf47e8e",
+     "count": 38
+    },
+    {
+     "descriptor": "Finance",
+     "id": "0c40f6bd1d8f10ae43ffb5dd06f47e7e",
+     "count": 21
+    },
+    {
+     "descriptor": "Human Resources",
+     "id": "0c40f6bd1d8f10ae43ffbac3680c7e82",
+     "count": 10
+    },
+    {
+     "descriptor": "Business Development",
+     "id": "0c40f6bd1d8f10ae43ffac5fdfac7e76",
+     "count": 9
+    },
+    {
+     "descriptor": "Legal",
+     "id": "0c40f6bd1d8f10ae43ffbf4412147e86",
+     "count": 5
+    },
+    {
+     "descriptor": "Facilities",
+     "id": "0c40f6bd1d8f10ae43ffb3a6aaac7e7c",
+     "count": 3
+    },
+    {
+     "descriptor": "Administration",
+     "id": "0c40f6bd1d8f10ae43ffaa1e1d6c7e74",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "facetParameter": "workerSubType",
+   "descriptor": "Job Type",
+   "values": [
+    {
+     "descriptor": "Regular Employee",
+     "id": "0c40f6bd1d8f10adf6dae161b1844a15",
+     "count": 2311
+    },
+    {
+     "descriptor": "Management",
+     "id": "0c40f6bd1d8f10adf6dae2cd57444a16",
+     "count": 200
+    },
+    {
+     "descriptor": "Intern (Fixed Term)",
+     "id": "0c40f6bd1d8f10adf6dae42e46d44a17",
+     "count": 94
+    },
+    {
+     "descriptor": "New College Graduate",
+     "id": "ab40a98049581037a3ada55b087049b7",
+     "count": 61
+    },
+    {
+     "descriptor": "Regular Employee (Fixed Term)",
+     "id": "cc40d60d614c01809d56fe967144ce2c",
+     "count": 2
+    },
+    {
+     "descriptor": "Academic (Fixed Term)",
+     "id": "ec9560ee6dc71001d6f3cf17ea640000",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "facetParameter": "timeType",
+   "descriptor": "Time Type",
+   "values": [
+    {
+     "descriptor": "Full time",
+     "id": "5509c0b5959810ac0029943377d47364",
+     "count": 2667
+    },
+    {
+     "descriptor": "Part time",
+     "id": "5509c0b5959810ac00299430e7947363",
+     "count": 2
+    }
+   ]
+  },
+  {
+   "facetParameter": "locationMainGroup",
+   "values": [
+    {
+     "facetParameter": "locationHierarchy2",
+     "descriptor": "Location Type",
+     "values": []
+    },
+    {
+     "facetParameter": "locationHierarchy1",
+     "descriptor": "Locations",
+     "values": [
+      {
+       "descriptor": "China",
+       "id": "2fcb99c455831013ea529fe151e3323c",
+       "count": 201
+      },
+      {
+       "descriptor": "Germany",
+       "id": "2fcb99c455831013ea52adc65f5d3254",
+       "count": 53
+      },
+      {
+       "descriptor": "India",
+       "id": "2fcb99c455831013ea52b82135ba3266",
+       "count": 244
+      },
+      {
+       "descriptor": "United Kingdom",
+       "id": "2fcb99c455831013ea52f785717432d2",
+       "count": 53
+      },
+      {
+       "descriptor": "United States",
+       "id": "2fcb99c455831013ea52fb338f2932d8",
+       "count": 1411
+      }
+     ]
+    },
+    {
+     "facetParameter": "locations",
+     "descriptor": "Sites",
+     "values": []
+    }
+   ]
+  }
+ ],
+ "userAuthenticated": false
+}

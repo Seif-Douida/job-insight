@@ -10,6 +10,7 @@ to trust a percentage.
 | ------ | --------------- | -------------- |
 | Public ATS boards (Greenhouse, Lever, Ashby) | Primary source for skill extraction | Full description |
 | SmartRecruiters | Reaches large non-tech employers the others miss | Full description |
+| Workday career sites | Large industrial, pharma, banking and retail employers | Full description |
 | Adzuna | Breadth across the US/UK/EU, plus salary data | Excerpt only |
 | JSearch (Google for Jobs) | Fills Gulf coverage, where no free official API exists | Full or snippet, by publisher |
 
@@ -93,8 +94,8 @@ by the employers, so treat these figures as a guide, not a guarantee. Re-run the
 - **The company list shapes coverage.** ATS boards are read per company, so the sample
   leans toward companies that publish on modern ATS platforms — in practice, tech and
   tech-adjacent employers. Traditional enterprises are under-represented, which is why
-  SmartRecruiters was added: it is where large industrial and consumer employers post.
-  The correction is partial, not complete.
+  SmartRecruiters and Workday career sites were added: between them they reach pharma,
+  banking, industrial and retail employers. The correction is partial, not complete.
 - **Not every posting is written in English.** Descriptions are stored and analysed in the
   language the employer used. Skill names are largely language-independent ("Python",
   "Kubernetes"), but a German or Portuguese posting may yield fewer of the descriptive

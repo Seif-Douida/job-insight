@@ -5,6 +5,7 @@ Each client is checked for the request it sends and for how it parses the respon
 
 from __future__ import annotations
 
+import json
 from collections.abc import Callable
 from typing import Any
 
@@ -12,11 +13,18 @@ import httpx
 import pytest
 
 from pipeline.http import HttpError
-from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever, smartrecruiters
-from pipeline.taxonomy import adzuna_markets, get_country, jsearch_countries, load_roles
+from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever, smartrecruiters, workday
+from pipeline.taxonomy import (
+    adzuna_markets,
+    get_country,
+    is_relevant_title,
+    jsearch_countries,
+    load_roles,
+)
 
 GB_MARKET = get_country("GB").adzuna
 WEEKLY_RUNS_PER_MONTH = 52 / 12
+JSEARCH_RUNS_PER_MONTH = 2  # ingest_jsearch runs on the 1st and the 15th
 
 
 def recording_client(payload: Any, requests: list[httpx.Request]) -> httpx.Client:
@@ -227,8 +235,10 @@ def test_adzuna_config_fits_the_free_monthly_quota() -> None:
 
 
 def test_jsearch_config_fits_the_free_monthly_quota() -> None:
+    """Six Gulf countries fortnightly, rather than three weekly: the region is the one the
+    dashboard cannot publish, and its postings do not churn fast enough to need weekly."""
     calls_per_run = len(load_roles()) * len(jsearch_countries())
-    assert calls_per_run * WEEKLY_RUNS_PER_MONTH <= jsearch.MONTHLY_CALL_LIMIT * 0.8
+    assert calls_per_run * JSEARCH_RUNS_PER_MONTH <= jsearch.MONTHLY_CALL_LIMIT * 0.8
 
 
 # --- SmartRecruiters -------------------------------------------------------------------
@@ -296,3 +306,159 @@ def test_smartrecruiters_pages_until_everything_is_read() -> None:
 
     with httpx.Client(transport=httpx.MockTransport(handler)) as client:
         assert smartrecruiters.fetch_postings(client, "big") == []  # none are in scope
+
+
+# --- Workday ---------------------------------------------------------------------------
+
+
+def workday_client(
+    facets: Any, jobs: Any, detail: Any, requests: list[httpx.Request]
+) -> httpx.Client:
+    """Answers the facet probe, the paged listing, and any job detail separately."""
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        if request.method == "GET":
+            return httpx.Response(200, json=detail)
+        body = json.loads(request.content)
+        if not body.get("appliedFacets"):
+            return httpx.Response(200, json=facets)
+        return httpx.Response(200, json=jobs)
+
+    return httpx.Client(transport=httpx.MockTransport(handler))
+
+
+BOARD = "nvidia/wd5/NVIDIAExternalCareerSite"
+
+
+def test_workday_board_url_needs_all_three_parts() -> None:
+    assert workday.board_url(BOARD).endswith("/wday/cxs/nvidia/NVIDIAExternalCareerSite")
+    for bad in ["nvidia", "nvidia/wd5", "nvidia//site", ""]:
+        with pytest.raises(ValueError):
+            workday.board_url(bad)
+
+
+def test_workday_asks_only_for_curated_countries(load_fixture: Callable[[str], Any]) -> None:
+    """The board offers China and India too; paying to list them would be waste."""
+    requests: list[httpx.Request] = []
+    with workday_client(
+        load_fixture("workday_facets.json"),
+        load_fixture("workday_jobs.json"),
+        load_fixture("workday_detail.json"),
+        requests,
+    ) as client:
+        workday.fetch_postings(client, BOARD)
+
+    listing = json.loads(requests[1].content)
+    applied = listing["appliedFacets"][workday.COUNTRY_FACETS[0]]
+    facets = load_fixture("workday_facets.json")
+    offered = {
+        value["descriptor"]: value["id"]
+        for facet in facets["facets"]
+        for group in facet.get("values") or []
+        if group.get("facetParameter") == workday.COUNTRY_FACETS[0]
+        for value in group.get("values") or []
+    }
+    assert offered["United States"] in applied
+    assert offered["United Kingdom"] in applied
+    assert offered["China"] not in applied
+    assert offered["India"] not in applied
+
+
+def test_workday_fetches_details_only_for_relevant_titles(
+    load_fixture: Callable[[str], Any],
+) -> None:
+    requests: list[httpx.Request] = []
+    jobs = load_fixture("workday_jobs.json")
+    with workday_client(
+        load_fixture("workday_facets.json"), jobs, load_fixture("workday_detail.json"), requests
+    ) as client:
+        postings = workday.fetch_postings(client, BOARD)
+
+    relevant = [job for job in jobs["jobPostings"] if is_relevant_title(job["title"])]
+    details = [request for request in requests if request.method == "GET"]
+    assert len(details) == len(relevant) < len(jobs["jobPostings"])
+    assert len(postings) == len(relevant)
+
+
+def test_workday_pages_past_the_first_response(load_fixture: Callable[[str], Any]) -> None:
+    """Workday reports `total` only on page one; later pages say 0. Believing it every time
+    ended the run after two pages and lost most of a board."""
+    facets = load_fixture("workday_facets.json")
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.method == "GET":
+            return httpx.Response(200, json=load_fixture("workday_detail.json"))
+        body = json.loads(request.content)
+        if not body.get("appliedFacets"):
+            return httpx.Response(200, json=facets)
+        offset = body["offset"]
+        page = [
+            {"title": "Sales Manager", "externalPath": f"/job/{offset + n}"}
+            for n in range(workday.PAGE_SIZE)
+            if offset + n < 45
+        ]
+        return httpx.Response(200, json={"total": 45 if offset == 0 else 0, "jobPostings": page})
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        listed, kept = workday.survey(client, BOARD)
+    assert listed == 45, "all three pages should be read, not just the first two"
+    assert kept == 0
+
+
+def test_workday_parse_prefers_the_stated_country(load_fixture: Callable[[str], Any]) -> None:
+    detail = load_fixture("workday_detail.json")["jobPostingInfo"]
+    posting = workday.parse_posting(detail, "NVIDIA")
+    assert posting.source == "workday"
+    assert posting.country == "US"
+    assert posting.description_text and "<p>" not in posting.description_text
+    assert posting.url.startswith("https://")
+
+
+def test_workday_reads_the_country_when_the_location_is_only_remote() -> None:
+    """ "Remote" names no place, but Workday states the country separately."""
+    posting = workday.parse_posting(
+        {
+            "id": "abc",
+            "title": "Data Engineer",
+            "externalUrl": "https://example.com/job/1",
+            "location": "Remote",
+            "country": {"descriptor": "United Kingdom"},
+            "jobDescription": "<p>Build pipelines.</p>",
+            "startDate": "2026-09-01",
+        },
+        "Acme",
+    )
+    assert posting.country == "GB"
+
+
+def test_workday_lists_everything_when_the_board_has_no_country_facet() -> None:
+    """Employers configure their own facets. Narrowing is an economy, not a requirement:
+    without it the board is still read, and each posting states its own country."""
+    requests: list[httpx.Request] = []
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        return httpx.Response(
+            200,
+            json={
+                "total": 10,
+                "jobPostings": [],
+                "facets": [
+                    {
+                        "facetParameter": "locationMainGroup",
+                        "values": [
+                            {
+                                "facetParameter": workday.COUNTRY_FACETS[0],
+                                "values": [{"descriptor": "India", "id": "x"}],
+                            }
+                        ],
+                    }
+                ],
+            },
+        )
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        assert workday.fetch_postings(client, BOARD) == []
+    listing = json.loads(requests[1].content)
+    assert listing["appliedFacets"] == {}, "no usable facet, so nothing is narrowed away"

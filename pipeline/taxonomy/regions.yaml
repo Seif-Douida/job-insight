@@ -136,9 +136,12 @@ regions:
       - code: KW
         name: Kuwait
         aliases: [kuwait]
+        jsearch: true
       - code: BH
         name: Bahrain
         aliases: [bahrain, manama]
+        jsearch: true
       - code: OM
         name: Oman
         aliases: [oman, muscat]
+        jsearch: true

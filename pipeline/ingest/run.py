@@ -15,7 +15,7 @@ from typing import Any
 import httpx
 import psycopg
 
-from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever, smartrecruiters
+from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever, smartrecruiters, workday
 from pipeline.ingest.posting import RawPosting
 from pipeline.ingest.store import upsert_postings
 from pipeline.taxonomy import (
@@ -38,6 +38,7 @@ BOARD_SOURCES: dict[str, tuple[BoardFetcher, BoardParser]] = {
     "lever": (lever.fetch_postings, lever.parse_posting),
     "ashby": (ashby.fetch_jobs, ashby.parse_job),
     "smartrecruiters": (smartrecruiters.fetch_postings, smartrecruiters.parse_posting),
+    "workday": (workday.fetch_postings, workday.parse_posting),
 }
 
 

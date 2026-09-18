@@ -1,0 +1,33 @@
+{
+ "total": 3,
+ "jobPostings": [
+  {
+   "title": "Senior Applied Machine Learning Engineer - VLSI Design",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-Applied-Machine-Learning-Engineer---VLSI-Design_JR2014328",
+   "locationsText": "US, CA, Santa Clara",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR2014328"
+   ]
+  },
+  {
+   "title": "Principal Data Scientist - Cloud Gaming and AI",
+   "externalPath": "/job/US-CA-Santa-Clara/Principal-Data-Scientist---Cloud-Gaming-and-AI_JR2019886",
+   "locationsText": "2 Locations",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR2019886"
+   ]
+  },
+  {
+   "title": "Modeling Engineer, Supply Chain Optimization",
+   "externalPath": "/job/US-CA-Santa-Clara/Modeling-Engineer--Supply-Chain-Optimization_JR2025602",
+   "locationsText": "US, CA, Santa Clara",
+   "postedOn": "Posted 3 Days Ago",
+   "bulletFields": [
+    "JR2025602"
+   ]
+  }
+ ],
+ "facets": []
+}

@@ -16,14 +16,17 @@ from functools import partial
 import httpx
 
 from pipeline.http import HttpError, make_client
-from pipeline.ingest import smartrecruiters
+from pipeline.ingest import smartrecruiters, workday
 from pipeline.ingest.run import BOARD_SOURCES, in_scope, parse_items
 
 WORKERS = 8
 
-SURVEYS = {"smartrecruiters": smartrecruiters.survey}
-"""Boards that can be counted without downloading every description. Fetching a
-SmartRecruiters board costs one request per posting, which is far too much for a probe."""
+SURVEYS = {"smartrecruiters": smartrecruiters.survey, "workday": workday.survey}
+"""Boards that can be counted without downloading every description. Fetching one of these
+costs a request per posting, which is far too much for a probe.
+
+Workday is listed but never matches a bare slug: its boards are named `tenant/cluster/site`
+and have to be read off a company's careers URL, so pass that whole string to probe one."""
 
 
 def probe(client: httpx.Client, slug: str) -> list[str]:
@@ -38,7 +41,8 @@ def probe(client: httpx.Client, slug: str) -> list[str]:
                 postings, _ = parse_items(items, partial(parse, company=slug))
                 listed = len(items)
                 kept = sum(1 for posting in postings if in_scope(posting))
-        except (HttpError, KeyError, TypeError):
+        except (HttpError, KeyError, TypeError, ValueError):
+            # ValueError: this board type cannot interpret the slug, so it is not that kind.
             continue
         if listed:
             lines.append(f"{slug:<28} {ats:<11} listed={listed:<5} in_scope={kept}")

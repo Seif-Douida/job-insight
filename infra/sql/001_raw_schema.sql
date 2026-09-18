@@ -7,7 +7,7 @@ create schema if not exists raw;
 -- so coverage per source stays measurable.
 create table if not exists raw.postings (
     id                  bigserial primary key,
-    source              text        not null,          -- greenhouse | lever | ashby | smartrecruiters | adzuna | jsearch
+    source              text        not null,          -- greenhouse | lever | ashby | smartrecruiters | workday | adzuna | jsearch
     source_id           text        not null,
     url                 text        not null,
     title               text        not null,
