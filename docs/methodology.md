@@ -48,13 +48,41 @@ aggregator are collapsed, since aggregators republish the same listing from seve
 
 ## How skills are counted
 
-Each posting's text is sent to an LLM (Gemma 4) that returns structured data: skills and
-tools, whether each is required or merely preferred, seniority, years of experience,
-work mode, and visa sponsorship. Extracted skill names are then mapped onto a canonical
-list, so "Postgres", "PostgreSQL" and "psql" count as one skill rather than three.
+Each full-text posting is sent to an LLM (Gemma 4 through the Gemini API), which returns
+structured data: skills and tools, whether each is required or merely preferred, the role,
+seniority, years of experience, work mode, and visa sponsorship. Extracted skill names are
+then mapped onto a canonical list, so "Postgres", "PostgreSQL" and "psql" count as one
+skill rather than three.
+
+Excerpt postings are not sent to the model. Their 500 characters are almost always an
+"About us" paragraph that names no skills, so they contribute volume, salary and company
+coverage, and take their role from the job title alone.
 
 A percentage always means: *of the postings in this role and region, this share mentioned
 this skill.* The denominator is shown next to every figure.
+
+### How accurate is the extraction?
+
+Accuracy is measured against a set of postings labelled by hand, by reading each posting
+and recording what it states. The current model, Gemma 4 (26B), scores:
+
+| What | Accuracy |
+| ---- | -------- |
+| Years of experience required | 100% |
+| Visa sponsorship | 100% |
+| Work mode | 100% |
+| Seniority | 95% |
+| Role | 84% |
+| Skills | 81% precision, 80% recall |
+
+Read this as: when the model lists a skill, it is in the posting about four times out of
+five, and it finds about four fifths of the skills a careful reader would. The role
+mistakes are all boundary cases — an "Applied AI Engineer" who mostly trains models, a
+software engineer on an AI product — where two labels are defensible.
+
+The labelled set is small (19 postings) and was labelled by a language model rather than
+by the employers, so treat these figures as a guide, not a guarantee. Re-run them with
+`python -m pipeline.eval.run_eval`.
 
 ## Limits worth knowing
 

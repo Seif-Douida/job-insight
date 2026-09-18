@@ -2,6 +2,9 @@
 
 Read [docs/design.md](docs/design.md) for the design and [docs/PROGRESS.md](docs/PROGRESS.md)
 for what is built, verified and next. Update PROGRESS.md at the end of every phase.
+[docs/lessons.md](docs/lessons.md) records the mistakes made so far and the rule each one
+produced — worth reading before repeating one, and worth adding to when a new one costs
+real time.
 
 ## Layout
 
@@ -43,7 +46,8 @@ Airflow UI: <http://localhost:8080>. The admin password is printed in the contai
 pytest pipeline/tests                # unit tests
 ruff check pipeline && black --check pipeline
 python -m pipeline.ingest.probe_boards <slug>...   # find a company's job board for companies.yaml
-python -m pipeline.eval.run_eval     # LLM extraction accuracy on the golden set
+python -m pipeline.eval.run_eval [model] [--verbose]  # extraction accuracy on the golden set
+python -m pipeline.eval.build_golden_set           # after adding labels to eval/labels.json
 cd pipeline/dbt && dbt build         # models + data tests
 cd web && npm run dev                # dashboard
 ```

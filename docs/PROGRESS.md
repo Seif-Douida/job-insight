@@ -2,6 +2,7 @@
 
 Running record of what exists, what was verified, and what comes next.
 Newest entry first. Update before every phase-closing commit.
+Mistakes and what they taught live in [lessons.md](lessons.md).
 
 ## Phases
 
@@ -9,10 +10,100 @@ Newest entry first. Update before every phase-closing commit.
 | --- | ----- | ------ |
 | 1 | Foundation — repo, config, schema, Airflow up | done 2026-09-17 |
 | 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | done 2026-09-17 |
-| 3 | Extraction — LLM backends, quota governor, eval | next |
+| 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
 | 4 | Modeling — dbt staging → marts, taxonomy | not started |
 | 5 | Dashboard — Next.js pages and API routes | not started |
 | 6 | Ops — Oracle VM deploy, schedules, Vercel | not started |
+
+---
+
+## 2026-09-18 — Phase 3: Extraction (done)
+
+### Built
+
+- `pipeline/extract/schema.py` — `Extraction` and `ExtractedSkill`, the contract every
+  answer is validated against; an unknown role degrades to `other` instead of failing
+- `pipeline/extract/prompt.py` — prompt `v2`, with the role guide, skill-naming rules and
+  the JSON schema sent as `responseJsonSchema`
+- `pipeline/extract/llm/` — the `LlmBackend` protocol and `GeminiBackend`; swapping models
+  is a config change
+- `pipeline/extract/quota.py` — `DailyQuota` (counted in Postgres, so a restart cannot
+  double-spend) and `Pacer`, which holds a rolling minute of **input tokens** as well as
+  requests
+- `pipeline/extract/run.py` — `extract_pending`: threaded, commits every 20, records every
+  outcome, and leaves rate-limited postings untouched
+- `pipeline/extract/archive.py` — writes full text to gzipped JSONL, then trims the column
+- `pipeline/eval/` — 19 hand-written label sets, `build_golden_set`, `score.py`, `run_eval`
+- `pipeline/dags/extract.py` — daily 06:00, extraction then archive
+- `infra/sql/002_extraction_content_hash.sql`, `003_posting_role_hint.sql`
+- [lessons.md](lessons.md) — the mistakes made so far and the rule each produced
+
+### Verified
+
+```text
+$ pytest -q
+166 passed in 6.57s
+
+$ ruff check pipeline && black --check pipeline
+All checks passed!
+52 files would be left unchanged.
+
+Airflow: both extract runs finished green (scheduled__2026-09-17T06, manual__20:52)
+
+Neon after the backlog run (prompt v2, gemma-4-26b-a4b-it):
+  1,736 ok   21 error   2 invalid_json   35 still pending
+  13.88 skills per posting on average (1.8 before excerpts were excluded)
+
+Archive and trim:
+  data/archive/postings-2026-09.jsonl.gz   1,736 rows, one per successful extraction
+  1,712 postings trimmed to exactly 1,000 characters
+  database size 27 MB of the 0.5 GB free tier
+```
+
+### Notes
+
+- **The free tier limits input tokens per minute, not requests.** Pacing at 25 RPM under a
+  documented 30 RPM limit still drew 429s on 18% of calls. The API's own error names the
+  quota: `GenerateContentInputTokensPerModelPerMinute-FreeTier`, limit 16,000. A posting
+  costs about 2,000 input tokens, so the budget runs out near 8 requests a minute.
+- **The retries made it worse.** A 429 was retried five times inside the request, and those
+  retries never passed through the pacer, so each incident fired six unpaced calls and the
+  error rate climbed from 11% to 18% as the run went on.
+- **Measured trade after the fix**, on the same backlog and model:
+
+  | | before | after |
+  | --- | ------ | ----- |
+  | Successful extractions | ~7.0/min | ~6.4/min |
+  | Requests rejected (429) | ~14% | 0% |
+  | Postings charged an attempt for a rate limit | 259 | 0 |
+
+  Roughly 9% less throughput, no rejected requests, and no posting penalised for the
+  minute it happened to be sent in. The remaining gap to the observed ceiling is the
+  1,000-token headroom under the 16,000 limit.
+- **Excerpts are not sent to the model.** The first live run averaged 1.8 skills per
+  posting; the inputs turned out to be 500-character "About us" blurbs. Extraction now
+  requires `text_quality = 'full'`, and excerpts take their role from `role_hint`
+  (backfilled for 3,728 rows).
+- Trimming updates `description_text` only, so `content_hash` still matches what the
+  source serves and a re-ingest will not undo the trim.
+- Of the 23 non-ok extractions, 20 are rate limits from the old pacer (attempts 1 of 3,
+  so the next daily run retries them), 1 is an answer cut off at the token limit, and
+  2 returned an empty skill name that validation rejected.
+
+### Deferred (deliberately)
+
+- 35 postings remain pending; the daily run collects them rather than a special pass.
+- `gemma-4-31b-it` still answers 500/503, so the smaller `26b-a4b` does the work. Worth
+  re-testing before phase 4 concludes.
+- The golden set is 19 postings labelled by a language model. Growing it, and having a
+  second reader disagree with it, would do more for confidence than any prompt change.
+- Ollama backend: the local GPU is too small for a model worth comparing.
+
+### Next
+
+Phase 4 — modelling. dbt staging → marts, the `skill_aliases.csv` taxonomy and its
+unmapped-skill review loop, the `n >= 25` guardrail, and restricting counts to a recent
+window (postings date back to 2019).
 
 ---
 
