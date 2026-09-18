@@ -27,6 +27,7 @@ include = ["pipeline*"]
 
 [tool.setuptools.package-data]
 "pipeline.taxonomy" = ["*.yaml"]
+"pipeline.eval" = ["*.json", "*.jsonl"]
 
 [tool.ruff]
 line-length = 100

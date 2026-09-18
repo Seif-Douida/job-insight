@@ -15,15 +15,15 @@ from pipeline.ingest.posting import AGGREGATOR_SOURCES, RawPosting
 
 _UPSERT = """
 insert into raw.postings (
-    source, source_id, url, title, company, location_raw, country, region,
+    source, source_id, url, title, company, location_raw, country, region, role_hint,
     description_text, text_quality, posted_at, salary_min, salary_max, salary_currency,
     salary_is_predicted, content_hash, dedupe_key
 )
 values (
     %(source)s, %(source_id)s, %(url)s, %(title)s, %(company)s, %(location_raw)s,
-    %(country)s, %(region)s, %(description_text)s, %(text_quality)s, %(posted_at)s,
-    %(salary_min)s, %(salary_max)s, %(salary_currency)s, %(salary_is_predicted)s,
-    %(content_hash)s, %(dedupe_key)s
+    %(country)s, %(region)s, %(role_hint)s, %(description_text)s, %(text_quality)s,
+    %(posted_at)s, %(salary_min)s, %(salary_max)s, %(salary_currency)s,
+    %(salary_is_predicted)s, %(content_hash)s, %(dedupe_key)s
 )
 on conflict (source, source_id) do update set
     url = excluded.url,
@@ -32,6 +32,7 @@ on conflict (source, source_id) do update set
     location_raw = excluded.location_raw,
     country = excluded.country,
     region = excluded.region,
+    role_hint = excluded.role_hint,
     description_text = excluded.description_text,
     text_quality = excluded.text_quality,
     posted_at = excluded.posted_at,
@@ -116,6 +117,7 @@ def _row(posting: RawPosting) -> dict[str, Any]:
     return {
         **posting.model_dump(),
         "region": posting.region,
+        "role_hint": posting.role_hint,
         "text_quality": posting.text_quality,
         "content_hash": posting.content_hash,
         "dedupe_key": posting.dedupe_key,

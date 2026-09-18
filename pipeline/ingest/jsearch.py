@@ -13,7 +13,7 @@ from typing import Any
 
 import httpx
 
-from pipeline.ingest.http import get_json
+from pipeline.http import get_json
 from pipeline.ingest.posting import RawPosting
 from pipeline.taxonomy import Country
 

@@ -10,7 +10,7 @@ from typing import Any
 
 import httpx
 
-from pipeline.ingest.http import get_json
+from pipeline.http import get_json
 from pipeline.ingest.posting import RawPosting
 from pipeline.ingest.text import html_to_text
 from pipeline.taxonomy import resolve_country

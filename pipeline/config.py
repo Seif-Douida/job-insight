@@ -25,6 +25,12 @@ def require_env(name: str) -> str:
     return value
 
 
+def env_int(name: str, default: int) -> int:
+    """Integer setting from the environment, falling back to `default` when unset."""
+    value = os.environ.get(name)
+    return int(value) if value else default
+
+
 def database_url() -> str:
     """Connection string for the Neon Postgres holding raw data and marts."""
     return require_env("DATABASE_URL")

@@ -33,7 +33,7 @@ def ingest_jsearch() -> None:
     def ingest_query(query: dict[str, str]) -> dict[str, str | int]:
         from pipeline.config import require_env
         from pipeline.db import connect
-        from pipeline.ingest.http import make_client
+        from pipeline.http import make_client
         from pipeline.ingest.run import ingest_jsearch as run_query
         from pipeline.taxonomy import get_country, get_role
 

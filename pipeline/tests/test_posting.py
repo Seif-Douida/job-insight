@@ -61,6 +61,12 @@ def test_postings_without_a_company_are_never_merged() -> None:
     )
 
 
+def test_role_hint_comes_from_the_title() -> None:
+    """Excerpt postings never reach the model, so the title is all they have."""
+    assert make(title="Senior Data Engineer").role_hint == "data-engineer"
+    assert make(title="Software Engineer, Data Infrastructure").role_hint is None
+
+
 def test_content_hash_tracks_title_and_description() -> None:
     assert make().content_hash == make(url="https://elsewhere").content_hash
     assert make().content_hash != make(description_text="y" * FULL_TEXT_MIN_CHARS).content_hash

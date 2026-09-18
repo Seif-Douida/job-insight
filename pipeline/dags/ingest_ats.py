@@ -31,7 +31,7 @@ def ingest_ats() -> None:
     @task(map_index_template="{{ board_label }}")
     def ingest_company(company: dict[str, str]) -> dict[str, str | int]:
         from pipeline.db import connect
-        from pipeline.ingest.http import make_client
+        from pipeline.http import make_client
         from pipeline.ingest.run import ingest_board
         from pipeline.taxonomy import Company
 

@@ -9,7 +9,7 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 from pipeline.ingest.text import normalize_company
-from pipeline.taxonomy import normalize_title, region_for_country
+from pipeline.taxonomy import match_role, normalize_title, region_for_country
 
 Source = Literal["greenhouse", "lever", "ashby", "adzuna", "jsearch"]
 TextQuality = Literal["full", "excerpt"]
@@ -50,6 +50,14 @@ class RawPosting(BaseModel):
         if self.source in EXCERPT_ONLY_SOURCES or len(self.description_text) < FULL_TEXT_MIN_CHARS:
             return "excerpt"
         return "full"
+
+    @property
+    def role_hint(self) -> str | None:
+        """Role the title matches, or None when only the description could tell.
+
+        Excerpt postings never reach the model, so this is the only role they get.
+        """
+        return match_role(self.title)
 
     @property
     def content_hash(self) -> str:

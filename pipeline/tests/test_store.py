@@ -50,9 +50,10 @@ def test_upsert_of_nothing_is_a_no_op(db: psycopg.Connection) -> None:
 
 def test_upsert_stores_derived_fields(db: psycopg.Connection) -> None:
     upsert_postings(db, [make(country="DE", description_text="short")])
-    assert db.execute("select region, text_quality from raw.postings").fetchone() == (
+    assert db.execute("select region, text_quality, role_hint from raw.postings").fetchone() == (
         "eu",
         "excerpt",
+        "data-engineer",
     )
 
 

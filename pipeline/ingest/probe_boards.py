@@ -15,7 +15,7 @@ from functools import partial
 
 import httpx
 
-from pipeline.ingest.http import SourceError, make_client
+from pipeline.http import HttpError, make_client
 from pipeline.ingest.run import BOARD_SOURCES, in_scope, parse_items
 
 WORKERS = 8
@@ -27,7 +27,7 @@ def probe(client: httpx.Client, slug: str) -> list[str]:
     for ats, (fetch, parse) in BOARD_SOURCES.items():
         try:
             items = fetch(client, slug)
-        except (SourceError, KeyError, TypeError):
+        except (HttpError, KeyError, TypeError):
             continue
         if not items:
             continue

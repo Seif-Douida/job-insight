@@ -2,7 +2,7 @@
 
     GET https://api.adzuna.com/v1/api/jobs/{market}/search/{page}
 
-The API key travels in the query string; pipeline.ingest.http keeps it out of logs and errors.
+The API key travels in the query string; pipeline.http keeps it out of logs and errors.
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from typing import Any
 
 import httpx
 
-from pipeline.ingest.http import get_json
+from pipeline.http import get_json
 from pipeline.ingest.posting import RawPosting
 from pipeline.ingest.text import html_to_text
 from pipeline.taxonomy import AdzunaMarket

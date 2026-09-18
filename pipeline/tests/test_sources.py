@@ -11,8 +11,8 @@ from typing import Any
 import httpx
 import pytest
 
+from pipeline.http import HttpError
 from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever
-from pipeline.ingest.http import SourceError
 from pipeline.taxonomy import adzuna_markets, get_country, jsearch_countries, load_roles
 
 GB_MARKET = get_country("GB").adzuna
@@ -169,7 +169,7 @@ def test_adzuna_fetch_searches_titles_for_the_role_phrase(
 
 
 def test_adzuna_errors_never_expose_credentials() -> None:
-    with failing_client(401) as client, pytest.raises(SourceError) as raised:
+    with failing_client(401) as client, pytest.raises(HttpError) as raised:
         adzuna.fetch_page(
             client,
             GB_MARKET,
