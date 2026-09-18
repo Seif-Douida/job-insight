@@ -11,7 +11,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from pipeline.ingest.text import normalize_company
 from pipeline.taxonomy import match_role, normalize_title, region_for_country
 
-Source = Literal["greenhouse", "lever", "ashby", "adzuna", "jsearch"]
+Source = Literal["greenhouse", "lever", "ashby", "smartrecruiters", "adzuna", "jsearch"]
 TextQuality = Literal["full", "excerpt"]
 
 AGGREGATOR_SOURCES = frozenset({"adzuna", "jsearch"})

@@ -37,3 +37,6 @@ out/
 .DS_Store
 Thumbs.db
 .claude/settings.local.json
+
+# Personal learning notes, not part of the project documentation
+LEARNING.md

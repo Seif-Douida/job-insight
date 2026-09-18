@@ -127,6 +127,9 @@ def test_get_country_by_code() -> None:
         ("Remote - US", "US"),
         ("NYC", "US"),
         ("Cambridge, MA", "US"),  # state code after a comma
+        ("Bellevue, Washington", "US"),  # state spelled out, city not in the list
+        ("Kansas City, Missouri", "US"),
+        ("Portland, Maine", "US"),
         ("United States", "US"),
         ("London, UK", "GB"),
         ("Belfast, Northern Ireland", "GB"),  # not Ireland: the earlier place wins
@@ -136,6 +139,7 @@ def test_get_country_by_code() -> None:
         ("Dubai, United Arab Emirates", "AE"),
         ("Riyadh, KSA", "SA"),
         ("Toronto, Canada", None),
+        ("Tbilisi, Georgia", None),  # the country, which is why Georgia is not a US alias
         ("Singapore", None),
         ("Latin America", None),
         ("Pune, IN", None),  # India, not Indiana

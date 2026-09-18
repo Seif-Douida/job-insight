@@ -36,7 +36,12 @@ regions:
                   salt lake city, raleigh, minneapolis, phoenix, san diego, detroit,
                   nashville, california, texas, massachusetts, illinois, colorado, florida,
                   virginia, north carolina, oregon, pennsylvania, utah, arizona, michigan,
-                  minnesota, ohio, new jersey, maryland, tennessee, washington state]
+                  minnesota, ohio, new jersey, maryland, tennessee, washington,
+                  # Georgia is left out: it is also a country. Atlanta covers the state.
+                  alabama, alaska, arkansas, connecticut, hawaii, idaho, iowa, kansas,
+                  kentucky, louisiana, maine, mississippi, missouri, montana, nebraska,
+                  nevada, new hampshire, new mexico, north dakota, oklahoma, rhode island,
+                  south carolina, south dakota, vermont, wisconsin, wyoming]
         adzuna: { market: us, currency: USD, pages: 3 }
 
   uk:

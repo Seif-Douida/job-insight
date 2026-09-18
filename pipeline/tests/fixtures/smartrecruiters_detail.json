@@ -1,0 +1,168 @@
+{
+ "id": "744000150217869",
+ "name": "AI Engineering Intern (October 2026 - August 2027)",
+ "uuid": "3ff454be-0d33-482b-b2c9-98fa22e28445",
+ "jobId": "d1bc1b99-cf6d-48e4-bf7d-0f002354d527",
+ "jobAdId": "dbbb1355-5824-456c-8938-37ea084b97b2",
+ "defaultJobAd": true,
+ "refNumber": "REF295980C",
+ "company": {
+  "name": "Bosch Group",
+  "identifier": "BoschGroup"
+ },
+ "location": {
+  "city": "Plymouth",
+  "region": "MI",
+  "country": "us",
+  "address": "15000 North Haggerty Road",
+  "postalCode": "48170",
+  "remote": false,
+  "hybrid": false,
+  "latitude": "42.3917364",
+  "longitude": "-83.43853899999999",
+  "fullLocation": "Plymouth, MI, United States"
+ },
+ "customField": [
+  {
+   "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+   "fieldLabel": "Contract type",
+   "valueId": "98487475-2a49-44f5-a615-408b525b3821",
+   "valueLabel": "Limited"
+  },
+  {
+   "fieldId": "5abe28e96d8bc56863dd9746",
+   "fieldLabel": "Tariff Area",
+   "valueId": "82f1dd4b-de9d-4134-9f1a-8d315be380ae",
+   "valueLabel": "United States Local Grades"
+  },
+  {
+   "fieldId": "586a997ee4b05fd937b86098",
+   "fieldLabel": "Legal Entity(acronym)",
+   "valueId": "RBUS",
+   "valueLabel": "RBUS"
+  },
+  {
+   "fieldId": "586a99b5e4b0daa006ae1079",
+   "fieldLabel": "Working Location",
+   "valueId": "Plymouth, MI",
+   "valueLabel": "Plymouth, MI"
+  },
+  {
+   "fieldId": "5abe295a6d8bc56863dd9747",
+   "fieldLabel": "Global Salary Level",
+   "valueId": "4319a4d2-6690-4a34-ac0f-9d8c126f1af2",
+   "valueLabel": "Junior/ Lower Tariff"
+  },
+  {
+   "fieldId": "69ca83a2489188782a1e9f87",
+   "fieldLabel": "Direct Or Indirect",
+   "valueId": "0d8b2ae9-fc67-447b-9165-201f59f71e90",
+   "valueLabel": "Direct"
+  },
+  {
+   "fieldId": "5abe29f9b60a5e486a2d9b1c",
+   "fieldLabel": "Working hours",
+   "valueId": "ff7c69f3-f89c-498c-9a0e-25f4dad301d4",
+   "valueLabel": "Full-time and/or part-time"
+  },
+  {
+   "fieldId": "586a9995e4b0daa006ae1078",
+   "fieldLabel": "Legal Entity",
+   "valueId": "Robert Bosch LLC",
+   "valueLabel": "Robert Bosch LLC"
+  },
+  {
+   "fieldId": "691cf1c93001c782b9560ab7",
+   "fieldLabel": "Division full name",
+   "valueId": "15bcc29d-90ec-4da5-9bc5-72863bc810d9",
+   "valueLabel": "Vehicle Motion"
+  },
+  {
+   "fieldId": "5abe27936d8bc56863dd9745",
+   "fieldLabel": "Position type",
+   "valueId": "f524b939-fe55-407b-a0b0-e8f4eec28997",
+   "valueLabel": "Intern"
+  },
+  {
+   "fieldId": "COUNTRY",
+   "fieldLabel": "Country/Region",
+   "valueId": "us",
+   "valueLabel": "United States"
+  },
+  {
+   "fieldId": "586a971ee4b0daa006ae1077",
+   "fieldLabel": "Brands",
+   "valueId": "default",
+   "valueLabel": "Bosch Group"
+  },
+  {
+   "fieldId": "586a996ce4b05fd937b86097",
+   "fieldLabel": "Working Country",
+   "valueId": "US",
+   "valueLabel": "United States"
+  },
+  {
+   "fieldId": "586a9b22e4b05fd937b8609a",
+   "fieldLabel": "Local Grade",
+   "valueId": "US_HOURLYRR",
+   "valueLabel": "US_HOURLYRR"
+  },
+  {
+   "fieldId": "586a99a5e4b05fd937b86099",
+   "fieldLabel": "Division",
+   "valueId": "CC",
+   "valueLabel": "VM"
+  }
+ ],
+ "releasedDate": "2026-09-17T21:19:20.172Z",
+ "creator": {
+  "name": "",
+  "avatarUrl": ""
+ },
+ "postingUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000150217869-ai-engineering-intern-october-2026-august-2027-",
+ "applyUrl": "https://jobs.smartrecruiters.com/BoschGroup/744000150217869-ai-engineering-intern-october-2026-august-2027-?oga=true",
+ "referralUrl": "https://jobs.smartrecruiters.com/external-referrals/company/BoschGroup/publication/3ff454be-0d33-482b-b2c9-98fa22e28445?dcr_ci=BoschGroup",
+ "jobAd": {
+  "sections": {
+   "companyDescription": {
+    "title": "Company Description",
+    "text": "<p><strong>We Are Bosch.</strong></p><p>At Bosch, we shape the future by inventing high-quality technologies and services that spark enthusiasm and enrich people\u2019s lives. Our areas of activity are every bit as diverse as our outstanding Bosch teams around the world. Their creativity is the key to innovation through connected living, mobility, or industry.</p><p>Let\u2019s grow together, enjoy more, and inspire each other.&#xa0;<strong>Work #LikeABosch&#xa0;</strong></p><ul><li><strong>Reinvent yourself:&#xa0;</strong>At Bosch, you will evolve.</li><li><strong>Discover new directions:</strong>&#xa0;At Bosch, you will find your place.</li><li><strong>Balance your life:</strong>&#xa0;At Bosch, your job matches your lifestyle.</li><li><strong>Celebrate success:</strong>&#xa0;At Bosch, we celebrate you.</li><li><strong>Be yourself:</strong>&#xa0;At Bosch, we value values.&#xa0;</li><li><strong>Shape tomorrow:</strong>&#xa0;At Bosch, you change lives.</li></ul><p>Do you want beneficial technologies being shaped by your ideas? Whether in the areas of mobility solutions, consumer goods, industrial technology or energy and building technology - with us, you will have the chance to improve quality of life all across the globe. Welcome to Bosch.</p>"
+   },
+   "jobDescription": {
+    "title": "Job Description",
+    "text": "<p>As an AI Engineering Intern, you will work directly with engineers to understand technical challenges, translate them into AI use cases, and iterate on solutions based on user feedback. A few additional responsibilities will include:&#xa0;</p><ul><li>Developing AI-powered tools, agents, and workflows to support engineering and product development activities for braking and steering systems in the Vehicle Motion division.</li><li>Identifying high-value opportunities to apply generative AI, machine learning, automation, and agentic workflows within existing engineering processes.</li><li>Prototype and evaluate new AI concepts quickly, then mature successful concepts into reliable tools that can be used by engineering teams.</li><li>Applying AI to embedded software development activities, including areas such as code generation, code analysis, debugging support, test development, requirements analysis, and engineering documentation.</li><li>Developing AI-enabled solutions for engineering analysis, including processing, interpreting, and summarizing technical data and test results.</li><li>Building workflows that combine AI models with engineering tools, data sources, scripts, APIs, and internal systems.</li><li>Explore the use of AI agents to automate multi-step engineering tasks and improve engineer productivity.</li><li>Supporting development of retrieval-augmented generation, knowledge assistants, and other AI solutions that allow engineers to more effectively access and use technical information.</li><li>Evaluating&#xa0;the accuracy, reliability, and limitations of AI-generated outputs in engineering applications.</li><li>Researching emerging AI technologies and determine their applicability to automotive engineering and embedded product development.</li><li>Documenting developed solutions, architecture, lessons learned, and recommended practices for broader adoption within the organization.</li><li>Taking&#xa0;ownership of AI projects from initial problem definition and proof-of-concept development through validation and deployment.</li><li>Improving&#xa0;data accessibility by developing scalable solutions to aggregate, structure, store, and expose engineering and business data for analysis, reporting, and decision-making.</li></ul>"
+   },
+   "qualifications": {
+    "title": "Qualifications",
+    "text": "<p><strong>&#xa0;Minimum Qualifications:</strong></p><ul><li>Currently pursuing a Bachelor\u2019s or Master\u2019s degree in Computer Science, Computer Engineering, Electrical Engineering, Software Engineering, Artificial Intelligence, Data Science, or a related technical field with at least one semester completed.</li><li>Minimum of overall GPA of at least 3.0</li><li>Must be a minimum of 18 years of age</li><li>Strong programming skills, preferably with experience in Python and familiarity with software development best practices.</li><li>Hands-on interest or experience with generative AI, large language models, machine learning, AI agents, or AI-enabled software development.</li><li>Experience developing applications using APIs, automation frameworks, or software integrations.</li><li>Interest in automotive systems, embedded software, controls, braking systems, steering systems, or safety-critical product development.</li><li>Familiarity with embedded software development, C/C++, MATLAB/Simulink, data analysis, or automotive development tools is a plus.</li><li>Experience with AI development concepts such as prompt engineering, retrieval-augmented generation, vector databases, tool calling, agentic workflows, or model evaluation is a plus.</li></ul><p><strong>Availability</strong></p><ul><li><strong>Fall 2026:</strong>&#xa0;Part-time internship while attending school.</li><li><strong>Winter 2027:</strong>&#xa0;Continue part-time while attending school.</li><li><strong>Summer 2027:</strong>&#xa0;Transition to a full-time after finals.</li><li>The internship will conclude prior to the start of the student\u2019s next academic term in Fall 2027.</li><li>The extended internship structure is intended to allow the student to move beyond short-term experimentation, develop a deeper understanding of braking and steering product development, and take meaningful AI solutions from concept through implementation.</li></ul>"
+   },
+   "additionalInformation": {
+    "title": "Additional Information",
+    "text": "<p>All your information will be kept confidential according to EEO guidelines.</p><p>By choice, we are committed to a diverse workforce - EOE/Protected Veteran/Disabled.</p><p>BOSCH is a proud supporter of STEM (Science, Technology, Engineering &amp; Mathematics) Initiatives</p><ul><li>FIRST Robotics (For Inspiration and Recognition of Science and Technology)</li><li>AWIM (A World In Motion)</li></ul><p><strong>Indefinite U.S. work authorized individuals only.&#xa0; Future sponsorship for work authorization unavailable.</strong></p>"
+   }
+  }
+ },
+ "active": true,
+ "visibility": "PUBLIC",
+ "industry": {
+  "id": "mechanical_engineering",
+  "label": "Mechanical Or Industrial Engineering"
+ },
+ "function": {
+  "id": "engineering",
+  "label": "Engineering"
+ },
+ "experienceLevel": {
+  "id": "internship",
+  "label": "Internship"
+ },
+ "typeOfEmployment": {
+  "id": "intern",
+  "label": "Intern"
+ },
+ "language": {
+  "code": "en",
+  "label": "English",
+  "labelNative": "English (US)"
+ }
+}

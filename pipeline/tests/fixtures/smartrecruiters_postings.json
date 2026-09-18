@@ -1,0 +1,714 @@
+{
+ "offset": 0,
+ "limit": 100,
+ "totalFound": 5,
+ "content": [
+  {
+   "id": "744000150217869",
+   "name": "AI Engineering Intern (October 2026 - August 2027)",
+   "uuid": "3ff454be-0d33-482b-b2c9-98fa22e28445",
+   "jobAdId": "dbbb1355-5824-456c-8938-37ea084b97b2",
+   "defaultJobAd": true,
+   "refNumber": "REF295980C",
+   "company": {
+    "identifier": "BoschGroup",
+    "name": "Bosch Group"
+   },
+   "releasedDate": "2026-09-17T21:19:20.172Z",
+   "location": {
+    "city": "Plymouth",
+    "region": "MI",
+    "country": "us",
+    "address": "15000 North Haggerty Road",
+    "postalCode": "48170",
+    "remote": false,
+    "hybrid": false,
+    "latitude": "42.3917364",
+    "longitude": "-83.43853899999999",
+    "fullLocation": "Plymouth, MI, United States"
+   },
+   "industry": {
+    "id": "mechanical_engineering",
+    "label": "Mechanical Or Industrial Engineering"
+   },
+   "department": {},
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "intern",
+    "label": "Intern"
+   },
+   "experienceLevel": {
+    "id": "internship",
+    "label": "Internship"
+   },
+   "customField": [
+    {
+     "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+     "fieldLabel": "Contract type",
+     "valueId": "98487475-2a49-44f5-a615-408b525b3821",
+     "valueLabel": "Limited"
+    },
+    {
+     "fieldId": "5abe28e96d8bc56863dd9746",
+     "fieldLabel": "Tariff Area",
+     "valueId": "82f1dd4b-de9d-4134-9f1a-8d315be380ae",
+     "valueLabel": "United States Local Grades"
+    },
+    {
+     "fieldId": "586a997ee4b05fd937b86098",
+     "fieldLabel": "Legal Entity(acronym)",
+     "valueId": "RBUS",
+     "valueLabel": "RBUS"
+    },
+    {
+     "fieldId": "586a99b5e4b0daa006ae1079",
+     "fieldLabel": "Working Location",
+     "valueId": "Plymouth, MI",
+     "valueLabel": "Plymouth, MI"
+    },
+    {
+     "fieldId": "5abe295a6d8bc56863dd9747",
+     "fieldLabel": "Global Salary Level",
+     "valueId": "4319a4d2-6690-4a34-ac0f-9d8c126f1af2",
+     "valueLabel": "Junior/ Lower Tariff"
+    },
+    {
+     "fieldId": "69ca83a2489188782a1e9f87",
+     "fieldLabel": "Direct Or Indirect",
+     "valueId": "0d8b2ae9-fc67-447b-9165-201f59f71e90",
+     "valueLabel": "Direct"
+    },
+    {
+     "fieldId": "5abe29f9b60a5e486a2d9b1c",
+     "fieldLabel": "Working hours",
+     "valueId": "ff7c69f3-f89c-498c-9a0e-25f4dad301d4",
+     "valueLabel": "Full-time and/or part-time"
+    },
+    {
+     "fieldId": "586a9995e4b0daa006ae1078",
+     "fieldLabel": "Legal Entity",
+     "valueId": "Robert Bosch LLC",
+     "valueLabel": "Robert Bosch LLC"
+    },
+    {
+     "fieldId": "691cf1c93001c782b9560ab7",
+     "fieldLabel": "Division full name",
+     "valueId": "15bcc29d-90ec-4da5-9bc5-72863bc810d9",
+     "valueLabel": "Vehicle Motion"
+    },
+    {
+     "fieldId": "5abe27936d8bc56863dd9745",
+     "fieldLabel": "Position type",
+     "valueId": "f524b939-fe55-407b-a0b0-e8f4eec28997",
+     "valueLabel": "Intern"
+    },
+    {
+     "fieldId": "COUNTRY",
+     "fieldLabel": "Country/Region",
+     "valueId": "us",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a971ee4b0daa006ae1077",
+     "fieldLabel": "Brands",
+     "valueId": "default",
+     "valueLabel": "Bosch Group"
+    },
+    {
+     "fieldId": "586a996ce4b05fd937b86097",
+     "fieldLabel": "Working Country",
+     "valueId": "US",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a9b22e4b05fd937b8609a",
+     "fieldLabel": "Local Grade",
+     "valueId": "US_HOURLYRR",
+     "valueLabel": "US_HOURLYRR"
+    },
+    {
+     "fieldId": "586a99a5e4b05fd937b86099",
+     "fieldLabel": "Division",
+     "valueId": "CC",
+     "valueLabel": "VM"
+    }
+   ],
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/744000150217869",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000150214477",
+   "name": "Technical Manager \u2013 AI Software and Transformation",
+   "uuid": "39771c1d-0c50-4784-aaa2-fd3966afcd03",
+   "jobAdId": "d867db79-2f5d-4cd4-959c-889a7ce1b468",
+   "defaultJobAd": true,
+   "refNumber": "REF296006H",
+   "company": {
+    "identifier": "BoschGroup",
+    "name": "Bosch Group"
+   },
+   "releasedDate": "2026-09-17T20:53:57.773Z",
+   "location": {
+    "city": "Plymouth",
+    "region": "Michigan",
+    "country": "us",
+    "address": "15000 N Haggerty Rd",
+    "postalCode": "48170",
+    "remote": false,
+    "hybrid": true,
+    "hybridDescription": "Expectation to be in office for 60% in a work week",
+    "fullLocation": "Plymouth, Michigan, United States"
+   },
+   "industry": {
+    "id": "computer_software",
+    "label": "Computer Software"
+   },
+   "department": {},
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "mid_senior_level",
+    "label": "Mid-Senior Level"
+   },
+   "customField": [
+    {
+     "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+     "fieldLabel": "Contract type",
+     "valueId": "1e46492b-d24f-460c-b095-38cf08a778d8",
+     "valueLabel": "Unlimited"
+    },
+    {
+     "fieldId": "5abe28e96d8bc56863dd9746",
+     "fieldLabel": "Tariff Area",
+     "valueId": "82f1dd4b-de9d-4134-9f1a-8d315be380ae",
+     "valueLabel": "United States Local Grades"
+    },
+    {
+     "fieldId": "586a997ee4b05fd937b86098",
+     "fieldLabel": "Legal Entity(acronym)",
+     "valueId": "RBUS",
+     "valueLabel": "RBUS"
+    },
+    {
+     "fieldId": "586a99b5e4b0daa006ae1079",
+     "fieldLabel": "Working Location",
+     "valueId": "Plymouth, MI",
+     "valueLabel": "Plymouth, MI"
+    },
+    {
+     "fieldId": "5abe295a6d8bc56863dd9747",
+     "fieldLabel": "Global Salary Level",
+     "valueId": "4eb55129-0528-4879-b132-1d17e25df928",
+     "valueLabel": "Senior/ Upper Tariff"
+    },
+    {
+     "fieldId": "69ca83a2489188782a1e9f87",
+     "fieldLabel": "Direct Or Indirect",
+     "valueId": "1aefbf4c-c10a-422e-a975-a504a7117792",
+     "valueLabel": "Indirect"
+    },
+    {
+     "fieldId": "5abe29f9b60a5e486a2d9b1c",
+     "fieldLabel": "Working hours",
+     "valueId": "60756b3e-dbab-4353-ac3a-0064d2bb27d8",
+     "valueLabel": "Full-time"
+    },
+    {
+     "fieldId": "586a9995e4b0daa006ae1078",
+     "fieldLabel": "Legal Entity",
+     "valueId": "Robert Bosch LLC",
+     "valueLabel": "Robert Bosch LLC"
+    },
+    {
+     "fieldId": "691cf1c93001c782b9560ab7",
+     "fieldLabel": "Division full name",
+     "valueId": "da93a2c1-12f5-4efe-83ef-39cf1f18e8b6",
+     "valueLabel": "Cross-Domain Computing Solutions"
+    },
+    {
+     "fieldId": "5abe27936d8bc56863dd9745",
+     "fieldLabel": "Position type",
+     "valueId": "c7b4da31-6f38-405a-b2e8-08a76e3c3f2c",
+     "valueLabel": "Professional"
+    },
+    {
+     "fieldId": "COUNTRY",
+     "fieldLabel": "Country/Region",
+     "valueId": "us",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a971ee4b0daa006ae1077",
+     "fieldLabel": "Brands",
+     "valueId": "default",
+     "valueLabel": "Bosch Group"
+    },
+    {
+     "fieldId": "586a996ce4b05fd937b86097",
+     "fieldLabel": "Working Country",
+     "valueId": "US",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a9b22e4b05fd937b8609a",
+     "fieldLabel": "Local Grade",
+     "valueId": "US_E4",
+     "valueLabel": "US_E4"
+    },
+    {
+     "fieldId": "586a99a5e4b05fd937b86099",
+     "fieldLabel": "Division",
+     "valueId": "CM",
+     "valueLabel": "XC"
+    }
+   ],
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/744000150214477",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000150371149",
+   "name": "Project Engineer",
+   "uuid": "42584556-6a06-445f-b7fd-c6c7019e98ee",
+   "jobAdId": "65a3f1e2-ab7b-49f5-9266-8b9513dda574",
+   "defaultJobAd": true,
+   "refNumber": "REF295317Q",
+   "company": {
+    "identifier": "BoschGroup",
+    "name": "Bosch Group"
+   },
+   "releasedDate": "2026-09-18T13:15:38.239Z",
+   "location": {
+    "city": "Grove City",
+    "region": "OH",
+    "country": "us",
+    "address": "3940 Gantz Road",
+    "postalCode": "43123",
+    "remote": false,
+    "hybrid": true,
+    "latitude": "39.8821727",
+    "longitude": "-83.0542711",
+    "fullLocation": "Grove City, OH, United States"
+   },
+   "industry": {
+    "id": "mechanical_engineering",
+    "label": "Mechanical Or Industrial Engineering"
+   },
+   "department": {},
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "mid_senior_level",
+    "label": "Mid-Senior Level"
+   },
+   "customField": [
+    {
+     "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+     "fieldLabel": "Contract type",
+     "valueId": "1e46492b-d24f-460c-b095-38cf08a778d8",
+     "valueLabel": "Unlimited"
+    },
+    {
+     "fieldId": "5abe28e96d8bc56863dd9746",
+     "fieldLabel": "Tariff Area",
+     "valueId": "82f1dd4b-de9d-4134-9f1a-8d315be380ae",
+     "valueLabel": "United States Local Grades"
+    },
+    {
+     "fieldId": "586a997ee4b05fd937b86098",
+     "fieldLabel": "Legal Entity(acronym)",
+     "valueId": "DCUS",
+     "valueLabel": "DCUS"
+    },
+    {
+     "fieldId": "586a99b5e4b0daa006ae1079",
+     "fieldLabel": "Working Location",
+     "valueId": "Grove City, OH",
+     "valueLabel": "Grove City, OH"
+    },
+    {
+     "fieldId": "5abe295a6d8bc56863dd9747",
+     "fieldLabel": "Global Salary Level",
+     "valueId": "427b1359-5057-4375-a2ae-6c649782296d",
+     "valueLabel": "Experienced/ Middle Tariff"
+    },
+    {
+     "fieldId": "69ca83a2489188782a1e9f87",
+     "fieldLabel": "Direct Or Indirect",
+     "valueId": "1aefbf4c-c10a-422e-a975-a504a7117792",
+     "valueLabel": "Indirect"
+    },
+    {
+     "fieldId": "5abe29f9b60a5e486a2d9b1c",
+     "fieldLabel": "Working hours",
+     "valueId": "60756b3e-dbab-4353-ac3a-0064d2bb27d8",
+     "valueLabel": "Full-time"
+    },
+    {
+     "fieldId": "586a9995e4b0daa006ae1078",
+     "fieldLabel": "Legal Entity",
+     "valueId": "Bosch Rexroth Corporation",
+     "valueLabel": "Bosch Rexroth Corporation"
+    },
+    {
+     "fieldId": "691cf1c93001c782b9560ab7",
+     "fieldLabel": "Division full name",
+     "valueId": "d3ef257d-1f63-457f-b72f-8caac2ddc992",
+     "valueLabel": "Drive and Control Technology"
+    },
+    {
+     "fieldId": "5abe27936d8bc56863dd9745",
+     "fieldLabel": "Position type",
+     "valueId": "c7b4da31-6f38-405a-b2e8-08a76e3c3f2c",
+     "valueLabel": "Professional"
+    },
+    {
+     "fieldId": "COUNTRY",
+     "fieldLabel": "Country/Region",
+     "valueId": "us",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a971ee4b0daa006ae1077",
+     "fieldLabel": "Brands",
+     "valueId": "90a22e5e-86f8-4308-9065-7cf8c4bd42c6",
+     "valueLabel": "H\u00e4gglunds"
+    },
+    {
+     "fieldId": "586a996ce4b05fd937b86097",
+     "fieldLabel": "Working Country",
+     "valueId": "US",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a9b22e4b05fd937b8609a",
+     "fieldLabel": "Local Grade",
+     "valueId": "US_E3",
+     "valueLabel": "US_E3"
+    },
+    {
+     "fieldId": "586a99a5e4b05fd937b86099",
+     "fieldLabel": "Division",
+     "valueId": "DC",
+     "valueLabel": "DC"
+    }
+   ],
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/744000150371149",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000150368199",
+   "name": "Maintenance Technician 3rd shift",
+   "uuid": "7be9c21a-3df6-416d-a84b-4efda3578d97",
+   "jobAdId": "ced42164-70ba-4ad7-acfa-2a69c7feec78",
+   "defaultJobAd": true,
+   "refNumber": "REF296486C",
+   "company": {
+    "identifier": "BoschGroup",
+    "name": "Bosch Group"
+   },
+   "releasedDate": "2026-09-18T13:03:07.324Z",
+   "location": {
+    "city": "Lincolnton",
+    "region": "NC",
+    "country": "us",
+    "address": "1980 Indian Creek Road",
+    "postalCode": "28092",
+    "remote": false,
+    "hybrid": false,
+    "latitude": "35.4265507",
+    "longitude": "-81.27127809999999",
+    "fullLocation": "Lincolnton, NC, United States"
+   },
+   "industry": {
+    "id": "mechanical_engineering",
+    "label": "Mechanical Or Industrial Engineering"
+   },
+   "department": {},
+   "function": {
+    "id": "manufacturing",
+    "label": "Manufacturing"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "associate",
+    "label": "Associate"
+   },
+   "customField": [
+    {
+     "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+     "fieldLabel": "Contract type",
+     "valueId": "1e46492b-d24f-460c-b095-38cf08a778d8",
+     "valueLabel": "Unlimited"
+    },
+    {
+     "fieldId": "5abe28e96d8bc56863dd9746",
+     "fieldLabel": "Tariff Area",
+     "valueId": "82f1dd4b-de9d-4134-9f1a-8d315be380ae",
+     "valueLabel": "United States Local Grades"
+    },
+    {
+     "fieldId": "586a997ee4b05fd937b86098",
+     "fieldLabel": "Legal Entity(acronym)",
+     "valueId": "PTNA",
+     "valueLabel": "PTNA"
+    },
+    {
+     "fieldId": "586a99b5e4b0daa006ae1079",
+     "fieldLabel": "Working Location",
+     "valueId": "Lincolnton, NC",
+     "valueLabel": "Lincolnton, NC"
+    },
+    {
+     "fieldId": "5abe295a6d8bc56863dd9747",
+     "fieldLabel": "Global Salary Level",
+     "valueId": "4319a4d2-6690-4a34-ac0f-9d8c126f1af2",
+     "valueLabel": "Junior/ Lower Tariff"
+    },
+    {
+     "fieldId": "69ca83a2489188782a1e9f87",
+     "fieldLabel": "Direct Or Indirect",
+     "valueId": "0d8b2ae9-fc67-447b-9165-201f59f71e90",
+     "valueLabel": "Direct"
+    },
+    {
+     "fieldId": "5abe29f9b60a5e486a2d9b1c",
+     "fieldLabel": "Working hours",
+     "valueId": "60756b3e-dbab-4353-ac3a-0064d2bb27d8",
+     "valueLabel": "Full-time"
+    },
+    {
+     "fieldId": "586a9995e4b0daa006ae1078",
+     "fieldLabel": "Legal Entity",
+     "valueId": "Robert Bosch Tool Corporation",
+     "valueLabel": "Robert Bosch Tool Corporation"
+    },
+    {
+     "fieldId": "691cf1c93001c782b9560ab7",
+     "fieldLabel": "Division full name",
+     "valueId": "d46bc602-375e-4c5b-8773-170f49339203",
+     "valueLabel": "Power Tools"
+    },
+    {
+     "fieldId": "5abe27936d8bc56863dd9745",
+     "fieldLabel": "Position type",
+     "valueId": "e1a146c4-6212-4f0d-b2f6-060dd801354f",
+     "valueLabel": "Blue-collar workers"
+    },
+    {
+     "fieldId": "COUNTRY",
+     "fieldLabel": "Country/Region",
+     "valueId": "us",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a971ee4b0daa006ae1077",
+     "fieldLabel": "Brands",
+     "valueId": "default",
+     "valueLabel": "Bosch Group"
+    },
+    {
+     "fieldId": "586a996ce4b05fd937b86097",
+     "fieldLabel": "Working Country",
+     "valueId": "US",
+     "valueLabel": "United States"
+    },
+    {
+     "fieldId": "586a9b22e4b05fd937b8609a",
+     "fieldLabel": "Local Grade",
+     "valueId": "US_HOURLYRR",
+     "valueLabel": "US_HOURLYRR"
+    },
+    {
+     "fieldId": "586a99a5e4b05fd937b86099",
+     "fieldLabel": "Division",
+     "valueId": "PT",
+     "valueLabel": "PT"
+    }
+   ],
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/744000150368199",
+   "creator": {
+    "name": "Paige Pendleton (LctP/HRL)"
+   },
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000150283398",
+   "name": "Azure Data Engineer",
+   "uuid": "75626a2a-dfc0-4796-a316-115f2c720561",
+   "jobAdId": "90edc3ee-8811-41b9-bbc8-cf05bf6abe42",
+   "defaultJobAd": true,
+   "refNumber": "REF295775D",
+   "company": {
+    "identifier": "BoschGroup",
+    "name": "Bosch Group"
+   },
+   "releasedDate": "2026-09-18T06:14:00.945Z",
+   "location": {
+    "city": "coimbatore",
+    "country": "in",
+    "address": "kgisl infrastructure private limited,sez , keeranatham village,   saravanampatti,",
+    "postalCode": "641035.",
+    "remote": false,
+    "hybrid": false,
+    "fullLocation": "coimbatore, , India"
+   },
+   "industry": {
+    "id": "computer_software",
+    "label": "Computer Software"
+   },
+   "department": {},
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "associate",
+    "label": "Associate"
+   },
+   "customField": [
+    {
+     "fieldId": "5abe2a4ab60a5e486a2d9b1d",
+     "fieldLabel": "Contract type",
+     "valueId": "1e46492b-d24f-460c-b095-38cf08a778d8",
+     "valueLabel": "Unlimited"
+    },
+    {
+     "fieldId": "5abe28e96d8bc56863dd9746",
+     "fieldLabel": "Tariff Area",
+     "valueId": "2473485f-051f-4fbc-b802-f3620b73998c",
+     "valueLabel": "India Local Grades"
+    },
+    {
+     "fieldId": "586a997ee4b05fd937b86098",
+     "fieldLabel": "Legal Entity(acronym)",
+     "valueId": "RBEI",
+     "valueLabel": "BGSW"
+    },
+    {
+     "fieldId": "586a99b5e4b0daa006ae1079",
+     "fieldLabel": "Working Location",
+     "valueId": "Coimbatore",
+     "valueLabel": "Coimbatore"
+    },
+    {
+     "fieldId": "5abe295a6d8bc56863dd9747",
+     "fieldLabel": "Global Salary Level",
+     "valueId": "427b1359-5057-4375-a2ae-6c649782296d",
+     "valueLabel": "Experienced/ Middle Tariff"
+    },
+    {
+     "fieldId": "69ca83a2489188782a1e9f87",
+     "fieldLabel": "Direct Or Indirect",
+     "valueId": "1aefbf4c-c10a-422e-a975-a504a7117792",
+     "valueLabel": "Indirect"
+    },
+    {
+     "fieldId": "5abe29f9b60a5e486a2d9b1c",
+     "fieldLabel": "Working hours",
+     "valueId": "60756b3e-dbab-4353-ac3a-0064d2bb27d8",
+     "valueLabel": "Full-time"
+    },
+    {
+     "fieldId": "586a9995e4b0daa006ae1078",
+     "fieldLabel": "Legal Entity",
+     "valueId": "Robert Bosch Engineering and Business Solutions Private Ltd.",
+     "valueLabel": "Bosch Global Software Technologies Private Limited"
+    },
+    {
+     "fieldId": "691cf1c93001c782b9560ab7",
+     "fieldLabel": "Division full name",
+     "valueId": "2c84b9fd-f59a-4d8f-8666-3d3e8b6d5cef",
+     "valueLabel": "BGSW"
+    },
+    {
+     "fieldId": "5abe27936d8bc56863dd9745",
+     "fieldLabel": "Position type",
+     "valueId": "c7b4da31-6f38-405a-b2e8-08a76e3c3f2c",
+     "valueLabel": "Professional"
+    },
+    {
+     "fieldId": "COUNTRY",
+     "fieldLabel": "Country/Region",
+     "valueId": "in",
+     "valueLabel": "India"
+    },
+    {
+     "fieldId": "586a971ee4b0daa006ae1077",
+     "fieldLabel": "Brands",
+     "valueId": "default",
+     "valueLabel": "Bosch Group"
+    },
+    {
+     "fieldId": "586a996ce4b05fd937b86097",
+     "fieldLabel": "Working Country",
+     "valueId": "IN",
+     "valueLabel": "India"
+    },
+    {
+     "fieldId": "586a9b22e4b05fd937b8609a",
+     "fieldLabel": "Local Grade",
+     "valueId": "IN_RBEI_51",
+     "valueLabel": "IN_RBEI_51"
+    },
+    {
+     "fieldId": "586a99a5e4b05fd937b86099",
+     "fieldLabel": "Division",
+     "valueId": "RBEI",
+     "valueLabel": "BGSW"
+    }
+   ],
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/BoschGroup/postings/744000150283398",
+   "creator": {
+    "name": "Subramaniam Sornam (GS/HRS22-IN)"
+   },
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  }
+ ]
+}

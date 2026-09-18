@@ -7,7 +7,7 @@ from functools import cache
 
 from pipeline.taxonomy._files import read_yaml
 
-BOARD_TYPES = ("greenhouse", "lever", "ashby")
+BOARD_TYPES = ("greenhouse", "lever", "ashby", "smartrecruiters")
 
 
 @dataclass(frozen=True)

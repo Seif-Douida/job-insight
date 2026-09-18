@@ -16,9 +16,14 @@ from functools import partial
 import httpx
 
 from pipeline.http import HttpError, make_client
+from pipeline.ingest import smartrecruiters
 from pipeline.ingest.run import BOARD_SOURCES, in_scope, parse_items
 
 WORKERS = 8
+
+SURVEYS = {"smartrecruiters": smartrecruiters.survey}
+"""Boards that can be counted without downloading every description. Fetching a
+SmartRecruiters board costs one request per posting, which is far too much for a probe."""
 
 
 def probe(client: httpx.Client, slug: str) -> list[str]:
@@ -26,14 +31,17 @@ def probe(client: httpx.Client, slug: str) -> list[str]:
     lines = []
     for ats, (fetch, parse) in BOARD_SOURCES.items():
         try:
-            items = fetch(client, slug)
+            if ats in SURVEYS:
+                listed, kept = SURVEYS[ats](client, slug)
+            else:
+                items = fetch(client, slug)
+                postings, _ = parse_items(items, partial(parse, company=slug))
+                listed = len(items)
+                kept = sum(1 for posting in postings if in_scope(posting))
         except (HttpError, KeyError, TypeError):
             continue
-        if not items:
-            continue
-        postings, _ = parse_items(items, partial(parse, company=slug))
-        kept = sum(1 for posting in postings if in_scope(posting))
-        lines.append(f"{slug:<28} {ats:<11} listed={len(items):<5} in_scope={kept}")
+        if listed:
+            lines.append(f"{slug:<28} {ats:<11} listed={listed:<5} in_scope={kept}")
     return lines
 
 

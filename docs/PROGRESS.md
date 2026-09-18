@@ -17,6 +17,64 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 
 ---
 
+## 2026-09-18 — Coverage: SmartRecruiters and a bigger company list
+
+Between phases 3 and 4, because building marts on a knowingly biased sample would mean
+re-cutting them later.
+
+### Built
+
+- `pipeline/ingest/smartrecruiters.py` — a fourth ATS source. Its list endpoint carries no
+  description, so `fetch_postings` filters on the title and ISO country the list *does*
+  carry, and spends a second request only on survivors: about 100 detail calls on a
+  4,800-posting board instead of 4,800. `companyDescription` is excluded from the stored
+  text, since that is the "About us" blurb that produced empty extractions in phase 3.
+- `survey()` on the same module, used by `probe_boards`: counting a board's in-scope
+  postings needs no descriptions, so probing costs a few requests instead of one per job.
+- `companies.yaml` grown from 127 to 158 boards after probing 172 candidates.
+- US state names completed in `regions.yaml` ("Bellevue, Washington" resolved to nothing
+  while "Seattle, Washington" resolved, because only some states were listed).
+
+### Verified
+
+```text
+$ pytest -q
+174 passed
+
+Airflow ingest_ats (manual__2026-09-18T15:49): 161 task instances, 160 success, 1 skipped
+  (the failure watcher, correctly skipped because nothing failed)
+
+Neon after the run:
+  source            canonical   full text
+  adzuna              2,041           0
+  greenhouse          1,150       1,150
+  ashby                 664         664
+  smartrecruiters       173         170
+  jsearch               154          65
+  lever                  50          50
+
+  5,339 postings stored, 2,188 with full text (was 1,778)
+```
+
+### Notes
+
+- **The new source found companies the others could not.** Wise (43 in-scope postings) and
+  Delivery Hero (18) publish on SmartRecruiters and were invisible to us before. Adding the
+  source to `BOARD_SOURCES` put it into `probe_boards` automatically.
+- Bosch alone yields 101 postings, 99 of them full text averaging 3,341 characters, spread
+  across PT, DE, US and RO — the EU coverage the ATS list was thinnest on.
+- **Probe hit rate is ~40%** (69 boards from 172 candidates), and a board averages ~13.7
+  in-scope postings. Growing the corpus further is mechanical: more candidate names.
+- Postings are not all in English now. Skill names largely survive
+  ("Python", "Kubernetes"); descriptive skills may not. Recorded in methodology.md as a
+  limit rather than assumed away.
+
+### Next
+
+Phase 4 — modelling, on a corpus of 2,188 full-text postings rather than 1,778.
+
+---
+
 ## 2026-09-18 — Phase 3: Extraction (done)
 
 ### Built

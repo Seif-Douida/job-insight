@@ -12,7 +12,7 @@ import httpx
 import pytest
 
 from pipeline.http import HttpError
-from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever
+from pipeline.ingest import adzuna, ashby, greenhouse, jsearch, lever, smartrecruiters
 from pipeline.taxonomy import adzuna_markets, get_country, jsearch_countries, load_roles
 
 GB_MARKET = get_country("GB").adzuna
@@ -229,3 +229,70 @@ def test_adzuna_config_fits_the_free_monthly_quota() -> None:
 def test_jsearch_config_fits_the_free_monthly_quota() -> None:
     calls_per_run = len(load_roles()) * len(jsearch_countries())
     assert calls_per_run * WEEKLY_RUNS_PER_MONTH <= jsearch.MONTHLY_CALL_LIMIT * 0.8
+
+
+# --- SmartRecruiters -------------------------------------------------------------------
+
+
+def two_stage_client(listing: Any, detail: Any, requests: list[httpx.Request]) -> httpx.Client:
+    """Answers the list endpoint with `listing` and any posting URL with `detail`."""
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        requests.append(request)
+        is_detail = not request.url.path.endswith("/postings")
+        return httpx.Response(200, json=detail if is_detail else listing)
+
+    return httpx.Client(transport=httpx.MockTransport(handler))
+
+
+def test_smartrecruiters_only_fetches_details_worth_having(
+    load_fixture: Callable[[str], Any],
+) -> None:
+    """The list carries the title and country, so out-of-scope postings cost no request."""
+    requests: list[httpx.Request] = []
+    listing = load_fixture("smartrecruiters_postings.json")
+    with two_stage_client(listing, load_fixture("smartrecruiters_detail.json"), requests) as client:
+        postings = smartrecruiters.fetch_postings(client, "BoschGroup")
+
+    details = [r for r in requests if not r.url.path.endswith("/postings")]
+    assert len(details) == 2, "two US postings have a relevant title; the other three do not"
+    assert len(postings) == 2
+    titles = [item["name"] for item in listing["content"]]
+    assert "Azure Data Engineer" in titles, "a relevant title outside the curated regions"
+    assert not any("Azure Data Engineer" in str(request.url) for request in details)
+
+
+def test_smartrecruiters_parse_reads_detail(load_fixture: Callable[[str], Any]) -> None:
+    posting = smartrecruiters.parse_posting(
+        load_fixture("smartrecruiters_detail.json"), "Bosch Group"
+    )
+    assert posting.source == "smartrecruiters"
+    assert posting.country == "US"
+    assert posting.company == "Bosch Group"
+    assert posting.url.startswith("https://jobs.smartrecruiters.com/")
+    assert posting.description_text and "<p>" not in posting.description_text
+
+
+def test_smartrecruiters_leaves_out_the_about_us_blurb(
+    load_fixture: Callable[[str], Any],
+) -> None:
+    """Company boilerplate names no skills, so it is not part of the text we extract from."""
+    detail = load_fixture("smartrecruiters_detail.json")
+    detail["jobAd"]["sections"]["companyDescription"] = {"text": "<p>UNIQUE-BLURB-MARKER</p>"}
+
+    posting = smartrecruiters.parse_posting(detail, "Bosch Group")
+
+    assert "UNIQUE-BLURB-MARKER" not in posting.description_text
+
+
+def test_smartrecruiters_pages_until_everything_is_read() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        offset = int(request.url.params.get("offset", 0))
+        page = [
+            {"id": str(offset + n), "name": "Sales Manager", "location": {"country": "us"}}
+            for n in range(smartrecruiters.PAGE_SIZE)
+        ]
+        return httpx.Response(200, json={"totalFound": 250, "content": page[: 250 - offset]})
+
+    with httpx.Client(transport=httpx.MockTransport(handler)) as client:
+        assert smartrecruiters.fetch_postings(client, "big") == []  # none are in scope
