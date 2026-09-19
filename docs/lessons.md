@@ -101,6 +101,26 @@ The task-level states said `up_for_retry` immediately, which is the thing to loo
 When something takes longer than it should, read the task states and the task log before
 reporting progress, rather than taking the optimistic reading of an ambiguous signal.
 
+### Grepping rendered HTML is not checking the page (phase 5)
+
+A line was added to the front page, the app was rebuilt, and `curl | grep "up to 18
+September 2026"` found nothing — so the conclusion was that a stale build was being
+served. The line was in fact there. React server-renders interpolated values as separate
+text nodes with markers between them, so a sentence assembled from `{corpus.latest}` never
+appears contiguously in the HTML and that phrase could not have matched whatever the server
+was serving.
+
+Underneath it there was a real second fault: the restart had failed with `EADDRINUSE` and
+the old process was still holding the port. Two problems at once, one of them imaginary,
+and the imaginary one was the one being debugged.
+
+What settled it was looking at the page in a browser and at the failed restart's own exit
+code, rather than at a string that could not have matched either way.
+
+**Rule:** a search that finds nothing has two explanations, and "the thing is absent" is
+only one of them. Before believing a negative result, check that the search could have
+succeeded. For rendered output, assert against the DOM or the screenshot, not the markup.
+
 ### Two environments are not one environment (phase 4)
 
 `dbt build` worked on the host and failed inside the Airflow container with

@@ -1,0 +1,199 @@
+.regions {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+
+.region,
+.regionCurrent,
+.regionOff {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.region:hover {
+  background: var(--signal-wash);
+}
+
+.regionCurrent {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.regionOff {
+  border-style: dashed;
+}
+
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 1.25rem 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.6rem;
+}
+
+.titleRegion {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--step-2);
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0;
+}
+
+.warning {
+  border-left: 3px solid var(--flag);
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  color: var(--flag);
+  max-width: var(--measure);
+  margin-bottom: var(--rhythm);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1.25rem 2rem;
+  margin: 2rem 0 0;
+  padding: 1.1rem 0;
+  border-block: 1px solid var(--rule);
+}
+
+.facts dd {
+  margin: 0.15rem 0 0;
+  font-size: var(--step-3);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.factUnit {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-top: 0.15rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 400;
+  margin: 3rem 0 0.5rem;
+}
+
+.skills,
+.salary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.25rem;
+}
+
+.skills thead th,
+.salary thead th {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-align: left;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.measureHead {
+  width: 42%;
+}
+
+/* Headings sit over their figures, which are right-aligned so they can be compared. */
+.pctHead,
+.salary thead th:not(:first-child) {
+  text-align: right;
+}
+
+/*
+ * Five short columns do not need the full page: stretched out they stop being a table.
+ * Below about 22rem the currency figures cannot fit, so the table scrolls inside its own
+ * box rather than pushing the whole page sideways.
+ */
+.scroller {
+  max-width: 34rem;
+  overflow-x: auto;
+}
+
+.salary {
+  min-width: 22rem;
+}
+
+.skills tbody th,
+.skills tbody td {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: baseline;
+}
+
+.skillName {
+  text-align: left;
+  font-weight: 500;
+  padding-right: 1rem;
+}
+
+.skillMeta {
+  display: block;
+  font-weight: 400;
+}
+
+.measureCell {
+  padding-right: 1rem;
+}
+
+.pct {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.pctCount {
+  display: block;
+  font-weight: 400;
+}
+
+.salary tbody th,
+.salary tbody td {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.salary tbody th {
+  text-align: left;
+  font-weight: 500;
+}
+
+.thinRow {
+  color: var(--ink-soft);
+}
+
+.tail {
+  margin-top: 1rem;
+  max-width: var(--measure);
+}
+
+@media (max-width: 34rem) {
+  .measureHead {
+    width: 30%;
+  }
+
+  .measureCell {
+    padding-right: 0.6rem;
+  }
+
+  .skillName {
+    padding-right: 0.6rem;
+  }
+}

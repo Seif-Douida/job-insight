@@ -12,8 +12,85 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 | 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | done 2026-09-17 |
 | 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
 | 4 | Modeling — dbt staging → marts, taxonomy | done 2026-09-18 |
-| 5 | Dashboard — Next.js pages and API routes | not started |
+| 5 | Dashboard — Next.js pages and API routes | in progress |
 | 6 | Ops — Oracle VM deploy, schedules, Vercel | not started |
+
+---
+
+## 2026-09-18 — Phase 5: Dashboard (in progress)
+
+The pages that answer the question the project set out to answer are live locally. The
+comparison and per-skill views are not built yet, so the phase stays open.
+
+### Built
+
+- `web/` — Next.js 16.3 (App Router, React 19, TypeScript), no CSS framework and no chart
+  library. The bars are `div`s; a dependency to draw a rectangle is not worth its build.
+- Pages: the front page, one page per role and region, `/methodology`, and a 404 that
+  sends people back to the matrix.
+- **The front page is the coverage matrix.** Seven roles by four regions, each cell the
+  number of postings behind that cohort, greyed and dotted when under 25. Choosing a
+  cohort and seeing how much evidence backs it are the same action, which is the honest
+  way to open a site whose subject is how much you can trust a percentage.
+- **The measure column carries two facts in one colour.** Bar length is the share of
+  postings naming a skill; the solid part of the bar is the share of those mentions
+  written as a requirement, the hatched remainder the share written as a preference. So
+  "Machine learning, required in 17% of mentions" draws as a nearly all-hatched bar and
+  reads instantly as *often named, rarely insisted on*.
+- `lib/queries.ts` — every read the site makes, each wrapped in `use cache` with an hourly
+  lifetime. Counts and shares are cast in SQL, because node-postgres returns `numeric` and
+  `bigint` as strings and a percentage arriving as `"0.703"` formats as `NaN` three files
+  later.
+- `lib/db.ts` — takes `sslmode` out of the shared connection string and states the TLS
+  policy in code. node-postgres reads `sslmode=require` as full verification today but has
+  announced it will weaken to libpq semantics in a future major, which would change what
+  the code does without changing the code.
+- `/methodology` renders `docs/methodology.md` rather than restating it. One copy: a
+  methodology page that has drifted from the method is worse than none.
+- `pipeline/tests/test_taxonomy_labels.py` — the dashboard keeps its own display labels so
+  it needs no YAML parser for eleven strings; these four tests fail if they ever drift
+  from `roles.yaml` and `regions.yaml` in either direction.
+
+### Decided
+
+- **Server components, not route handlers.** Nothing outside these pages consumes the
+  data, so an API layer would exist only to be called by our own pages. It can be added
+  the day something external needs it.
+- **Cached, not live.** The marts are rebuilt once a day, so every page is a cached shell.
+  A live query per request would add latency and keep a free-tier Neon compute awake for
+  no benefit.
+
+### Verified
+
+```text
+$ npm run build
+✓ Generating static pages (41/41)
+  28 cohort pages prerendered, revalidate 1h
+
+$ npm run lint          # eslint, 0 problems
+$ pytest -q             # 191 passed
+$ ruff check pipeline && black --check pipeline     # clean, 59 files
+
+Page against SQL — Data Engineer / US:
+  page  101 openings, 45 companies, 26 March–17 September 2026, 6 yrs, 31% remote, 12% visa
+  SQL   101, 45, 2026-03-26, 2026-09-17, 6.0, 0.31, 0.12          match
+  page  Python 70% (71 of 101), Spark 44%, USD median $233,500 (n=11)
+  SQL   0.703, 0.436, 233500.0, 11                                match
+
+Rendered at 1180px and 360px, light and dark: no horizontal page scroll at either width.
+```
+
+### Next
+
+The role-and-region page first, as planned, and it is done. Remaining in phase 5:
+`/compare/regions` and `/compare/roles` (sorted by largest gap), `/skill/[skill]`, the
+seniority view — `mart_skill_by_seniority` pools regions, so it belongs on a role page
+rather than a cohort page — and Playwright smoke tests per route. Top hiring companies per
+cohort would need a new mart and is not built.
+
+Deployment is phase 6, with one constraint discovered here: `/methodology` reads a file
+from the repository root, so Vercel's root directory stays at the repository root with the
+build command `cd web && npm run build`.
 
 ---
 

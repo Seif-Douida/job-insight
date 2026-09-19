@@ -1,0 +1,70 @@
+.prose {
+  padding-top: 2.5rem;
+  max-width: var(--measure);
+}
+
+.prose h1 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.prose h2 {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 400;
+  margin: 2.75rem 0 0.75rem;
+}
+
+.prose h3 {
+  font-size: var(--step-1);
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+}
+
+.prose ul {
+  padding-left: 1.1rem;
+  margin: 0 0 var(--rhythm);
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+/* Tables here are wider than the prose measure, and may need to scroll on a phone. */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 var(--rhythm);
+  font-size: 0.9375rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+.prose thead th {
+  font-weight: 500;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.prose code {
+  font-size: 0.9em;
+  background: var(--signal-track);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+}

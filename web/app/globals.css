@@ -1,0 +1,144 @@
+/*
+ * Job Insight — the visual system.
+ *
+ * The page is a statistical bulletin, not a product dashboard: the numbers are the
+ * content, so the type is set for reading a table and colour is spent in exactly one
+ * place, the measure column. Everything else is ink, paper and a rule.
+ */
+
+:root {
+  --ink: #17212b;
+  --ink-soft: #51616f;
+  --paper: #f6f7f9;
+  --surface: #ffffff;
+  --rule: #d9dee4;
+  --rule-soft: #e9edf1;
+  --signal: #a32a5e;
+  --signal-track: #eceff2;
+  --signal-wash: #f3dde6;
+  --flag: #8a5a00;
+
+  --measure: 62ch;
+
+  --step-0: 1rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: 1.75rem;
+  --step-display: clamp(2.1rem, 1.4rem + 3.2vw, 3.25rem);
+
+  --gutter: 1rem;
+  --rhythm: 1.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e7ecf1;
+    --ink-soft: #94a4b3;
+    --paper: #101922;
+    --surface: #16212c;
+    --rule: #28353f;
+    --rule-soft: #1e2a35;
+    --signal: #dd6f97;
+    --signal-track: #1e2a35;
+    --signal-wash: #3b2130;
+    --flag: #d8a44b;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.55;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Figures have to line up in a column to be compared, which is the whole point of them. */
+.num,
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 var(--rhythm);
+  max-width: var(--measure);
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--signal);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: from-font;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* The prose voice: one sentence per page that says what the numbers are, in words. */
+.lede {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-2);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 54ch;
+  margin: 0 0 var(--rhythm);
+}
+
+.quiet {
+  color: var(--ink-soft);
+}
+
+.small {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.flag {
+  color: var(--flag);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

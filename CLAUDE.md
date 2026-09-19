@@ -53,8 +53,12 @@ python -m pipeline.eval.build_golden_set           # after adding labels to eval
 python -m pipeline.db.dbt_profile    # writes pipeline/dbt/profiles.yml from DATABASE_URL
 dbt build --project-dir pipeline/dbt --profiles-dir pipeline/dbt   # models + data tests
 python -m pipeline.taxonomy.build_skill_aliases    # after ingesting, to extend the seed
-cd web && npm run dev                # dashboard
+cd web && npm run dev                # dashboard at http://localhost:3000
+cd web && npm run build && npm run lint   # prerenders every cohort; needs DATABASE_URL
 ```
+
+The dashboard reads the `analytics` marts straight from Neon in server components, so
+`dbt build` must have run at least once before a page will render.
 
 `pip install` puts `dbt` in Python's Scripts directory, which may not be on PATH
 (`C:\Users\<you>\AppData\Roaming\Python\Python314\Scripts\dbt.exe` here). Inside the

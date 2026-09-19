@@ -1,0 +1,22 @@
+.track {
+  width: 100%;
+  min-width: 5rem;
+  height: 0.6rem;
+  background: var(--signal-track);
+}
+
+/* Hatched: named, but as a preference. */
+.fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--signal) 0 2px,
+    var(--signal-wash) 2px 6px
+  );
+}
+
+/* Solid: named as a requirement. */
+.required {
+  height: 100%;
+  background: var(--signal);
+}

@@ -1,0 +1,97 @@
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 3rem 0 1.25rem;
+}
+
+/*
+ * Capped rather than full width. Stretched across the page the role names and their counts
+ * drift so far apart that the row stops reading as one fact.
+ */
+.matrix {
+  width: 100%;
+  max-width: 30rem;
+  border-collapse: collapse;
+  margin-top: 2.5rem;
+}
+
+.caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.roleHead,
+.cellHead {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+}
+
+.roleHead {
+  text-align: left;
+}
+
+.roleName {
+  font-weight: 500;
+  text-align: left;
+  padding: 0.55rem 0.5rem 0.55rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  hyphens: auto;
+}
+
+.cell {
+  text-align: right;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-variant-numeric: tabular-nums;
+  width: 4.5rem;
+}
+
+/*
+ * The cell is the link: the number and the act of choosing the cohort are the same thing,
+ * so the whole figure is the target rather than a separate word next to it.
+ */
+/* The hit area grows leftwards only, so the right edge of the last column stays true. */
+.link,
+.thinLink {
+  display: block;
+  padding: 0.15rem 0.35rem;
+  margin: -0.15rem 0 -0.15rem -0.35rem;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: var(--step-1);
+}
+
+.link:hover,
+.thinLink:hover {
+  background: var(--signal-wash);
+}
+
+.thinLink {
+  color: var(--ink-soft);
+  text-decoration: underline dotted;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.25em;
+}
+
+.note {
+  margin-top: 1.25rem;
+  max-width: var(--measure);
+}
+
+@media (max-width: 30rem) {
+  .cell {
+    width: 3.4rem;
+  }
+
+  .link,
+  .thinLink {
+    font-size: var(--step-0);
+  }
+}
