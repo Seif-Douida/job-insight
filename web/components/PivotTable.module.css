@@ -1,0 +1,97 @@
+/* Six columns of figures do not fit a phone, so the grid scrolls inside its own box. */
+.scroller {
+  overflow-x: auto;
+  margin-top: 1.25rem;
+  /* The italic "thin" headers lean past the last column's edge and would be clipped. */
+  padding-right: 2px;
+}
+
+.table {
+  width: 100%;
+  min-width: 26rem;
+  border-collapse: collapse;
+}
+
+.caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+}
+
+.skillHead,
+.head,
+.headThin {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 0 0 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  text-align: right;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+
+.skillHead {
+  text-align: left;
+  padding-left: 0;
+}
+
+.headThin {
+  font-style: italic;
+}
+
+.headCount {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.skill {
+  text-align: left;
+  font-weight: 500;
+  padding: 0.6rem 0.75rem 0.6rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.skill a {
+  text-decoration: none;
+}
+
+.skill a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+}
+
+.cell,
+.cellThin {
+  position: relative;
+  text-align: right;
+  padding: 0.6rem 0 1rem 0.75rem;
+  border-bottom: 1px solid var(--rule-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.cellThin {
+  color: var(--ink-soft);
+}
+
+/*
+ * The measure, shrunk to fit a cell. It is anchored to the right, under the figure it
+ * belongs to: grown from the left it would end up beneath the previous column's number
+ * and read as that column's bar.
+ */
+.rule {
+  position: absolute;
+  right: 0;
+  left: auto;
+  bottom: 0.55rem;
+  height: 3px;
+  max-width: calc(100% - 0.75rem);
+  background: var(--signal);
+}
+
+.cellThin .rule {
+  background: var(--ink-soft);
+  opacity: 0.5;
+}

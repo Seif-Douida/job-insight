@@ -46,3 +46,6 @@ pipeline/dbt/profiles.yml
 pipeline/dbt/target/
 pipeline/dbt/dbt_packages/
 pipeline/dbt/logs/
+
+# Playwright MCP scratch output (page snapshots, console logs)
+.playwright-mcp/

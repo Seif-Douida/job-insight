@@ -201,7 +201,7 @@ hive,Hive,tool
 hpc,High-performance computing,concept
 hubspot,HubSpot,tool
 hugging face,Hugging Face,platform
-huggingface,HuggingFace,tool
+huggingface,Hugging Face,platform
 hypothesis testing,hypothesis testing,concept
 iam,IAM,concept
 iceberg,Iceberg,tool
@@ -214,7 +214,7 @@ infiniband,InfiniBand,tool
 information retrieval,information retrieval,concept
 infrastructure,infrastructure,concept
 infrastructure as code,Infrastructure as code,concept
-infrastructure-as-code,infrastructure-as-code,concept
+infrastructure-as-code,Infrastructure as code,concept
 interpretability,interpretability,concept
 java,Java,language
 javascript,JavaScript,language

@@ -45,6 +45,16 @@
   hyphens: auto;
 }
 
+/* The role name leads to the role across all regions; each figure to one cohort. */
+.roleName a {
+  text-decoration: none;
+}
+
+.roleName a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+}
+
 .cell {
   text-align: right;
   padding: 0.55rem 0;

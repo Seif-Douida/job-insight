@@ -1,0 +1,163 @@
+.crumb {
+  margin-top: 2.5rem;
+  color: var(--ink-soft);
+}
+
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.warning {
+  border-left: 3px solid var(--flag);
+  padding: 0.35rem 0 0.35rem 0.75rem;
+  color: var(--flag);
+  max-width: var(--measure);
+  margin-bottom: var(--rhythm);
+}
+
+.shared {
+  max-width: var(--measure);
+}
+
+.sectionTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 400;
+  margin: 3rem 0 0.5rem;
+}
+
+/*
+ * Two series need telling apart, and the site only spends one colour. So the first role
+ * keeps the signal plum and the second takes plain ink: different enough to read at a
+ * glance, and it does not introduce a second accent that would compete with it.
+ */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+}
+
+.legend span {
+  display: inline-block;
+  width: 1.1rem;
+  height: 0.6rem;
+}
+
+.keyA {
+  background: var(--signal);
+}
+
+.keyB {
+  background: var(--ink-soft);
+  margin-left: 1rem;
+}
+
+.scroller {
+  overflow-x: auto;
+  margin-top: 0.75rem;
+}
+
+.table {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+}
+
+.numHead,
+.skillHead,
+.barHead {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+}
+
+.numHead {
+  width: 4rem;
+}
+
+.barHead {
+  width: 30%;
+}
+
+/* Fixed, so the axis the two bars meet at does not move when a name is long. */
+.skillHead {
+  text-align: center;
+  width: 11rem;
+}
+
+.table tbody th,
+.table tbody td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: middle;
+}
+
+.numA,
+.numB {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+}
+
+.numA {
+  text-align: left;
+  padding-right: 0.5rem;
+}
+
+.numB {
+  text-align: right;
+  padding-left: 0.5rem;
+}
+
+/*
+ * The two bars meet at the skill name, each growing away from the centre. The left one is
+ * pushed over with `margin-left: auto` rather than flex, because a table cell told to be a
+ * flex container stops being a table cell and the columns lose their alignment.
+ */
+.barA,
+.barB {
+  display: block;
+  height: 0.6rem;
+  min-width: 1px;
+}
+
+.barA {
+  margin-left: auto;
+  background: var(--signal);
+}
+
+.barB {
+  background: var(--ink-soft);
+}
+
+.skill {
+  text-align: center;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.skill a {
+  text-decoration: none;
+}
+
+.skill a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+}
+
+.tail {
+  margin-top: 1rem;
+  max-width: var(--measure);
+}

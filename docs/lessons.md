@@ -101,6 +101,28 @@ The task-level states said `up_for_retry` immediately, which is the thing to loo
 When something takes longer than it should, read the task states and the task log before
 reporting progress, rather than taking the optimistic reading of an ambiguous signal.
 
+### The deduplication table was not itself deduplicated (phase 5)
+
+`skill_aliases.csv` exists to stop one skill being counted as several: it maps every
+spelling onto a canonical name, so "Postgres" and "PostgreSQL" are one row. It contained
+`Hugging Face` and `HuggingFace` as two *canonical* names, and `Infrastructure as code`
+and `infrastructure-as-code` as two more. Both skills had their postings split across two
+entries, and both therefore showed roughly half their real demand.
+
+Nothing could have caught it. The dbt tests check that percentages are fractions and that
+counts fit their cohort, and two half-sized rows pass all of that happily. It only surfaced
+when the skill pages needed one URL per skill and two skills resolved to the same slug.
+
+The fix was four characters. The useful part was the test that came with it: canonical
+names are now compared with case and punctuation removed, so any future pair that differs
+only in spelling fails the suite. Real distinctions survive because the comparison keeps
+`#` and `+`, which is the whole difference between C, C# and C++.
+
+**Rule:** a table whose job is to merge duplicates needs a test that it contains none
+itself. And a data error that halves a number rather than breaking it will pass every
+validity check you have — the tests that find those compare rows to each other, not each
+row to a rule.
+
 ### Grepping rendered HTML is not checking the page (phase 5)
 
 A line was added to the front page, the app was rebuilt, and `curl | grep "up to 18

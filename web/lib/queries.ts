@@ -130,6 +130,132 @@ export async function getSalary(role: string, region: string): Promise<SalaryBan
   );
 }
 
+export type RegionSkill = {
+  skill: string;
+  kind: string;
+  group: string;
+  pct: number;
+  nWithSkill: number;
+};
+
+/** Every skill named for one role, tagged with the region that named it. */
+export async function getRoleSkillsByRegion(role: string): Promise<RegionSkill[]> {
+  "use cache";
+  cacheLife("hours");
+  return query<RegionSkill>(
+    `select
+       skill,
+       kind,
+       region            as "group",
+       pct::float8       as pct,
+       n_with_skill::int as "nWithSkill"
+     from ${SCHEMA}.mart_skill_demand
+     where role = $1`,
+    [role],
+  );
+}
+
+export type SeniorityLevel = {
+  seniority: string;
+  nPostings: number;
+  lowConfidence: boolean;
+};
+
+/** The levels a role is hired at, with the sample behind each. Regions are pooled. */
+export async function getSeniorityLevels(role: string): Promise<SeniorityLevel[]> {
+  "use cache";
+  cacheLife("hours");
+  return query<SeniorityLevel>(
+    `select distinct
+       seniority,
+       n_total::int   as "nPostings",
+       low_confidence as "lowConfidence"
+     from ${SCHEMA}.mart_skill_by_seniority
+     where role = $1`,
+    [role],
+  );
+}
+
+/**
+ * Every skill named for one role, tagged with the level that named it.
+ *
+ * `mart_skill_by_seniority` carries no `kind`: splitting by level already halves the
+ * cohorts, and the question it answers is what changes with experience, not what type of
+ * thing each skill is.
+ */
+export async function getSenioritySkills(role: string): Promise<RegionSkill[]> {
+  "use cache";
+  cacheLife("hours");
+  return query<RegionSkill>(
+    `select
+       skill,
+       ''                as kind,
+       seniority         as "group",
+       pct::float8       as pct,
+       n_with_skill::int as "nWithSkill"
+     from ${SCHEMA}.mart_skill_by_seniority
+     where role = $1`,
+    [role],
+  );
+}
+
+export type SkillPresence = {
+  role: string;
+  region: string;
+  kind: string;
+  nWithSkill: number;
+  nTotal: number;
+  pct: number;
+  lowConfidence: boolean;
+};
+
+/** Where one skill is asked for, across every role and region that named it. */
+export async function getSkillPresence(skill: string): Promise<SkillPresence[]> {
+  "use cache";
+  cacheLife("hours");
+  return query<SkillPresence>(
+    `select
+       role,
+       region,
+       kind,
+       n_with_skill::int as "nWithSkill",
+       n_total::int      as "nTotal",
+       pct::float8       as pct,
+       low_confidence    as "lowConfidence"
+     from ${SCHEMA}.mart_skill_demand
+     where skill = $1`,
+    [skill],
+  );
+}
+
+export type SkillSummary = {
+  skill: string;
+  kind: string;
+  mentions: number;
+  cohorts: number;
+};
+
+/**
+ * Every skill in the marts, most named first.
+ *
+ * Cohorts are disjoint — a posting belongs to exactly one role and region — so summing
+ * `n_with_skill` across them counts each posting once and gives a real total.
+ */
+export async function listSkills(): Promise<SkillSummary[]> {
+  "use cache";
+  cacheLife("hours");
+  return query<SkillSummary>(
+    `select
+       skill,
+       min(kind)              as kind,
+       sum(n_with_skill)::int as mentions,
+       count(*)::int          as cohorts
+     from ${SCHEMA}.mart_skill_demand
+     group by skill
+     order by sum(n_with_skill) desc, skill`,
+  );
+}
+
 /** The corpus behind the whole site, for the line that says how much evidence there is. */
 export async function getCorpus(): Promise<Corpus> {
   "use cache";

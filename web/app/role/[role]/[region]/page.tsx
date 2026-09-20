@@ -5,7 +5,14 @@ import { notFound } from "next/navigation";
 import { Measure } from "@/components/Measure";
 import { formatRange, money, percent } from "@/lib/format";
 import { getCohort, getSalary, getSkills, listCohorts } from "@/lib/queries";
-import { REGION_ORDER, REGION_SHORT, regionLabel, roleLabel } from "@/lib/taxonomy";
+import { skillSlug } from "@/lib/slug";
+import {
+  REGION_ORDER,
+  REGION_SHORT,
+  ROLE_ORDER,
+  regionLabel,
+  roleLabel,
+} from "@/lib/taxonomy";
 
 import styles from "./page.module.css";
 
@@ -50,6 +57,12 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
     cohorts.filter((c) => c.role === role).map((c) => [c.region, c]),
   );
 
+  // Other roles hiring in this region, in the taxonomy's order rather than by size.
+  const neighbours = cohorts
+    .filter((c) => c.region === region && c.role !== role)
+    .map((c) => c.role)
+    .sort((x, y) => ROLE_ORDER.indexOf(x) - ROLE_ORDER.indexOf(y));
+
   return (
     <>
       <nav className={styles.regions} aria-label="Same role in other regions">
@@ -79,7 +92,9 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
       </nav>
 
       <h1 className={styles.title}>
-        {roleLabel(role)}
+        <Link href={`/role/${role}`} className={styles.titleLink}>
+          {roleLabel(role)}
+        </Link>
         <span className={styles.titleRegion}>{regionLabel(region)}</span>
       </h1>
 
@@ -152,7 +167,7 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
           {shown.map((skill) => (
             <tr key={skill.skill}>
               <th scope="row" className={styles.skillName}>
-                {skill.skill}
+                <Link href={`/skill/${skillSlug(skill.skill)}`}>{skill.skill}</Link>
                 <span className={`small quiet ${styles.skillMeta}`}>
                   {skill.kind}
                   {skill.pctRequired !== null &&
@@ -220,6 +235,25 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
             title rather than read from the description, because most postings that state
             pay are ones where only an excerpt was available.
           </p>
+        </>
+      )}
+
+      {neighbours.length > 0 && (
+        <>
+          <h2 className={styles.sectionTitle}>How it differs from a neighbouring job</h2>
+          <p className="small quiet">
+            The titles overlap more than the postings do. These put two of them side by
+            side in {regionLabel(region)}.
+          </p>
+          <ul className={styles.compareList}>
+            {neighbours.map((other) => (
+              <li key={other}>
+                <Link href={`/compare/${region}/${role}/${other}`}>
+                  {roleLabel(role)} or {roleLabel(other)}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </>
       )}
     </>

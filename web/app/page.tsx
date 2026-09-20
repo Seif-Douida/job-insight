@@ -40,7 +40,7 @@ export default async function Home() {
           {ROLE_ORDER.map((role) => (
             <tr key={role}>
               <th scope="row" className={styles.roleName}>
-                {roleLabel(role)}
+                <Link href={`/role/${role}`}>{roleLabel(role)}</Link>
               </th>
               {REGION_ORDER.map((region) => {
                 const cohort = byKey.get(`${role}/${region}`);

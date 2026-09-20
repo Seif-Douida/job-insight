@@ -136,10 +136,53 @@
   vertical-align: baseline;
 }
 
+.titleLink {
+  text-decoration: none;
+}
+
+.titleLink:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 1px;
+}
+
 .skillName {
   text-align: left;
   font-weight: 500;
   padding-right: 1rem;
+}
+
+.skillName a {
+  text-decoration: none;
+}
+
+.skillName a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+}
+
+.compareList {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 0.5rem 1.5rem;
+  max-width: 46rem;
+}
+
+.compareList li {
+  border-bottom: 1px solid var(--rule-soft);
+  padding: 0.5rem 0;
+}
+
+.compareList a {
+  text-decoration: none;
+}
+
+.compareList a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
 }
 
 .skillMeta {

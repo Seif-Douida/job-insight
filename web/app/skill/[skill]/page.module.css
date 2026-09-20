@@ -1,0 +1,25 @@
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 3rem 0 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.strongest {
+  max-width: var(--measure);
+  padding-bottom: 0.25rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 400;
+  margin: 3rem 0 0.5rem;
+}
+
+.tail {
+  margin-top: 1.5rem;
+  max-width: var(--measure);
+}

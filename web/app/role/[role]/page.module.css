@@ -1,0 +1,53 @@
+.title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 3rem 0 1.25rem;
+}
+
+.cohorts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.cohort,
+.cohortThin {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.cohort:hover,
+.cohortThin:hover {
+  background: var(--signal-wash);
+}
+
+.cohortThin {
+  border-style: dashed;
+  color: var(--ink-soft);
+}
+
+.cohortCount {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.sectionTitle {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: var(--step-3);
+  font-weight: 400;
+  margin: 3rem 0 0.5rem;
+}
+
+.tail {
+  margin-top: 3rem;
+}

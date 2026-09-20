@@ -50,6 +50,28 @@ comparison and per-skill views are not built yet, so the phase stays open.
 - `pipeline/tests/test_taxonomy_labels.py` — the dashboard keeps its own display labels so
   it needs no YAML parser for eleven strings; these four tests fail if they ever drift
   from `roles.yaml` and `regions.yaml` in either direction.
+- `/role/[role]` — the role across all four regions, ranked by how far apart they are, and
+  what changes with experience. Only cohorts large enough to rank on decide the order; thin
+  ones are still shown but do not get a vote, or the top of the table fills with noise from
+  a sixteen-posting sample.
+- `/skill/[skill]` — which roles and regions ask for one skill. Thinness is marked per cell
+  here rather than per column, because the columns pool regions while each cell is a single
+  cohort: without it, "MLOps Engineer, Gulf, 100%" reads as solid when it rests on six
+  postings.
+- `/compare/[region]/[a]/[b]` — two roles side by side, as a bar running left and right
+  from the skill name. Answers the question the titles do not: a US Analytics Engineer
+  posting names SQL in 100% of cases against a Data Engineer's 48%, and Spark in 4%
+  against 44%. The second series is plain ink rather than a second accent colour, so the
+  page still spends colour in one place.
+- `pipeline/tests/test_skill_slugs.py` — no two skills may share a URL, and no two
+  canonical names may differ only by case or punctuation.
+
+### Fixed along the way
+
+Building the skill pages surfaced two skills stored under two canonical names each —
+`Hugging Face`/`HuggingFace` and `Infrastructure as code`/`infrastructure-as-code`. Each
+had its demand split across both spellings and was showing about half its real figure. The
+seed is corrected and a test now fails on any repeat; see [lessons.md](lessons.md).
 
 ### Decided
 
@@ -64,12 +86,13 @@ comparison and per-skill views are not built yet, so the phase stays open.
 
 ```text
 $ npm run build
-✓ Generating static pages (41/41)
-  28 cohort pages prerendered, revalidate 1h
+✓ Generating static pages (169/169)
+  28 cohorts, 7 roles, 60 skills and 59 role comparisons prerendered, revalidate 1h
 
 $ npm run lint          # eslint, 0 problems
-$ pytest -q             # 191 passed
+$ pytest -q             # 202 passed
 $ ruff check pipeline && black --check pipeline     # clean, 59 files
+$ dbt build             # PASS=25 after the alias fix
 
 Page against SQL — Data Engineer / US:
   page  101 openings, 45 companies, 26 March–17 September 2026, 6 yrs, 31% remote, 12% visa
@@ -77,16 +100,15 @@ Page against SQL — Data Engineer / US:
   page  Python 70% (71 of 101), Spark 44%, USD median $233,500 (n=11)
   SQL   0.703, 0.436, 233500.0, 11                                match
 
-Rendered at 1180px and 360px, light and dark: no horizontal page scroll at either width.
+No horizontal page scroll at 360px on any of the six routes; checked light and dark.
 ```
 
 ### Next
 
-The role-and-region page first, as planned, and it is done. Remaining in phase 5:
-`/compare/regions` and `/compare/roles` (sorted by largest gap), `/skill/[skill]`, the
-seniority view — `mart_skill_by_seniority` pools regions, so it belongs on a role page
-rather than a cohort page — and Playwright smoke tests per route. Top hiring companies per
-cohort would need a new mart and is not built.
+Every page in the design is built. One acceptance item is outstanding before the phase
+closes: Playwright smoke tests per route, so a mart changing shape fails a test rather than
+a page. Top hiring companies per cohort is not built — it would need a new mart. Trend and
+co-occurrence stay deferred: there is no history to plot yet.
 
 Deployment is phase 6, with one constraint discovered here: `/methodology` reads a file
 from the repository root, so Vercel's root directory stays at the repository root with the
