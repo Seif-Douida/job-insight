@@ -12,15 +12,15 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 | 2 | Ingestion — ATS boards, Adzuna, JSearch, dedupe | done 2026-09-17 |
 | 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
 | 4 | Modeling — dbt staging → marts, taxonomy | done 2026-09-18 |
-| 5 | Dashboard — Next.js pages and API routes | in progress |
+| 5 | Dashboard — Next.js pages and API routes | done 2026-09-20 |
 | 6 | Ops — Oracle VM deploy, schedules, Vercel | not started |
 
 ---
 
-## 2026-09-18 — Phase 5: Dashboard (in progress)
+## 2026-09-20 — Phase 5: Dashboard (done)
 
-The pages that answer the question the project set out to answer are live locally. The
-comparison and per-skill views are not built yet, so the phase stays open.
+Every page in the design is built, and the smoke tests that close the phase assert the
+site's own rules against the rendered page rather than against the code that produced it.
 
 ### Built
 
@@ -65,6 +65,15 @@ comparison and per-skill views are not built yet, so the phase stays open.
   page still spends colour in one place.
 - `pipeline/tests/test_skill_slugs.py` — no two skills may share a URL, and no two
   canonical names may differ only by case or punctuation.
+- `web/e2e/smoke.spec.ts` — 14 Playwright tests against a production build. They check the
+  project's own rules rather than that a page loads: every percentage agrees with the count
+  printed beside it, every published pay band states its sample and sits in an annual band,
+  a thin cohort says so and a solid one does not, `C++` and `C#` survive a URL, and no page
+  scrolls sideways at 360px. A mart changing shape fails here instead of in front of a
+  reader.
+- CI gained a `web` job: lint and typecheck always, build and smoke tests when a
+  `DATABASE_URL` secret is present — the dashboard reads the marts at build time, so a full
+  build needs a real database.
 
 ### Fixed along the way
 
@@ -103,16 +112,26 @@ Page against SQL — Data Engineer / US:
 No horizontal page scroll at 360px on any of the six routes; checked light and dark.
 ```
 
+### Deferred (deliberately)
+
+- Top hiring companies per cohort — would need a new mart, and no page asks for it yet.
+- Trend and co-occurrence views — there is no history to plot. A month-on-month line drawn
+  from one month of collection would be a decoration, not a finding.
+
 ### Next
 
-Every page in the design is built. One acceptance item is outstanding before the phase
-closes: Playwright smoke tests per route, so a mart changing shape fails a test rather than
-a page. Top hiring companies per cohort is not built — it would need a new mart. Trend and
-co-occurrence stay deferred: there is no history to plot yet.
+Phase 6 — deployment. Vercel's Git integration rebuilds on push, so **code** changes need
+no manual step once it is connected. **Data** changes need no deploy at all: pages are
+prerendered with an hourly revalidation, so the marts the `transform` DAG writes each
+morning reach the site within the hour without rebuilding anything. That is the reason the
+pages are cached server components rather than a static export.
 
-Deployment is phase 6, with one constraint discovered here: `/methodology` reads a file
-from the repository root, so Vercel's root directory stays at the repository root with the
-build command `cd web && npm run build`.
+One constraint found while building: `/methodology` renders `docs/methodology.md` from the
+repository root rather than keeping a second copy, so Vercel's root directory stays at the
+repository root with the build command `cd web && npm run build`.
+
+Remaining: the Airflow stack onto an Oracle Cloud VM with its schedules, Vercel connected
+to the repository, and a visible alert when a task fails.
 
 ---
 

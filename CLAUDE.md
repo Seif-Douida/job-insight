@@ -54,8 +54,13 @@ python -m pipeline.db.dbt_profile    # writes pipeline/dbt/profiles.yml from DAT
 dbt build --project-dir pipeline/dbt --profiles-dir pipeline/dbt   # models + data tests
 python -m pipeline.taxonomy.build_skill_aliases    # after ingesting, to extend the seed
 cd web && npm run dev                # dashboard at http://localhost:3000
-cd web && npm run build && npm run lint   # prerenders every cohort; needs DATABASE_URL
+cd web && npm run build              # prerenders every cohort; needs DATABASE_URL
+cd web && npm run lint && npm run typecheck
+cd web && npm run test:e2e           # Playwright smoke tests; builds and serves first
 ```
+
+`npm run test:e2e` reuses a server already on port 3000 rather than starting its own, so
+after changing a page, stop the old server or the tests check the previous build.
 
 The dashboard reads the `analytics` marts straight from Neon in server components, so
 `dbt build` must have run at least once before a page will render.

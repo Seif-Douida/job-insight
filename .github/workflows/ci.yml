@@ -46,3 +46,41 @@ jobs:
 
       - name: Test
         run: pytest -q
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+
+    # The dashboard reads the marts at build time, so a full build needs the real database.
+    # Add DATABASE_URL as a repository secret to turn the build and smoke tests on; without
+    # it the job still lints and typechecks, which is what most changes break.
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Install browser
+        if: env.DATABASE_URL != ''
+        run: npx playwright install --with-deps chromium
+
+      - name: Build and smoke test
+        if: env.DATABASE_URL != ''
+        run: npm run test:e2e

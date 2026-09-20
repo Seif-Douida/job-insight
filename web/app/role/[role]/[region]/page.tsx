@@ -151,7 +151,7 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
         preference.
       </p>
 
-      <table className={styles.skills}>
+      <table className={styles.skills} aria-label="Skills by share of postings">
         <thead>
           <tr>
             <th scope="col">Skill</th>
@@ -204,7 +204,7 @@ export default async function CohortPage({ params }: { params: Promise<Params> }
       ) : (
         <>
           <div className={styles.scroller}>
-            <table className={styles.salary}>
+            <table className={styles.salary} aria-label="Stated annual pay">
               <thead>
                 <tr>
                   <th scope="col">Currency</th>
