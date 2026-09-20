@@ -10,7 +10,8 @@ set -euo pipefail
 
 cd "$(dirname "$0")/../.."
 
-COMPOSE="docker compose -f infra/docker-compose.prod.yml"
+# --env-file because Compose looks for `.env` beside the compose file, not at the root.
+COMPOSE="docker compose --env-file .env -f infra/docker-compose.prod.yml"
 
 before=$(git rev-parse HEAD)
 git pull --ff-only

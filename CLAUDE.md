@@ -38,8 +38,13 @@ are skipped when it is unset. They truncate tables, so it must never point at Ne
 After editing `.env`, recreate Airflow so it sees the change:
 `docker compose -f infra/docker-compose.yml up -d --force-recreate airflow`.
 
-Airflow UI: <http://localhost:8080>. The admin password is printed in the container logs
-(`docker compose -f infra/docker-compose.yml logs airflow | grep -i password`).
+Airflow UI: <http://localhost:8080>, user `admin`. Standalone writes the generated password
+to a file, which survives after the startup log line has scrolled away:
+
+```bash
+docker compose -f infra/docker-compose.yml exec airflow \
+  cat /opt/airflow/simple_auth_manager_passwords.json.generated
+```
 
 `infra/docker-compose.yml` is the local stack: packages installed at container start, ports
 open to the host. `infra/docker-compose.prod.yml` is the server: a built image

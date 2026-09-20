@@ -1,7 +1,17 @@
 name: job-insight
 
-# The server stack. Run from the repository root:
-#   docker compose -f infra/docker-compose.prod.yml up -d --build
+# The server stack. Run from the repository root, and always pass --env-file:
+#
+#   docker compose --env-file .env -f infra/docker-compose.prod.yml up -d --build
+#
+# The flag is not optional. Compose looks for `.env` next to the compose file — here that
+# would be `infra/.env`, which does not exist — and the repository keeps its one `.env` at
+# the root, where Python reads it too. Without the flag `${AIRFLOW_DB_PASSWORD}` fails
+# loudly and `${AIRFLOW_UID}` quietly falls back to 50000, which on Linux is the wrong user
+# and leaves dbt unable to write. `env_file:` below does not help: it passes variables into
+# the containers, while these two are needed to build the file itself.
+#
+# `infra/deploy/update.sh` wraps this up, and is the easier way to run it day to day.
 #
 # It differs from the development stack in four ways that matter, each marked below:
 # a built image rather than packages installed at boot, no port reachable from the

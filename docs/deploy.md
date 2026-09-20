@@ -236,20 +236,37 @@ bash ~/job-insight/infra/deploy/bootstrap.sh
 
 ### Reach the UI
 
-From your own machine, not the server:
+Airflow's UI is bound to the server's loopback interface, so it cannot be reached over the
+internet. An SSH tunnel forwards a port on your laptop to that interface: traffic to
+`localhost:8080` on your machine comes out inside the server, and nothing is exposed.
 
-```bash
+**On your own machine**, in PowerShell:
+
+```powershell
 ssh -N -L 8080:localhost:8080 ubuntu@<server-ip>
 ```
 
-Leave that running and open <http://localhost:8080>. The admin password is in the logs:
+That command prints nothing and does not return — it is the tunnel, so leave the window
+open. Open <http://localhost:8080> in a browser.
+
+**On the server**, in a second terminal, read the admin password:
 
 ```bash
-docker compose -f infra/docker-compose.prod.yml logs airflow | grep -i password
+cd ~/job-insight
+docker compose --env-file .env -f infra/docker-compose.prod.yml exec airflow \
+  cat /opt/airflow/simple_auth_manager_passwords.json.generated
 ```
 
-It is regenerated whenever the container is recreated, so read it again after an update
-rather than saving it.
+It prints `{"admin": "..."}`. Log in as **admin** with that password.
+
+> Every `docker compose` command in this guide runs **on the server**, where the containers
+> are. Run one in PowerShell and it talks to Docker on your laptop instead, which is a
+> different machine with different containers. PowerShell also has no `grep` — its
+> equivalent is `Select-String` — which is a useful tell that a command has been pasted into
+> the wrong terminal.
+
+The password is regenerated whenever the container is recreated, so read it again after an
+update rather than saving it.
 
 ### Turn the DAGs on, in order
 
@@ -322,13 +339,13 @@ keys those services read, so there is nothing to configure beyond the URL.
 
 ```bash
 nano ~/job-insight/.env          # ALERT_WEBHOOK_URL=https://...
-docker compose -f infra/docker-compose.prod.yml up -d --force-recreate airflow
+docker compose --env-file .env -f infra/docker-compose.prod.yml up -d --force-recreate airflow
 ```
 
 Test it without waiting for something to break:
 
 ```bash
-docker compose -f infra/docker-compose.prod.yml exec airflow \
+docker compose --env-file .env -f infra/docker-compose.prod.yml exec airflow \
   python -c "from pipeline.alerts import send_alert; print(send_alert('job-insight: alerts are working'))"
 ```
 
@@ -370,8 +387,8 @@ posting was collected.
 
 ```bash
 cd ~/job-insight
-docker compose -f infra/docker-compose.prod.yml ps          # is it running
-docker compose -f infra/docker-compose.prod.yml logs --tail 100 airflow
+docker compose --env-file .env -f infra/docker-compose.prod.yml ps          # is it running
+docker compose --env-file .env -f infra/docker-compose.prod.yml logs --tail 100 airflow
 df -h                                                        # disk: the usual culprit
 ```
 
@@ -383,9 +400,9 @@ df -h                                                        # disk: the usual c
   clear old ones and trim the metadata database:
 
   ```bash
-  docker compose -f infra/docker-compose.prod.yml exec airflow \
+  docker compose --env-file .env -f infra/docker-compose.prod.yml exec airflow \
     find /opt/airflow/logs -type f -mtime +30 -delete
-  docker compose -f infra/docker-compose.prod.yml exec airflow \
+  docker compose --env-file .env -f infra/docker-compose.prod.yml exec airflow \
     airflow db clean --clean-before-timestamp "$(date -d '90 days ago' +%Y-%m-%d)" --yes
   ```
 

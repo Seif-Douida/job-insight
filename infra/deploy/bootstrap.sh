@@ -16,6 +16,10 @@ REPO_URL="${REPO_URL:-https://github.com/Seif-Douida/job-insight.git}"
 REPO_DIR="${REPO_DIR:-$HOME/job-insight}"
 RAW_URL="https://raw.githubusercontent.com/Seif-Douida/job-insight/main/infra/deploy/bootstrap.sh"
 
+# Compose looks for `.env` beside the compose file; ours lives at the repository root,
+# so every invocation has to say where it is. Defined once here for that reason.
+COMPOSE="docker compose --env-file .env -f infra/docker-compose.prod.yml"
+
 say() { printf '\n\033[1m%s\033[0m\n' "$*"; }
 
 # `set -e` exits on the failing command and says nothing about it, which leaves a reader
@@ -156,22 +160,26 @@ EOF
 fi
 
 say "Building and starting"
-docker compose -f infra/docker-compose.prod.yml up -d --build
+$COMPOSE up -d --build
 
 say "Running"
-docker compose -f infra/docker-compose.prod.yml ps
+$COMPOSE ps
 
+say "Log in"
 cat <<'EOF'
-
 The Airflow UI is bound to localhost on the server and is not reachable from the internet.
-Open a tunnel from your own machine:
+Open a tunnel from your OWN machine, in its own terminal, and leave it running:
 
     ssh -N -L 8080:localhost:8080 <user>@<server-ip>
 
-then visit http://localhost:8080. The admin password is printed in the logs:
+Then visit http://localhost:8080 and log in as 'admin'. Read the password HERE, on the
+server:
 
-    docker compose -f infra/docker-compose.prod.yml logs airflow | grep -i password
+    cd ~/job-insight && docker compose --env-file .env \
+      -f infra/docker-compose.prod.yml exec airflow \
+      cat /opt/airflow/simple_auth_manager_passwords.json.generated
 
-All DAGs start paused. Unpause them in the UI once you have checked the connection:
-db_healthcheck first, then ingest_ats, extract and transform.
+All DAGs start paused, which is Airflow's default and looks identical to being stuck.
+Unpause them in the UI one at a time, checking each before the next: db_healthcheck,
+then ingest_ats, extract and transform.
 EOF
