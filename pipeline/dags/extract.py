@@ -9,6 +9,8 @@ from __future__ import annotations
 import pendulum
 from airflow.sdk import dag, task
 
+from pipeline.alerts import notify_failure
+
 
 @dag(
     dag_id="extract",
@@ -17,6 +19,7 @@ from airflow.sdk import dag, task
     catchup=False,
     max_active_runs=1,
     default_args={"retries": 1, "retry_delay": pendulum.duration(minutes=15)},
+    on_failure_callback=notify_failure,
     tags=["extract"],
 )
 def extract() -> None:

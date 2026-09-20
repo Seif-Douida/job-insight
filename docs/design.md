@@ -11,7 +11,7 @@ It is a **portfolio project**: zero running cost, legal and stable data sources,
 ## Decisions already made
 
 | Area | Decision |
-|---|---|
+| --- | --- |
 | Sources | Public ATS boards (Greenhouse/Lever/Ashby) as full-text backbone; Adzuna for breadth + salary; JSearch for Gulf gaps |
 | Extraction | LLM → structured JSON, then alias→canonical skill taxonomy |
 | Default model | `gemma-4-26b-a4b-it` via Gemini API (30 RPM / 14,400 RPD free); `gemma-4-31b-it` benchmarked; Ollama local secondary; Gemini Flash emergency fallback only (20 RPD) |
@@ -34,7 +34,7 @@ These hold for every phase and override any temptation to move faster.
 
 ## Architecture
 
-```
+```text
 Sources ──► raw.postings ──► extraction (LLM) ──► raw.extractions
    │                                                     │
    │  ATS boards (full text, primary)                    ▼
@@ -49,7 +49,7 @@ Sources ──► raw.postings ──► extraction (LLM) ──► raw.extracti
 
 ## Repository layout
 
-```
+```text
 market_insights/
 ├── pipeline/
 │   ├── dags/                 # ingest_ats.py, ingest_adzuna.py, ingest_jsearch.py, extract.py, transform.py

@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/sync-docs.mjs && next dev",
+    "prebuild": "node scripts/sync-docs.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:e2e": "playwright test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "16.3.5",

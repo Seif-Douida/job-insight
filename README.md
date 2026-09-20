@@ -95,14 +95,21 @@ Problems that shaped the design, and what was done about them:
 | `mart_salary` published a 25th percentile of 55 EUR | Hourly and monthly rates are unlabelled in the source. Restricted to an annual band, three currencies, stated figures only, with a dbt test |
 | Two skills were stored under two canonical spellings each, halving their apparent demand | Every validity test passed, because two half-sized rows are individually valid. Added a test that compares canonical names to each other with case and punctuation stripped |
 
-Verification is part of each phase rather than follow-up work: **202 Python tests**, **14
+Verification is part of each phase rather than follow-up work: **213 Python tests**, **14
 Playwright smoke tests** asserting the site's own rules against the rendered page, and **25
 dbt models and data tests**. CI runs lint, typecheck and the suites on every push.
 
+The most recent of those caught a credential leak that was not in this project's code: a
+test asserting the alert webhook URL never reaches the logs failed on `httpx`, which logs
+every request at INFO with the full URL. Airflow captures task logs, so each alert would
+have written a working credential onto the server — unattended, at the moment something
+else was already wrong.
+
 ## Where it stands
 
-Phases 1–4 of 6 are complete and phase 5 is closing. The pipeline runs unattended on a
-daily schedule and the dashboard reads what it produces.
+Phases 1–5 of 6 are complete; phase 6 is written and tested, and waiting on the accounts it
+deploys to. The pipeline runs unattended on a daily schedule — ingest at 03:00, extraction
+at 06:00, `dbt build` at 08:00 — and the dashboard reads the marts it produces.
 
 | | |
 | --- | --- |
@@ -115,8 +122,17 @@ daily schedule and the dashboard reads what it produces.
 | Pages prerendered | 169 |
 | Running cost | $0 — every service is a free tier |
 
-Still to come: deployment to an Oracle Cloud VM and Vercel, and the trend view, which needs
-several more weeks of collection before a line would mean anything.
+Deployment is an Oracle Cloud Always Free ARM VM for the pipeline, Vercel for the
+dashboard, Neon for the data — with a built Airflow image, an Airflow UI that is never
+exposed to the internet, and one webhook alert per failed run.
+[docs/deploy.md](docs/deploy.md) is the runbook.
+
+Code changes deploy on push; **data changes need no deploy at all**, because the pages are
+prerendered with hourly revalidation and pick up each morning's marts on their own. That is
+why the dashboard is cached server components rather than a static export.
+
+Still to come: the trend view, which needs several more weeks of collection before a line
+would mean anything.
 
 ## Running it
 
@@ -135,7 +151,7 @@ cd web && npm install && npm run dev                 # dashboard at localhost:30
 Checks:
 
 ```bash
-pytest pipeline/tests                       # 202 tests
+pytest pipeline/tests                       # 213 tests
 ruff check pipeline && black --check pipeline
 python -m pipeline.eval.run_eval            # extraction accuracy on the golden set
 cd web && npm run lint && npm run typecheck && npm run test:e2e
@@ -154,7 +170,7 @@ pipeline/
   tests/       pytest suite
 web/           Next.js dashboard, e2e/ smoke tests
 infra/         docker-compose, SQL schema, .env.example
-docs/          design, methodology, progress log, lessons
+docs/          design, methodology, deployment runbook, progress log, lessons
 ```
 
 [docs/design.md](docs/design.md) has the full design and

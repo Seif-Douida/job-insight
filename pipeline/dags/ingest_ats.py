@@ -9,6 +9,8 @@ from __future__ import annotations
 import pendulum
 from airflow.sdk import dag, get_current_context, task
 
+from pipeline.alerts import notify_failure
+
 
 @dag(
     dag_id="ingest_ats",
@@ -17,6 +19,7 @@ from airflow.sdk import dag, get_current_context, task
     catchup=False,
     max_active_tasks=4,
     default_args={"retries": 2, "retry_delay": pendulum.duration(minutes=5)},
+    on_failure_callback=notify_failure,
     tags=["ingest"],
 )
 def ingest_ats() -> None:

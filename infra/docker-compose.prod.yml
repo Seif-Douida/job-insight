@@ -1,0 +1,69 @@
+name: job-insight
+
+# The server stack. Run from the repository root:
+#   docker compose -f infra/docker-compose.prod.yml up -d --build
+#
+# It differs from the development stack in four ways that matter, each marked below:
+# a built image rather than packages installed at boot, no port reachable from the
+# internet, bounded logs, and an alert webhook.
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: ${AIRFLOW_DB_PASSWORD:?set AIRFLOW_DB_PASSWORD in .env}
+      POSTGRES_DB: airflow
+    volumes:
+      - airflow-db:/var/lib/postgresql/data
+    # No `ports`. This database holds Airflow's own metadata and nothing needs to reach it
+    # from outside the compose network. The project's data lives in Neon.
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 10s
+      retries: 5
+    restart: unless-stopped
+    logging: &bounded
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  airflow:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+    image: job-insight-airflow:latest
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - path: ../.env
+        required: true
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/repo/pipeline/dags
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: >-
+        postgresql+psycopg2://airflow:${AIRFLOW_DB_PASSWORD}@postgres/airflow
+      PYTHONPATH: /opt/airflow/repo
+      # Task logs are read through the UI; keeping them off stdout keeps the container log
+      # small and stops a webhook URL or an API response drifting into `docker logs`.
+      AIRFLOW__LOGGING__LOGGING_LEVEL: INFO
+    volumes:
+      - ..:/opt/airflow/repo
+      - airflow-logs:/opt/airflow/logs
+    ports:
+      # Bound to the loopback interface on purpose. Oracle's default firewall would not
+      # stop 0.0.0.0:8080 reaching the internet, and this UI can trigger every DAG and read
+      # every connection. Reach it with an SSH tunnel:
+      #   ssh -N -L 8080:localhost:8080 ubuntu@<server>
+      - "127.0.0.1:8080:8080"
+    user: "${AIRFLOW_UID:-50000}:0"
+    command: standalone
+    restart: unless-stopped
+    logging: *bounded
+
+volumes:
+  airflow-db:
+  airflow-logs:

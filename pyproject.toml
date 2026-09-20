@@ -9,12 +9,14 @@ dependencies = [
     "pydantic>=2.7",
     "pyyaml>=6.0",
     "python-dotenv>=1.0",
+    # The transform DAG runs `dbt build`, so this is needed wherever the pipeline runs,
+    # not only where it is developed.
+    "dbt-postgres>=1.8",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
-    "dbt-postgres>=1.8",
     "ruff>=0.6",
     "black>=24.8",
 ]

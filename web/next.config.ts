@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
   // the same tree everywhere, rather than whatever happens to sit above it.
   turbopack: { root: here },
   outputFileTracingRoot: here,
+
+  // The methodology page reads its markdown at runtime when the cached page revalidates.
+  // A path built with `path.join` is not something the bundler can follow, so the file is
+  // named here explicitly; without it the page works in development and 500s a day after
+  // deploying, which is the worst moment to find out.
+  outputFileTracingIncludes: {
+    "/methodology": ["./content/**"],
+  },
 };
 
 export default nextConfig;

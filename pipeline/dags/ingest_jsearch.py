@@ -8,6 +8,8 @@ from __future__ import annotations
 import pendulum
 from airflow.sdk import dag, get_current_context, task
 
+from pipeline.alerts import notify_failure
+
 
 @dag(
     dag_id="ingest_jsearch",
@@ -16,6 +18,7 @@ from airflow.sdk import dag, get_current_context, task
     catchup=False,
     max_active_tasks=1,
     default_args={"retries": 1, "retry_delay": pendulum.duration(minutes=10)},
+    on_failure_callback=notify_failure,
     tags=["ingest"],
 )
 def ingest_jsearch() -> None:

@@ -344,3 +344,30 @@ been applied in the wrong order. Fixing the ordering recovered 24 postings.
 
 **Rule:** a field's name is a claim about its contents, not a guarantee. Look at the real
 distribution before trusting it, especially when a filter returns nothing.
+
+### A library logged the secret my own code was careful not to log (phase 6)
+
+The alert webhook URL is a credential: anyone holding it can post as you. `alerts.py` was
+written around that from the first line — the URL never appears in a message, never in an
+exception, and a rejected alert logs the status code alone. A test asserted exactly that,
+and it failed:
+
+```text
+assert 'secret-token' not in caplog.text
+  INFO httpx: HTTP Request: POST https://example.invalid/hooks/secret-token "HTTP/1.1 500"
+  ERROR pipeline.alerts: alert webhook rejected the message (HTTP 500)
+```
+
+The second line is mine and is clean. The first is httpx, which logs every request at INFO
+with the full URL. Airflow captures task logs, so in production every alert would have
+written a working credential into a file on the server — and alerts only fire when
+something is already wrong, so it would have happened unattended and unnoticed.
+
+`httpx`'s logger is now silenced for the length of that one POST. The wider point is that
+"my code does not log the secret" was never the property worth asserting. The property
+worth asserting is that the secret is not in the log, and only a test that reads the log
+can tell the difference.
+
+**Rule:** for a secret, test the observable outcome rather than your own handling of it.
+Every library in the call stack writes to the same log you do, and none of them know which
+of your strings are credentials.

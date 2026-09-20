@@ -13,9 +13,78 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 | 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
 | 4 | Modeling — dbt staging → marts, taxonomy | done 2026-09-18 |
 | 5 | Dashboard — Next.js pages and API routes | done 2026-09-20 |
-| 6 | Ops — Oracle VM deploy, schedules, Vercel | not started |
+| 6 | Ops — Oracle VM deploy, schedules, Vercel | built, awaiting provisioning |
 
 ---
+
+## 2026-09-20 — Phase 6: Ops (built; the accounts are the remaining step)
+
+Everything that can be written and tested is done. What is left needs accounts rather than
+code: an Oracle VM, a Vercel project, and a webhook URL. [deploy.md](deploy.md) is the
+runbook for those.
+
+### Built
+
+- `pipeline/alerts.py` — one alert per failed **run**, posted to a webhook. Discord, Slack
+  and ntfy all read a plain JSON POST, so the payload carries the same text under both the
+  keys they look for and one setting works with any of them. Attached to the DAG rather
+  than to each task, because the ingest DAGs map a task across 185 boards and a per-task
+  callback would send 185 messages.
+- `infra/Dockerfile` — Airflow 3.3.1 with the project's dependencies installed. The
+  development stack installs them at container start, which is fine on a laptop and wrong
+  on a server: it turns every reboot into a download. The repository stays mounted, so a
+  pipeline change is a `git pull` and a restart rather than a rebuild.
+- `infra/docker-compose.prod.yml` — built image, **no port reachable from the internet**
+  (the UI binds to loopback and is reached through an SSH tunnel), bounded container logs,
+  and a required `.env`.
+- `infra/deploy/bootstrap.sh` and `update.sh` — first install and subsequent updates.
+  Bootstrap refuses to start when a credential is missing rather than starting and failing
+  later in a task log. Update rebuilds the image only when the dependency list changed.
+- `vercel.json` and `web/scripts/sync-docs.mjs` — the methodology page renders
+  `docs/methodology.md` rather than a second copy of it, which needs the file inside the
+  deployment: it is copied in before each build and named in `outputFileTracingIncludes`,
+  because a path built with `path.join` is not something the bundler can follow. Without
+  that the page works in development and 500s a day after deploying, when the cached page
+  first revalidates.
+- `dbt-postgres` moved from the dev extra into the real dependencies. The transform DAG
+  shells out to `dbt`, so it is needed wherever the pipeline runs, not only where it is
+  developed. The image checks `dbt --version` at build time.
+
+### Verified
+
+```text
+$ docker build -f infra/Dockerfile .
+dbt 1.12.5, dbt-postgres 1.11.0 present         image builds on the first try
+
+$ docker run job-insight-airflow python -c "import pipeline..."
+pipeline imports ok; roles: 7 companies: 185
+
+$ DagBag('/opt/airflow/repo/pipeline/dags')
+import errors: none
+  db_healthcheck   schedule=None          failure_callbacks=0
+  extract          schedule=0 6 * * *     failure_callbacks=1
+  ingest_adzuna    schedule=0 4 * * 1     failure_callbacks=1
+  ingest_ats       schedule=0 3 * * *     failure_callbacks=1
+  ingest_jsearch   schedule=0 5 1,15 * *  failure_callbacks=1
+  transform        schedule=0 8 * * *     failure_callbacks=1
+
+$ docker compose -f infra/docker-compose.prod.yml config      valid
+$ pytest -q       213 passed          $ npx playwright test    14 passed
+```
+
+### Found while building
+
+A test asserted that the webhook URL never reaches the logs, and it failed — not on this
+project's code, which was careful, but on **httpx**, which logs every request at INFO with
+the full URL. Airflow captures task logs, so every alert would have written a working
+credential onto the server, unattended, at the exact moment something else was wrong.
+httpx's logger is now silenced for that one call. See [lessons.md](lessons.md).
+
+### Next
+
+Provisioning, following [deploy.md](deploy.md): the Oracle ARM instance, `bootstrap.sh`,
+unpausing the DAGs in order, the Vercel project with `DATABASE_URL` set to Neon's **pooled**
+connection string, and a webhook URL. Then the project is running on its own.
 
 ## 2026-09-20 — Phase 5: Dashboard (done)
 

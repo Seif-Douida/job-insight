@@ -2,6 +2,7 @@
 
 Read [docs/design.md](docs/design.md) for the design and [docs/PROGRESS.md](docs/PROGRESS.md)
 for what is built, verified and next. Update PROGRESS.md at the end of every phase.
+[docs/deploy.md](docs/deploy.md) is the runbook for the server and the dashboard.
 [docs/lessons.md](docs/lessons.md) records the mistakes made so far and the rule each one
 produced — worth reading before repeating one, and worth adding to when a new one costs
 real time.
@@ -39,6 +40,11 @@ After editing `.env`, recreate Airflow so it sees the change:
 
 Airflow UI: <http://localhost:8080>. The admin password is printed in the container logs
 (`docker compose -f infra/docker-compose.yml logs airflow | grep -i password`).
+
+`infra/docker-compose.yml` is the local stack: packages installed at container start, ports
+open to the host. `infra/docker-compose.prod.yml` is the server: a built image
+(`infra/Dockerfile`), the UI bound to loopback only, bounded logs. Never point the local
+stack at a server, or the reverse.
 
 ## Commands
 
