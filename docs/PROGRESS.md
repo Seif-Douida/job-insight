@@ -13,15 +13,39 @@ Mistakes and what they taught live in [lessons.md](lessons.md).
 | 3 | Extraction — LLM backends, quota governor, eval | done 2026-09-18 |
 | 4 | Modeling — dbt staging → marts, taxonomy | done 2026-09-18 |
 | 5 | Dashboard — Next.js pages and API routes | done 2026-09-20 |
-| 6 | Ops — Oracle VM deploy, schedules, Vercel | built, awaiting provisioning |
+| 6 | Ops — Oracle VM deploy, schedules, Vercel | done 2026-09-21 |
 
 ---
 
-## 2026-09-20 — Phase 6: Ops (built; the accounts are the remaining step)
+## 2026-09-21 — Phase 6: Ops (done)
 
-Everything that can be written and tested is done. What is left needs accounts rather than
-code: an Oracle VM, a Vercel project, and a webhook URL. [deploy.md](deploy.md) is the
-runbook for those.
+The pipeline runs on an Oracle Cloud Always Free ARM VM, the dashboard is live on Vercel
+reading the same Neon database, and a failed run announces itself in Discord. Nothing about
+the project now depends on a laptop being switched on.
+
+### What deploying actually caught
+
+Six things went wrong, none of them in code that had been tested, and all of them in the gap
+between "works where it was written" and "works where it runs":
+
+- **Compose could not find `.env`.** It reads the file beside the compose file, not the one
+  at the repository root. Verified locally by setting the variable in the shell, which is
+  exactly the check that could not fail. Every invocation now passes `--env-file`.
+- **`${AIRFLOW_UID:-50000}` failed silently** from the same cause — a default on a required
+  setting is a decision to be wrong quietly.
+- **The bootstrap script assumed a settled machine** and ran on one ninety seconds old, where
+  Ubuntu's own updates hold the package lock. It waits now.
+- **It also used Docker in the shell that had just joined the `docker` group**, which does
+  not take effect until the session restarts.
+- **Vercel reads `package.json` at the root directory** to detect a framework, so the root
+  had to become `web/` — which meant the methodology page could no longer read a file above
+  it. `web/content/methodology.md` is committed, refreshed by `sync-docs.mjs`, and guarded
+  by `test_published_docs.py`.
+- **Command overrides outlive the file that suggested them.** Deleting `vercel.json` left
+  `cd web && npm ci` running inside `web/`.
+
+Each one is written up in [lessons.md](lessons.md), and [deploy.md](deploy.md) now walks
+through the console screens field by field rather than assuming the vocabulary.
 
 ### Built
 
@@ -80,11 +104,39 @@ the full URL. Airflow captures task logs, so every alert would have written a wo
 credential onto the server, unattended, at the exact moment something else was wrong.
 httpx's logger is now silenced for that one call. See [lessons.md](lessons.md).
 
+### Verified on the server
+
+```text
+Server: Oracle Ampere A1, Ubuntu, Docker
+  job-insight-airflow-1    127.0.0.1:8080->8080/tcp   (loopback only, SSH tunnel to reach)
+  job-insight-postgres-1   5432/tcp                   (not published at all)
+Dashboard: live on Vercel, root directory web/, pages showing real figures
+Alerts: Discord webhook configured
+
+$ pytest -q                      215 passed
+$ ruff check && black --check    clean, 63 files
+```
+
+Also fixed here: the storage tests now skip in about ten seconds when the local database is
+stopped, rather than erroring, and rather than hanging four minutes on a connection Docker
+Desktop's localhost proxy swallows instead of refusing. A laptop with Docker switched off is
+the normal state now that the pipeline lives on a server, so the suite should behave that
+way.
+
 ### Next
 
-Provisioning, following [deploy.md](deploy.md): the Oracle ARM instance, `bootstrap.sh`,
-unpausing the DAGs in order, the Vercel project with `DATABASE_URL` set to Neon's **pooled**
-connection string, and a webhook URL. Then the project is running on its own.
+Nothing scheduled. The project runs itself: ingest at 03:00, extract at 06:00, `dbt build`
+at 08:00, and the dashboard picks up each morning's marts within the hour without a deploy.
+
+Worth doing when there is appetite:
+
+- **The trend view.** It needs several more weeks of collection before a line means
+  anything; the marts and the page are the easy part.
+- **Growing `companies.yaml`.** Coverage is the binding constraint on every thin cohort,
+  and the Gulf still publishes only one.
+- **Top hiring companies per cohort**, which needs a new mart.
+- **A wider golden set.** Nineteen hand-labelled postings is enough to catch a broken prompt
+  and not enough to trust a percentage point.
 
 ## 2026-09-20 — Phase 5: Dashboard (done)
 

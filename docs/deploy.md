@@ -321,6 +321,24 @@ In Vercel: **Add New → Project**, import the GitHub repository.
 > runtime. `web/scripts/sync-docs.mjs` refreshes the copy whenever the original is present,
 > and `pipeline/tests/test_published_docs.py` fails if the two ever differ.
 
+### Clear any command overrides
+
+**Settings → Build and Deployment.** "Build Command", "Output Directory" and "Install
+Command" each have an *Override* switch. All three should be **off**, so the Next.js
+defaults apply.
+
+An override set during an earlier attempt is stored on the project and keeps applying long
+after the file or reasoning behind it is gone. The symptom is a build that fails on a
+command nothing in the repository contains:
+
+```text
+Running "install" command: `cd web && npm ci`...
+sh: line 1: cd: web: No such file or directory
+```
+
+That is an override written when the root directory was the repository root, still running
+now that the root directory *is* `web` — so it tries to enter `web/web`.
+
 ### Environment variable
 
 Add one, for all environments:
