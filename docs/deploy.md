@@ -243,11 +243,21 @@ internet. An SSH tunnel forwards a port on your laptop to that interface: traffi
 **On your own machine**, in PowerShell:
 
 ```powershell
-ssh -N -L 8080:localhost:8080 ubuntu@<server-ip>
+ssh -N -L 8081:localhost:8080 ubuntu@<server-ip>
 ```
 
 That command prints nothing and does not return — it is the tunnel, so leave the window
-open. Open <http://localhost:8080> in a browser.
+open. Open <http://localhost:8081> in a browser.
+
+> **Why 8081 and not 8080.** The development stack runs an Airflow of its own on port 8080.
+> If it is up, the tunnel cannot bind that port and quietly fails, while the browser shows
+> the *local* Airflow instead — which accepts the same username and rejects the server's
+> password with `401 Unauthorized`, as though the password were wrong. Forwarding to a
+> different local port keeps the two apart. `8081:localhost:8080` reads as "port 8081 here,
+> port 8080 once it arrives there".
+>
+> If a tunnel seems not to work, look at what the `ssh` window printed:
+> `bind [127.0.0.1]:8080: Address already in use` is the whole story.
 
 **On the server**, in a second terminal, read the admin password:
 
@@ -296,11 +306,20 @@ task-level states.
 
 In Vercel: **Add New → Project**, import the GitHub repository.
 
-- **Root Directory:** leave it at the repository root. Do **not** set it to `web/`.
-  `vercel.json` already points the build at `web`, and the methodology page is generated
-  from `docs/methodology.md` — with the root set to `web/` that file is not in the upload
-  and the build fails.
-- **Framework:** Next.js, detected automatically.
+- **Root Directory:** set it to **`web`**. This is the one setting that must be changed.
+- **Framework:** Next.js, detected automatically once the root directory is right.
+
+> Vercel decides which framework a project uses by reading the `package.json` at the root
+> directory. Leave it at the repository root and detection finds no `package.json` at all,
+> so the build stops with `No Next.js version detected` — even though the install step
+> ran `cd web && npm ci` perfectly well and even though `vercel.json` named the framework.
+> Detection and the build are separate steps, and only the build was being told where to
+> look.
+>
+> This is why `web/content/methodology.md` is committed rather than generated: with the root
+> at `web`, nothing above it is uploaded, so the page cannot read `docs/methodology.md` at
+> runtime. `web/scripts/sync-docs.mjs` refreshes the copy whenever the original is present,
+> and `pipeline/tests/test_published_docs.py` fails if the two ever differ.
 
 ### Environment variable
 

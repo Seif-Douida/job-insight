@@ -1,36 +1,47 @@
 /**
- * Copy the published documents into the app before a build.
+ * Refresh the published documents inside the app from the repository's originals.
  *
- * `/methodology` renders `docs/methodology.md` rather than keeping a second copy of it, but
- * reading it from outside the app directory only works while the whole repository is on
- * disk. On a serverless host the deployment holds the app, so a cached page revalidating a
- * day later would look for a file that was never shipped — a failure that appears long
- * after the deploy, on a page whose entire job is to be trustworthy.
+ * `/methodology` renders `docs/methodology.md` rather than restating it, because a
+ * methodology page that has drifted from the method is worse than none. But the deployed
+ * app is only the `web/` directory — Vercel needs `web/package.json` at its root to
+ * recognise a Next.js project at all — so the page cannot read a file that lives a level
+ * above it at runtime.
  *
- * Copying at build time keeps one editable source and puts the file where the runtime can
- * reach it. The copy is generated and gitignored; `docs/methodology.md` stays the original.
+ * So the copy under `content/` is committed, and this refreshes it whenever the original is
+ * to hand. `pipeline/tests/test_published_docs.py` fails if the two ever differ, which is
+ * what keeps the copy honest.
  */
 
-import { copyFile, mkdir } from "node:fs/promises";
+import { access, copyFile, mkdir } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const repo = path.resolve(here, "..", "..");
+const web = path.resolve(here, "..");
+const repo = path.resolve(web, "..");
 
 const DOCUMENTS = [["docs/methodology.md", "content/methodology.md"]];
 
+const exists = async (file) =>
+  access(file).then(
+    () => true,
+    () => false,
+  );
+
 for (const [from, to] of DOCUMENTS) {
   const source = path.join(repo, from);
-  const target = path.join(here, "..", to);
+  const target = path.join(web, to);
   await mkdir(path.dirname(target), { recursive: true });
-  try {
+
+  if (await exists(source)) {
     await copyFile(source, target);
-  } catch (error) {
-    // Failing the build is the point. A dashboard that publishes percentages with no
-    // account of how they were reached is worse than one that did not deploy.
-    console.error(`Could not read ${from}. The build needs the whole repository, not just web/.`);
-    throw error;
+    console.log(`synced ${from} → web/${to}`);
+  } else if (await exists(target)) {
+    // Building from `web/` alone, as the deployment does. The committed copy is the source.
+    console.log(`using the committed web/${to} (${from} is outside this build)`);
+  } else {
+    // Neither one. Failing here is the point: a dashboard that publishes percentages with
+    // no account of how they were reached is worse than one that did not deploy.
+    throw new Error(`Neither ${from} nor web/${to} exists; /methodology would be empty.`);
   }
-  console.log(`synced ${from} → web/${to}`);
 }

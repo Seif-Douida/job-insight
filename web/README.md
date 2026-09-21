@@ -25,8 +25,14 @@ add latency and keep a free-tier database awake for nothing.
 
 ## A note on deployment
 
-`/methodology` renders `docs/methodology.md` from the repository root rather than keeping
-a second copy of it. The build therefore needs the whole repository, not just this folder:
-on Vercel, leave the root directory at the repository root and set the build command to
-`cd web && npm run build`. If the file cannot be read, the build fails rather than
-publishing percentages with no account of where they came from.
+On Vercel the **root directory is `web`**, so this folder deploys on its own. Vercel reads
+the `package.json` at the root directory to decide which framework a project uses, and
+pointing it at the repository root instead fails with `No Next.js version detected` however
+the build command is configured.
+
+That means nothing above this folder exists at build or run time, which is why
+`content/methodology.md` is committed rather than generated. `scripts/sync-docs.mjs`
+refreshes it from `docs/methodology.md` whenever the original is present — locally, and in
+CI — and `pipeline/tests/test_published_docs.py` fails if the two drift apart. With neither
+file available the build stops rather than publishing percentages with no account of where
+they came from.

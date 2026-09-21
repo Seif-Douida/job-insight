@@ -196,8 +196,8 @@ morning reach the site within the hour without rebuilding anything. That is the 
 pages are cached server components rather than a static export.
 
 One constraint found while building: `/methodology` renders `docs/methodology.md` from the
-repository root rather than keeping a second copy, so Vercel's root directory stays at the
-repository root with the build command `cd web && npm run build`.
+repository root, so `web/content/methodology.md` is committed and kept in step by a test —
+Vercel's root directory is `web`, and nothing above it is uploaded.
 
 Remaining: the Airflow stack onto an Oracle Cloud VM with its schedules, Vercel connected
 to the repository, and a visible alert when a task fails.

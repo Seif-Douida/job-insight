@@ -345,6 +345,55 @@ been applied in the wrong order. Fixing the ordering recovered 24 postings.
 **Rule:** a field's name is a claim about its contents, not a guarantee. Look at the real
 distribution before trusting it, especially when a filter returns nothing.
 
+### Supplying the value by hand hid a bug about where the value comes from (phase 6)
+
+`infra/docker-compose.prod.yml` interpolates `${AIRFLOW_DB_PASSWORD}`. It was verified with
+
+```bash
+AIRFLOW_DB_PASSWORD=dummy docker compose -f infra/docker-compose.prod.yml config --quiet
+```
+
+which passed, and which could not have failed. Compose reads `.env` from the directory
+holding the compose file — `infra/` — while this repository keeps its one `.env` at the
+root, where Python reads it. Setting the variable in the shell satisfied the interpolation
+and stepped over the only question that mattered: *does Compose find the file?* On the
+server it did not, and the deployment stopped at the first command.
+
+The `env_file:` key in the same file does not help, which is what made it confusing: it
+passes variables into a container, while `${...}` builds the file before any container
+exists. Two mechanisms, similar names, different times.
+
+Worse was the second variable. `${AIRFLOW_UID:-50000}` has a default, so it did not fail —
+it quietly used 50000 instead of the real user, which on Linux means the container cannot
+write to the mounted repository and dbt fails hours later with a permission error that
+names nothing. One missing flag, one loud failure and one silent one.
+
+**Rule:** when testing configuration, supply nothing by hand that production supplies for
+itself. A test that injects the value is testing interpolation; the bug is almost always in
+discovery. And treat a default on a required setting as a decision to fail silently.
+
+### A bootstrap script assumed a quiet machine (phase 6)
+
+The first run of `bootstrap.sh` on a new Oracle instance died on
+
+```text
+E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 2659 (apt)
+```
+
+A freshly booted Ubuntu cloud image spends its first minutes running unattended upgrades.
+The script was written for a settled machine and run, as it always will be, on a machine
+that booted ninety seconds earlier — the one state it was guaranteed to meet and the one it
+did not handle. It now waits for the lock.
+
+The same run held a second fault of the same kind: it added the user to the `docker` group
+and then used Docker in the same shell, where the new membership does not apply until the
+session restarts. Both are "works when I run it again by hand" bugs, invisible to anyone
+who has already run the steps once.
+
+**Rule:** a setup script's environment is a machine in its first minutes, not the machine
+you tested on after an afternoon of fiddling. Write for the cold start, and make every step
+safe to repeat so that re-running is the recovery.
+
 ### A library logged the secret my own code was careful not to log (phase 6)
 
 The alert webhook URL is a credential: anyone holding it can post as you. `alerts.py` was

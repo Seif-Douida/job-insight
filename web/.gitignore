@@ -45,6 +45,3 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /.playwright-mcp/
-
-# generated from docs/ by scripts/sync-docs.mjs
-/content/

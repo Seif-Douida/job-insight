@@ -170,10 +170,15 @@ cat <<'EOF'
 The Airflow UI is bound to localhost on the server and is not reachable from the internet.
 Open a tunnel from your OWN machine, in its own terminal, and leave it running:
 
-    ssh -N -L 8080:localhost:8080 <user>@<server-ip>
+    ssh -N -L 8081:localhost:8080 <user>@<server-ip>
 
-Then visit http://localhost:8080 and log in as 'admin'. Read the password HERE, on the
-server:
+Then visit http://localhost:8081 and log in as 'admin'.
+
+Port 8081, not 8080: a local development Airflow may already hold 8080, in which case the
+tunnel fails to bind and the browser shows that one instead — which rejects this password
+as invalid, as though it were wrong.
+
+Read the password HERE, on the server:
 
     cd ~/job-insight && docker compose --env-file .env \
       -f infra/docker-compose.prod.yml exec airflow \
